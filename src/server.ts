@@ -1,20 +1,13 @@
 import { GraphQLServer } from 'graphql-yoga';
-import { makeSchema, queryType, stringArg } from 'nexus';
+import { makeSchema } from 'nexus';
 import path from 'path';
+
+import types from './resolvers';
 
 require('dotenv').config();
 
-const Query = queryType({
-  definition(t) {
-    t.string('hello', {
-      args: { name: stringArg({ nullable: true }) },
-      resolve: (_parent, { name }) => `Hello ${name || 'World'}!`,
-    });
-  },
-});
-
 const schema = makeSchema({
-  types: [Query],
+  types,
   outputs: {
     schema: path.join(__dirname, './generated/schema.graphql'),
     typegen: path.join(__dirname, './generated/typings.ts'),
