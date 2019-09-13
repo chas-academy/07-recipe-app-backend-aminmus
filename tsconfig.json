@@ -4,6 +4,7 @@
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
         "target": "es2015",
+        "strict": true,
         "noImplicitAny": true,
         "moduleResolution": "node",
         "sourceMap": true,
@@ -18,5 +19,8 @@
     },
     "include": [
         "src/**/*"
+    ],
+    "exclude": [
+        "src/generated/**/*"
     ]
 }
