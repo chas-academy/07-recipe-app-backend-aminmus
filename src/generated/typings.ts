@@ -18,6 +18,10 @@ export interface NexusGenEnums {
 
 export interface NexusGenRootTypes {
   Query: {};
+  Recipe: { // root type
+    label: string; // String!
+    uri: string; // String!
+  }
   String: string;
   Int: number;
   Float: number;
@@ -31,6 +35,12 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 export interface NexusGenFieldTypes {
   Query: { // field return type
     hello: string; // String!
+    searchRecipe: NexusGenRootTypes['Recipe']; // Recipe!
+    searchRecipes: NexusGenRootTypes['Recipe'][]; // [Recipe!]!
+  }
+  Recipe: { // field return type
+    label: string; // String!
+    uri: string; // String!
   }
 }
 
@@ -38,6 +48,12 @@ export interface NexusGenArgTypes {
   Query: {
     hello: { // args
       name?: string | null; // String
+    }
+    searchRecipe: { // args
+      uri?: string | null; // String
+    }
+    searchRecipes: { // args
+      searchQuery: string; // String!
     }
   }
 }
@@ -47,7 +63,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query";
+export type NexusGenObjectNames = "Query" | "Recipe";
 
 export type NexusGenInputNames = never;
 

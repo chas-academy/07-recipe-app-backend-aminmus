@@ -4,4 +4,15 @@
 
 type Query {
   hello(name: String): String!
+
+  """Find a recipe by uri"""
+  searchRecipe(uri: String): Recipe!
+
+  """Search for recipes"""
+  searchRecipes(searchQuery: String!): [Recipe!]!
+}
+
+type Recipe {
+  label: String!
+  uri: String!
 }
