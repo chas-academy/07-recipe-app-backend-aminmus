@@ -14,12 +14,20 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
+  DietEnum: "balanced" | "high-protein" | "low-carb" | "low-fat"
+  HealthEnum: "alcohol-free" | "peanut-free" | "sugar-conscious" | "tree-nut-free" | "vegan" | "vegetarian"
 }
 
 export interface NexusGenRootTypes {
+  Filters: { // root type
+    dietLabels: NexusGenEnums['DietEnum']; // DietEnum!
+    healthLabels: NexusGenEnums['HealthEnum']; // HealthEnum!
+  }
   Query: {};
   Recipe: { // root type
     calories: number; // Float!
+    dietLabels: string[]; // [String!]!
+    healthLabels: string[]; // [String!]!
     image: string; // String!
     label: string; // String!
     totalWeight: number; // Float!
@@ -34,9 +42,15 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  DietEnum: NexusGenEnums['DietEnum'];
+  HealthEnum: NexusGenEnums['HealthEnum'];
 }
 
 export interface NexusGenFieldTypes {
+  Filters: { // field return type
+    dietLabels: NexusGenEnums['DietEnum']; // DietEnum!
+    healthLabels: NexusGenEnums['HealthEnum']; // HealthEnum!
+  }
   Query: { // field return type
     hello: string; // String!
     searchRecipe: NexusGenRootTypes['Recipe']; // Recipe!
@@ -44,6 +58,8 @@ export interface NexusGenFieldTypes {
   }
   Recipe: { // field return type
     calories: number; // Float!
+    dietLabels: string[]; // [String!]!
+    healthLabels: string[]; // [String!]!
     image: string; // String!
     label: string; // String!
     totalWeight: number; // Float!
@@ -71,11 +87,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query" | "Recipe";
+export type NexusGenObjectNames = "Filters" | "Query" | "Recipe";
 
 export type NexusGenInputNames = never;
 
-export type NexusGenEnumNames = never;
+export type NexusGenEnumNames = "DietEnum" | "HealthEnum";
 
 export type NexusGenInterfaceNames = never;
 

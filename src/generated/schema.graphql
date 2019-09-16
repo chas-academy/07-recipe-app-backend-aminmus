@@ -2,6 +2,27 @@
 ### Do not make changes to this file directly
 
 
+enum DietEnum {
+  balanced
+  highProtein
+  lowCarb
+  lowFat
+}
+
+type Filters {
+  dietLabels: DietEnum!
+  healthLabels: HealthEnum!
+}
+
+enum HealthEnum {
+  alcoholFree
+  peanutFree
+  sugarConscious
+  treeNutFree
+  vegan
+  vegetarian
+}
+
 type Query {
   hello(name: String): String!
 
@@ -14,6 +35,8 @@ type Query {
 
 type Recipe {
   calories: Float!
+  dietLabels: [String!]!
+  healthLabels: [String!]!
   image: String!
   label: String!
   totalWeight: Float!
