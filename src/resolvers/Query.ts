@@ -2,15 +2,26 @@ import { queryType, objectType, stringArg } from 'nexus';
 
 import { searchRecipes, searchRecipe } from './recipeSearch';
 
+
 const Recipe = objectType({
   name: 'Recipe',
   definition(t) {
-    // TODO: FIX RESOLVING OF NAME AND URI
-
-    t.string('label');
     t.string('uri');
+    t.string('label');
+    t.string('image');
+    t.int('yield');
+    t.float('calories');
+    t.float('totalWeight');
+
+
+    // t.list.field('healthLabels', {
+    //   type: HealthLabel,
+    //   args:
+    // });
   },
 });
+
+
 const Query = queryType({
   definition(t) {
     t.string('hello', {
@@ -28,10 +39,9 @@ const Query = queryType({
     t.field('searchRecipe', {
       type: Recipe,
       description: 'Find a recipe by uri',
-      args: { uri: stringArg() },
+      args: { uri: stringArg({ nullable: false }) },
       resolve: (_root, { uri }) => searchRecipe(uri),
     });
   },
 });
-
 export default { Recipe, Query };

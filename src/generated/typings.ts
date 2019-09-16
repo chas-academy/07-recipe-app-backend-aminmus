@@ -19,8 +19,12 @@ export interface NexusGenEnums {
 export interface NexusGenRootTypes {
   Query: {};
   Recipe: { // root type
+    calories: number; // Float!
+    image: string; // String!
     label: string; // String!
+    totalWeight: number; // Float!
     uri: string; // String!
+    yield: number; // Int!
   }
   String: string;
   Int: number;
@@ -39,8 +43,12 @@ export interface NexusGenFieldTypes {
     searchRecipes: NexusGenRootTypes['Recipe'][]; // [Recipe!]!
   }
   Recipe: { // field return type
+    calories: number; // Float!
+    image: string; // String!
     label: string; // String!
+    totalWeight: number; // Float!
     uri: string; // String!
+    yield: number; // Int!
   }
 }
 
@@ -50,7 +58,7 @@ export interface NexusGenArgTypes {
       name?: string | null; // String
     }
     searchRecipe: { // args
-      uri?: string | null; // String
+      uri: string; // String!
     }
     searchRecipes: { // args
       searchQuery: string; // String!
