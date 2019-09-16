@@ -1,13 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import fetch from 'node-fetch';
 
 import { Recipe } from '../types';
-// // Search recipe url with API credentials
-// const baseUrl = `https://api.edamam.com/search?app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_API_KEY}`;
 
-// // Url for searching for recipes by a search query
-// const searchUrl = `${baseUrl}&q=chicken`;
+/* Not handling errors in searchRecipes and searchRecipe fns
+** Because we want thrown errors to be automatically handled by GraphQL
+*/
 
-// Add filters parameter
+// TODO: Add filters parameter
 export async function searchRecipes(query: string): Promise<Recipe[]> {
   // Search recipe url with API credentials
   const baseUrl = `https://api.edamam.com/search?app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_API_KEY}`;
@@ -25,23 +25,17 @@ export async function searchRecipes(query: string): Promise<Recipe[]> {
   const result = await jsonResult.json();
 
   const recipesData: Array<object> = result.hits;
-  console.log(recipesData);
 
-  const recipes: Recipe[] = await recipesData.map((current: object) => {
+  const recipes = await recipesData.map((current: any) => {
     const { recipe } = current;
-    const { uri, label } = recipe;
-
-    return { uri, label };
+    return recipe as Recipe;
   });
-
-  console.log(recipes);
-
-  // Return results or handle error
+    // Return results or handle error
   return recipes;
 }
 
 export async function searchRecipe(recipeUri: string): Promise<Recipe> {
-// Get recipe id/uri
+  // Get recipe id/uri
   const baseUrl = `https://api.edamam.com/search?app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_API_KEY}`;
 
   // Encode URI
@@ -50,10 +44,10 @@ export async function searchRecipe(recipeUri: string): Promise<Recipe> {
   const requestUrl = `${baseUrl}&r=${encodedUri}`;
   // Request recipe from Edamam and await result
   const jsonResult = await fetch(requestUrl);
-  const recipe = await jsonResult.json();
+  const result = await jsonResult.json();
 
-  console.log(recipe);
+  const recipe: Recipe = result[0];
 
-  // Return recipe or handle error
-  return recipe[0];
+  // Return recipe
+  return recipe;
 }
