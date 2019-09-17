@@ -11,6 +11,10 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  Filters: { // input type
+    dietLabels?: NexusGenEnums['DietEnum'][] | null; // [DietEnum!]
+    healthLabels?: NexusGenEnums['HealthEnum'][] | null; // [HealthEnum!]
+  }
 }
 
 export interface NexusGenEnums {
@@ -19,10 +23,6 @@ export interface NexusGenEnums {
 }
 
 export interface NexusGenRootTypes {
-  Filters: { // root type
-    dietLabels: NexusGenEnums['DietEnum']; // DietEnum!
-    healthLabels: NexusGenEnums['HealthEnum']; // HealthEnum!
-  }
   Query: {};
   Recipe: { // root type
     calories: number; // Float!
@@ -42,18 +42,15 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  Filters: NexusGenInputs['Filters'];
   DietEnum: NexusGenEnums['DietEnum'];
   HealthEnum: NexusGenEnums['HealthEnum'];
 }
 
 export interface NexusGenFieldTypes {
-  Filters: { // field return type
-    dietLabels: NexusGenEnums['DietEnum']; // DietEnum!
-    healthLabels: NexusGenEnums['HealthEnum']; // HealthEnum!
-  }
   Query: { // field return type
+    findRecipe: NexusGenRootTypes['Recipe']; // Recipe!
     hello: string; // String!
-    searchRecipe: NexusGenRootTypes['Recipe']; // Recipe!
     searchRecipes: NexusGenRootTypes['Recipe'][]; // [Recipe!]!
   }
   Recipe: { // field return type
@@ -70,13 +67,14 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Query: {
+    findRecipe: { // args
+      uri: string; // String!
+    }
     hello: { // args
       name?: string | null; // String
     }
-    searchRecipe: { // args
-      uri: string; // String!
-    }
     searchRecipes: { // args
+      filters?: NexusGenInputs['Filters'] | null; // Filters
       searchQuery: string; // String!
     }
   }
@@ -87,9 +85,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Filters" | "Query" | "Recipe";
+export type NexusGenObjectNames = "Query" | "Recipe";
 
-export type NexusGenInputNames = never;
+export type NexusGenInputNames = "Filters";
 
 export type NexusGenEnumNames = "DietEnum" | "HealthEnum";
 

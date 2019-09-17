@@ -9,9 +9,9 @@ enum DietEnum {
   lowFat
 }
 
-type Filters {
-  dietLabels: DietEnum!
-  healthLabels: HealthEnum!
+input Filters {
+  dietLabels: [DietEnum!]
+  healthLabels: [HealthEnum!]
 }
 
 enum HealthEnum {
@@ -24,13 +24,12 @@ enum HealthEnum {
 }
 
 type Query {
+  """Find a recipe by uri"""
+  findRecipe(uri: String!): Recipe!
   hello(name: String): String!
 
-  """Find a recipe by uri"""
-  searchRecipe(uri: String!): Recipe!
-
   """Search for recipes"""
-  searchRecipes(searchQuery: String!): [Recipe!]!
+  searchRecipes(filters: Filters, searchQuery: String!): [Recipe!]!
 }
 
 type Recipe {

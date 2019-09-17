@@ -7,11 +7,11 @@ export interface Recipe {
   totalWeight?: number;
   totalNutrients?: object;
   ingredients?: Array<object>;
-  dietLabels?: Enumerator<string>;
-  healthLabels?: Enumerator<string>;
+  dietLabels?: Array<string>;
+  healthLabels?: Array<string>;
 }
 
 export interface SearchFilter {
-  mealType: Enumerator<string>;
-  health: Array<string>;
+  healthLabels: Array<string>;
+  dietLabels: Array<string>;
 }

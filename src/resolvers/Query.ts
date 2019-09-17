@@ -1,14 +1,14 @@
 import {
-  queryType, objectType, stringArg, enumType,
+  queryType, objectType, stringArg, enumType, arg, inputObjectType,
 } from 'nexus';
 
-import { searchRecipes, searchRecipe } from './recipeSearch';
+import { searchRecipes, findRecipe } from './recipeSearch';
 
-const Filters = objectType({
+const Filters = inputObjectType({
   name: 'Filters',
   definition(t) {
-    t.field('healthLabels', { type: 'HealthEnum' });
-    t.field('dietLabels', { type: 'DietEnum' });
+    t.list.field('healthLabels', { type: 'HealthEnum' });
+    t.list.field('dietLabels', { type: 'DietEnum' });
   },
 });
 
@@ -61,15 +61,16 @@ const Query = queryType({
       description: 'Search for recipes',
       args: {
         searchQuery: stringArg({ nullable: false }),
+        filters: arg({ type: Filters }),
       },
-      resolve: (_root, { searchQuery }) => searchRecipes(searchQuery),
+      resolve: (_root, { searchQuery, filters }) => searchRecipes(searchQuery, filters),
     });
 
-    t.field('searchRecipe', {
+    t.field('findRecipe', {
       type: Recipe,
       description: 'Find a recipe by uri',
       args: { uri: stringArg({ nullable: false }) },
-      resolve: (_root, { uri }) => searchRecipe(uri),
+      resolve: (_root, { uri }) => findRecipe(uri),
     });
   },
 });
