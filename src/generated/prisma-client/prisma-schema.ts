@@ -587,11 +587,11 @@ type Subscription {
 type User {
   id: ID!
   password: String!
+  name: String!
+  email: String!
+  recipeLists(where: RecipeListWhereInput, orderBy: RecipeListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [RecipeList!]
   createdAt: DateTime!
   updatedAt: DateTime!
-  email: String!
-  name: String!
-  recipeLists(where: RecipeListWhereInput, orderBy: RecipeListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [RecipeList!]
 }
 
 type UserConnection {
@@ -603,8 +603,8 @@ type UserConnection {
 input UserCreateInput {
   id: ID
   password: String!
-  email: String!
   name: String!
+  email: String!
   recipeLists: RecipeListCreateManyInput
 }
 
@@ -618,23 +618,23 @@ enum UserOrderByInput {
   id_DESC
   password_ASC
   password_DESC
+  name_ASC
+  name_DESC
+  email_ASC
+  email_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
   updatedAt_DESC
-  email_ASC
-  email_DESC
-  name_ASC
-  name_DESC
 }
 
 type UserPreviousValues {
   id: ID!
   password: String!
+  name: String!
+  email: String!
   createdAt: DateTime!
   updatedAt: DateTime!
-  email: String!
-  name: String!
 }
 
 type UserSubscriptionPayload {
@@ -657,15 +657,15 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateInput {
   password: String
-  email: String
   name: String
+  email: String
   recipeLists: RecipeListUpdateManyInput
 }
 
 input UserUpdateManyMutationInput {
   password: String
-  email: String
   name: String
+  email: String
 }
 
 input UserWhereInput {
@@ -697,6 +697,37 @@ input UserWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  email: String
+  email_not: String
+  email_in: [String!]
+  email_not_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_gt: String
+  email_gte: String
+  email_contains: String
+  email_not_contains: String
+  email_starts_with: String
+  email_not_starts_with: String
+  email_ends_with: String
+  email_not_ends_with: String
+  recipeLists_every: RecipeListWhereInput
+  recipeLists_some: RecipeListWhereInput
+  recipeLists_none: RecipeListWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -713,37 +744,6 @@ input UserWhereInput {
   updatedAt_lte: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  recipeLists_every: RecipeListWhereInput
-  recipeLists_some: RecipeListWhereInput
-  recipeLists_none: RecipeListWhereInput
   AND: [UserWhereInput!]
   OR: [UserWhereInput!]
   NOT: [UserWhereInput!]
