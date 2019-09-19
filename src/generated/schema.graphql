@@ -25,11 +25,11 @@ enum HealthEnum {
 
 type Query {
   """Find a recipe by uri"""
-  findRecipe(uri: String!): Recipe!
+  findRecipeByURI(uri: String!): Recipe
   hello(name: String): String!
 
   """Search for recipes"""
-  searchRecipes(filters: Filters, searchQuery: String!): [Recipe!]!
+  searchRecipes(filters: Filters, searchQuery: String!): [Recipe!]
 }
 
 type Recipe {

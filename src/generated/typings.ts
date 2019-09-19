@@ -49,9 +49,9 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
 
 export interface NexusGenFieldTypes {
   Query: { // field return type
-    findRecipe: NexusGenRootTypes['Recipe']; // Recipe!
+    findRecipeByURI: NexusGenRootTypes['Recipe'] | null; // Recipe
     hello: string; // String!
-    searchRecipes: NexusGenRootTypes['Recipe'][]; // [Recipe!]!
+    searchRecipes: NexusGenRootTypes['Recipe'][] | null; // [Recipe!]
   }
   Recipe: { // field return type
     calories: number; // Float!
@@ -67,7 +67,7 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Query: {
-    findRecipe: { // args
+    findRecipeByURI: { // args
       uri: string; // String!
     }
     hello: { // args

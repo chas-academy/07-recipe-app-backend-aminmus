@@ -2,7 +2,7 @@ import {
   queryType, objectType, stringArg, enumType, arg, inputObjectType,
 } from 'nexus';
 
-import { searchRecipes, findRecipe } from './recipeSearch';
+import { searchRecipes, findRecipeByURI } from '../services/getRecipes';
 
 const Filters = inputObjectType({
   name: 'Filters',
@@ -59,6 +59,7 @@ const Query = queryType({
     t.list.field('searchRecipes', {
       type: Recipe,
       description: 'Search for recipes',
+      nullable: true,
       args: {
         searchQuery: stringArg({ nullable: false }),
         filters: arg({ type: Filters }),
@@ -66,11 +67,12 @@ const Query = queryType({
       resolve: (_root, { searchQuery, filters }) => searchRecipes(searchQuery, filters),
     });
 
-    t.field('findRecipe', {
+    t.field('findRecipeByURI', {
       type: Recipe,
       description: 'Find a recipe by uri',
+      nullable: true,
       args: { uri: stringArg({ nullable: false }) },
-      resolve: (_root, { uri }) => findRecipe(uri),
+      resolve: (_root, { uri }) => findRecipeByURI(uri),
     });
   },
 });

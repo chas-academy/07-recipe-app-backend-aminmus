@@ -1,0 +1,26 @@
+type User {
+  id: ID! @id
+  password: String!
+  name: String!
+  email: String! @unique
+  recipeLists: [RecipeList]
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Recipe {
+  id: ID! @id
+  name: String!
+  uri: String!
+  image: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type RecipeList {
+  id: ID! @id
+  name: String!
+  recipes: [Recipe]
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
