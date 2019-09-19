@@ -1,53 +1,8 @@
-import {
-  queryType, objectType, stringArg, enumType, arg, inputObjectType,
-} from 'nexus';
+import { queryType, stringArg, arg } from 'nexus';
 
+import Recipe from './Recipe';
+import { Filters } from './Filters';
 import { searchRecipes, findRecipeByURI } from '../services/getRecipes';
-
-const Filters = inputObjectType({
-  name: 'Filters',
-  definition(t) {
-    t.list.field('healthLabels', { type: 'HealthEnum' });
-    t.list.field('dietLabels', { type: 'DietEnum' });
-  },
-});
-
-const HealthEnum = enumType({
-  name: 'HealthEnum',
-  members: {
-    vegan: 'vegan',
-    vegetarian: 'vegetarian',
-    sugarConscious: 'sugar-conscious',
-    peanutFree: 'peanut-free',
-    treeNutFree: 'tree-nut-free',
-    alcoholFree: 'alcohol-free',
-  },
-});
-
-const DietEnum = enumType({
-  name: 'DietEnum',
-  members: {
-    balanced: 'balanced',
-    highProtein: 'high-protein',
-    lowFat: 'low-fat',
-    lowCarb: 'low-carb',
-  },
-});
-
-const Recipe = objectType({
-  name: 'Recipe',
-  definition(t) {
-    t.string('uri');
-    t.string('label');
-    t.string('image');
-    t.int('yield');
-    t.float('calories');
-    t.float('totalWeight');
-
-    t.list.string('healthLabels');
-    t.list.string('dietLabels');
-  },
-});
 
 const Query = queryType({
   definition(t) {
@@ -76,6 +31,5 @@ const Query = queryType({
     });
   },
 });
-export default {
-  Filters, DietEnum, HealthEnum, Recipe, Query,
-};
+
+export default Query;
