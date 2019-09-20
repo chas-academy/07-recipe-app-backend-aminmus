@@ -1,3 +1,6 @@
+import { Request } from 'express';
+import { Prisma } from './generated/prisma-client';
+
 export interface Recipe {
   uri: string;
   label: string;
@@ -14,4 +17,9 @@ export interface Recipe {
 export interface SearchFilter {
   healthLabels: Array<string>;
   dietLabels: Array<string>;
+}
+
+export interface Context {
+  prisma: Prisma;
+  request: Request;
 }

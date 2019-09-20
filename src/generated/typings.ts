@@ -15,14 +15,150 @@ export interface NexusGenInputs {
     dietLabels?: NexusGenEnums['DietEnum'][] | null; // [DietEnum!]
     healthLabels?: NexusGenEnums['HealthEnum'][] | null; // [HealthEnum!]
   }
+  RecipeListWhereInput: { // input type
+    AND?: NexusGenInputs['RecipeListWhereInput'][] | null; // [RecipeListWhereInput!]
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    name?: string | null; // String
+    name_contains?: string | null; // String
+    name_ends_with?: string | null; // String
+    name_gt?: string | null; // String
+    name_gte?: string | null; // String
+    name_in?: string[] | null; // [String!]
+    name_lt?: string | null; // String
+    name_lte?: string | null; // String
+    name_not?: string | null; // String
+    name_not_contains?: string | null; // String
+    name_not_ends_with?: string | null; // String
+    name_not_in?: string[] | null; // [String!]
+    name_not_starts_with?: string | null; // String
+    name_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['RecipeListWhereInput'][] | null; // [RecipeListWhereInput!]
+    OR?: NexusGenInputs['RecipeListWhereInput'][] | null; // [RecipeListWhereInput!]
+    recipes_every?: NexusGenInputs['RecipeWhereInput'] | null; // RecipeWhereInput
+    recipes_none?: NexusGenInputs['RecipeWhereInput'] | null; // RecipeWhereInput
+    recipes_some?: NexusGenInputs['RecipeWhereInput'] | null; // RecipeWhereInput
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
+  }
+  RecipeWhereInput: { // input type
+    AND?: NexusGenInputs['RecipeWhereInput'][] | null; // [RecipeWhereInput!]
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    image?: string | null; // String
+    image_contains?: string | null; // String
+    image_ends_with?: string | null; // String
+    image_gt?: string | null; // String
+    image_gte?: string | null; // String
+    image_in?: string[] | null; // [String!]
+    image_lt?: string | null; // String
+    image_lte?: string | null; // String
+    image_not?: string | null; // String
+    image_not_contains?: string | null; // String
+    image_not_ends_with?: string | null; // String
+    image_not_in?: string[] | null; // [String!]
+    image_not_starts_with?: string | null; // String
+    image_starts_with?: string | null; // String
+    name?: string | null; // String
+    name_contains?: string | null; // String
+    name_ends_with?: string | null; // String
+    name_gt?: string | null; // String
+    name_gte?: string | null; // String
+    name_in?: string[] | null; // [String!]
+    name_lt?: string | null; // String
+    name_lte?: string | null; // String
+    name_not?: string | null; // String
+    name_not_contains?: string | null; // String
+    name_not_ends_with?: string | null; // String
+    name_not_in?: string[] | null; // [String!]
+    name_not_starts_with?: string | null; // String
+    name_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['RecipeWhereInput'][] | null; // [RecipeWhereInput!]
+    OR?: NexusGenInputs['RecipeWhereInput'][] | null; // [RecipeWhereInput!]
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
+    uri?: string | null; // String
+    uri_contains?: string | null; // String
+    uri_ends_with?: string | null; // String
+    uri_gt?: string | null; // String
+    uri_gte?: string | null; // String
+    uri_in?: string[] | null; // [String!]
+    uri_lt?: string | null; // String
+    uri_lte?: string | null; // String
+    uri_not?: string | null; // String
+    uri_not_contains?: string | null; // String
+    uri_not_ends_with?: string | null; // String
+    uri_not_in?: string[] | null; // [String!]
+    uri_not_starts_with?: string | null; // String
+    uri_starts_with?: string | null; // String
+  }
 }
 
 export interface NexusGenEnums {
   DietEnum: "balanced" | "high-protein" | "low-carb" | "low-fat"
   HealthEnum: "alcohol-free" | "peanut-free" | "sugar-conscious" | "tree-nut-free" | "vegan" | "vegetarian"
+  RecipeListOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  RecipeOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "uri_ASC" | "uri_DESC"
 }
 
 export interface NexusGenRootTypes {
+  AuthPayload: { // root type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+  }
+  Mutation: {};
   Query: {};
   Recipe: { // root type
     calories: number; // Float!
@@ -34,24 +170,51 @@ export interface NexusGenRootTypes {
     uri: string; // String!
     yield: number; // Int!
   }
+  RecipeList: { // root type
+    createdAt: any; // DateTime!
+    id: string; // ID!
+    name: string; // String!
+    updatedAt: any; // DateTime!
+  }
+  User: { // root type
+    createdAt: any; // DateTime!
+    email: string; // String!
+    id: string; // ID!
+    name: string; // String!
+    updatedAt: any; // DateTime!
+  }
   String: string;
   Int: number;
   Float: number;
   Boolean: boolean;
   ID: string;
+  DateTime: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
   Filters: NexusGenInputs['Filters'];
+  RecipeListWhereInput: NexusGenInputs['RecipeListWhereInput'];
+  RecipeWhereInput: NexusGenInputs['RecipeWhereInput'];
   DietEnum: NexusGenEnums['DietEnum'];
   HealthEnum: NexusGenEnums['HealthEnum'];
+  RecipeListOrderByInput: NexusGenEnums['RecipeListOrderByInput'];
+  RecipeOrderByInput: NexusGenEnums['RecipeOrderByInput'];
 }
 
 export interface NexusGenFieldTypes {
+  AuthPayload: { // field return type
+    token: string; // String!
+    user: NexusGenRootTypes['User']; // User!
+  }
+  Mutation: { // field return type
+    login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+  }
   Query: { // field return type
     findRecipeByURI: NexusGenRootTypes['Recipe'] | null; // Recipe
     hello: string; // String!
     searchRecipes: NexusGenRootTypes['Recipe'][] | null; // [Recipe!]
+    testProtected: string; // String!
   }
   Recipe: { // field return type
     calories: number; // Float!
@@ -63,9 +226,35 @@ export interface NexusGenFieldTypes {
     uri: string; // String!
     yield: number; // Int!
   }
+  RecipeList: { // field return type
+    createdAt: any; // DateTime!
+    id: string; // ID!
+    name: string; // String!
+    recipes: NexusGenRootTypes['Recipe'][] | null; // [Recipe!]
+    updatedAt: any; // DateTime!
+  }
+  User: { // field return type
+    createdAt: any; // DateTime!
+    email: string; // String!
+    id: string; // ID!
+    name: string; // String!
+    recipeLists: NexusGenRootTypes['RecipeList'][] | null; // [RecipeList!]
+    updatedAt: any; // DateTime!
+  }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    login: { // args
+      email?: string | null; // String
+      password?: string | null; // String
+    }
+    signup: { // args
+      email?: string | null; // String
+      name?: string | null; // String
+      password?: string | null; // String
+    }
+  }
   Query: {
     findRecipeByURI: { // args
       uri: string; // String!
@@ -78,6 +267,28 @@ export interface NexusGenArgTypes {
       searchQuery: string; // String!
     }
   }
+  RecipeList: {
+    recipes: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['RecipeOrderByInput'] | null; // RecipeOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['RecipeWhereInput'] | null; // RecipeWhereInput
+    }
+  }
+  User: {
+    recipeLists: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['RecipeListOrderByInput'] | null; // RecipeListOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['RecipeListWhereInput'] | null; // RecipeListWhereInput
+    }
+  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
@@ -85,15 +296,15 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Query" | "Recipe";
+export type NexusGenObjectNames = "AuthPayload" | "Mutation" | "Query" | "Recipe" | "RecipeList" | "User";
 
-export type NexusGenInputNames = "Filters";
+export type NexusGenInputNames = "Filters" | "RecipeListWhereInput" | "RecipeWhereInput";
 
-export type NexusGenEnumNames = "DietEnum" | "HealthEnum";
+export type NexusGenEnumNames = "DietEnum" | "HealthEnum" | "RecipeListOrderByInput" | "RecipeOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
 
 export type NexusGenUnionNames = never;
 
