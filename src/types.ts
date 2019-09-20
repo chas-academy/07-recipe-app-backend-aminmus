@@ -1,3 +1,4 @@
+import { Request } from 'express';
 import { Prisma } from './generated/prisma-client';
 
 export interface Recipe {
@@ -20,4 +21,5 @@ export interface SearchFilter {
 
 export interface Context {
   prisma: Prisma;
+  request: Request;
 }

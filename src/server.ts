@@ -24,7 +24,10 @@ const schema = makePrismaSchema({
 
 const server = new GraphQLServer({
   schema,
-  context: { prisma },
+  context: (request) => ({
+    ...request,
+    prisma,
+  }),
 });
 
 server.start({ port: process.env.PORT }, () => {
