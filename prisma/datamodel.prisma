@@ -3,7 +3,7 @@ type User {
   password: String!
   name: String!
   email: String! @unique
-  recipeLists: [RecipeList]
+  recipeLists: [RecipeList!]
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -20,7 +20,7 @@ type Recipe {
 type RecipeList {
   id: ID! @id
   name: String!
-  recipes: [Recipe]
+  recipes: [Recipe!]
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
