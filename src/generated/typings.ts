@@ -207,6 +207,7 @@ export interface NexusGenFieldTypes {
     user: NexusGenRootTypes['User']; // User!
   }
   Mutation: { // field return type
+    login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
   }
   Query: { // field return type
@@ -243,6 +244,10 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenArgTypes {
   Mutation: {
+    login: { // args
+      email?: string | null; // String
+      password?: string | null; // String
+    }
     signup: { // args
       email?: string | null; // String
       name?: string | null; // String
