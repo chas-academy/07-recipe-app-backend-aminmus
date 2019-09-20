@@ -214,6 +214,7 @@ export interface NexusGenFieldTypes {
     findRecipeByURI: NexusGenRootTypes['Recipe'] | null; // Recipe
     hello: string; // String!
     searchRecipes: NexusGenRootTypes['Recipe'][] | null; // [Recipe!]
+    testProtected: string; // String!
   }
   Recipe: { // field return type
     calories: number; // Float!

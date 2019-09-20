@@ -42,6 +42,7 @@ type Query {
 
   """Search for recipes"""
   searchRecipes(filters: Filters, searchQuery: String!): [Recipe!]
+  testProtected: String!
 }
 
 type Recipe {
