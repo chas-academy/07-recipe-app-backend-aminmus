@@ -13,6 +13,10 @@ const permissions = shield({
   Query: {
     testProtected: rules.isAuthenticated,
   },
+  Mutation: {
+    createRecipeList: rules.isAuthenticated,
+    updateRecipeList: rules.isAuthenticated,
+  },
 });
 
 export default permissions;
