@@ -19,6 +19,8 @@ export interface Exists {
   recipe: (where?: RecipeWhereInput) => Promise<boolean>;
   recipeList: (where?: RecipeListWhereInput) => Promise<boolean>;
   user: (where?: UserWhereInput) => Promise<boolean>;
+  dietLabel: (where?: dietLabelWhereInput) => Promise<boolean>;
+  healthLabel: (where?: healthLabelWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -97,6 +99,46 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => UserConnectionPromise;
+  dietLabel: (where: dietLabelWhereUniqueInput) => dietLabelNullablePromise;
+  dietLabels: (args?: {
+    where?: dietLabelWhereInput;
+    orderBy?: dietLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<dietLabel>;
+  dietLabelsConnection: (args?: {
+    where?: dietLabelWhereInput;
+    orderBy?: dietLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => dietLabelConnectionPromise;
+  healthLabel: (
+    where: healthLabelWhereUniqueInput
+  ) => healthLabelNullablePromise;
+  healthLabels: (args?: {
+    where?: healthLabelWhereInput;
+    orderBy?: healthLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<healthLabel>;
+  healthLabelsConnection: (args?: {
+    where?: healthLabelWhereInput;
+    orderBy?: healthLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => healthLabelConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
@@ -151,6 +193,40 @@ export interface Prisma {
   }) => UserPromise;
   deleteUser: (where: UserWhereUniqueInput) => UserPromise;
   deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  createdietLabel: (data: dietLabelCreateInput) => dietLabelPromise;
+  updatedietLabel: (args: {
+    data: dietLabelUpdateInput;
+    where: dietLabelWhereUniqueInput;
+  }) => dietLabelPromise;
+  updateManydietLabels: (args: {
+    data: dietLabelUpdateManyMutationInput;
+    where?: dietLabelWhereInput;
+  }) => BatchPayloadPromise;
+  upsertdietLabel: (args: {
+    where: dietLabelWhereUniqueInput;
+    create: dietLabelCreateInput;
+    update: dietLabelUpdateInput;
+  }) => dietLabelPromise;
+  deletedietLabel: (where: dietLabelWhereUniqueInput) => dietLabelPromise;
+  deleteManydietLabels: (where?: dietLabelWhereInput) => BatchPayloadPromise;
+  createhealthLabel: (data: healthLabelCreateInput) => healthLabelPromise;
+  updatehealthLabel: (args: {
+    data: healthLabelUpdateInput;
+    where: healthLabelWhereUniqueInput;
+  }) => healthLabelPromise;
+  updateManyhealthLabels: (args: {
+    data: healthLabelUpdateManyMutationInput;
+    where?: healthLabelWhereInput;
+  }) => BatchPayloadPromise;
+  upserthealthLabel: (args: {
+    where: healthLabelWhereUniqueInput;
+    create: healthLabelCreateInput;
+    update: healthLabelUpdateInput;
+  }) => healthLabelPromise;
+  deletehealthLabel: (where: healthLabelWhereUniqueInput) => healthLabelPromise;
+  deleteManyhealthLabels: (
+    where?: healthLabelWhereInput
+  ) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -169,6 +245,12 @@ export interface Subscription {
   user: (
     where?: UserSubscriptionWhereInput
   ) => UserSubscriptionPayloadSubscription;
+  dietLabel: (
+    where?: dietLabelSubscriptionWhereInput
+  ) => dietLabelSubscriptionPayloadSubscription;
+  healthLabel: (
+    where?: healthLabelSubscriptionWhereInput
+  ) => healthLabelSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -179,15 +261,33 @@ export interface ClientConstructor<T> {
  * Types
  */
 
+export type healthLabelOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "label_ASC"
+  | "label_DESC";
+
+export type dietLabelOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "label_ASC"
+  | "label_DESC";
+
 export type RecipeOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
+  | "label_ASC"
+  | "label_DESC"
   | "uri_ASC"
   | "uri_DESC"
   | "image_ASC"
   | "image_DESC"
+  | "servings_ASC"
+  | "servings_DESC"
+  | "calories_ASC"
+  | "calories_DESC"
+  | "totalWeight_ASC"
+  | "totalWeight_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -221,7 +321,76 @@ export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export type RecipeWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  uri?: Maybe<String>;
 }>;
+
+export interface healthLabelWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  label?: Maybe<String>;
+  label_not?: Maybe<String>;
+  label_in?: Maybe<String[] | String>;
+  label_not_in?: Maybe<String[] | String>;
+  label_lt?: Maybe<String>;
+  label_lte?: Maybe<String>;
+  label_gt?: Maybe<String>;
+  label_gte?: Maybe<String>;
+  label_contains?: Maybe<String>;
+  label_not_contains?: Maybe<String>;
+  label_starts_with?: Maybe<String>;
+  label_not_starts_with?: Maybe<String>;
+  label_ends_with?: Maybe<String>;
+  label_not_ends_with?: Maybe<String>;
+  AND?: Maybe<healthLabelWhereInput[] | healthLabelWhereInput>;
+  OR?: Maybe<healthLabelWhereInput[] | healthLabelWhereInput>;
+  NOT?: Maybe<healthLabelWhereInput[] | healthLabelWhereInput>;
+}
+
+export interface dietLabelWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  label?: Maybe<String>;
+  label_not?: Maybe<String>;
+  label_in?: Maybe<String[] | String>;
+  label_not_in?: Maybe<String[] | String>;
+  label_lt?: Maybe<String>;
+  label_lte?: Maybe<String>;
+  label_gt?: Maybe<String>;
+  label_gte?: Maybe<String>;
+  label_contains?: Maybe<String>;
+  label_not_contains?: Maybe<String>;
+  label_starts_with?: Maybe<String>;
+  label_not_starts_with?: Maybe<String>;
+  label_ends_with?: Maybe<String>;
+  label_not_ends_with?: Maybe<String>;
+  AND?: Maybe<dietLabelWhereInput[] | dietLabelWhereInput>;
+  OR?: Maybe<dietLabelWhereInput[] | dietLabelWhereInput>;
+  NOT?: Maybe<dietLabelWhereInput[] | dietLabelWhereInput>;
+}
 
 export interface RecipeWhereInput {
   id?: Maybe<ID_Input>;
@@ -238,20 +407,20 @@ export interface RecipeWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
+  label?: Maybe<String>;
+  label_not?: Maybe<String>;
+  label_in?: Maybe<String[] | String>;
+  label_not_in?: Maybe<String[] | String>;
+  label_lt?: Maybe<String>;
+  label_lte?: Maybe<String>;
+  label_gt?: Maybe<String>;
+  label_gte?: Maybe<String>;
+  label_contains?: Maybe<String>;
+  label_not_contains?: Maybe<String>;
+  label_starts_with?: Maybe<String>;
+  label_not_starts_with?: Maybe<String>;
+  label_ends_with?: Maybe<String>;
+  label_not_ends_with?: Maybe<String>;
   uri?: Maybe<String>;
   uri_not?: Maybe<String>;
   uri_in?: Maybe<String[] | String>;
@@ -280,6 +449,36 @@ export interface RecipeWhereInput {
   image_not_starts_with?: Maybe<String>;
   image_ends_with?: Maybe<String>;
   image_not_ends_with?: Maybe<String>;
+  servings?: Maybe<Int>;
+  servings_not?: Maybe<Int>;
+  servings_in?: Maybe<Int[] | Int>;
+  servings_not_in?: Maybe<Int[] | Int>;
+  servings_lt?: Maybe<Int>;
+  servings_lte?: Maybe<Int>;
+  servings_gt?: Maybe<Int>;
+  servings_gte?: Maybe<Int>;
+  calories?: Maybe<Float>;
+  calories_not?: Maybe<Float>;
+  calories_in?: Maybe<Float[] | Float>;
+  calories_not_in?: Maybe<Float[] | Float>;
+  calories_lt?: Maybe<Float>;
+  calories_lte?: Maybe<Float>;
+  calories_gt?: Maybe<Float>;
+  calories_gte?: Maybe<Float>;
+  totalWeight?: Maybe<Float>;
+  totalWeight_not?: Maybe<Float>;
+  totalWeight_in?: Maybe<Float[] | Float>;
+  totalWeight_not_in?: Maybe<Float[] | Float>;
+  totalWeight_lt?: Maybe<Float>;
+  totalWeight_lte?: Maybe<Float>;
+  totalWeight_gt?: Maybe<Float>;
+  totalWeight_gte?: Maybe<Float>;
+  healthLabels_every?: Maybe<healthLabelWhereInput>;
+  healthLabels_some?: Maybe<healthLabelWhereInput>;
+  healthLabels_none?: Maybe<healthLabelWhereInput>;
+  dietLabels_every?: Maybe<dietLabelWhereInput>;
+  dietLabels_some?: Maybe<dietLabelWhereInput>;
+  dietLabels_none?: Maybe<dietLabelWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -337,6 +536,7 @@ export interface RecipeListWhereInput {
   recipes_every?: Maybe<RecipeWhereInput>;
   recipes_some?: Maybe<RecipeWhereInput>;
   recipes_none?: Maybe<RecipeWhereInput>;
+  user?: Maybe<UserWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -357,11 +557,6 @@ export interface RecipeListWhereInput {
   OR?: Maybe<RecipeListWhereInput[] | RecipeListWhereInput>;
   NOT?: Maybe<RecipeListWhereInput[] | RecipeListWhereInput>;
 }
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  email?: Maybe<String>;
-}>;
 
 export interface UserWhereInput {
   id?: Maybe<ID_Input>;
@@ -444,29 +639,240 @@ export interface UserWhereInput {
   NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
 }
 
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  email?: Maybe<String>;
+}>;
+
+export type dietLabelWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  label?: Maybe<String>;
+}>;
+
+export type healthLabelWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  label?: Maybe<String>;
+}>;
+
 export interface RecipeCreateInput {
   id?: Maybe<ID_Input>;
-  name: String;
+  label: String;
   uri: String;
   image: String;
+  servings: Int;
+  calories: Float;
+  totalWeight: Float;
+  healthLabels?: Maybe<healthLabelCreateManyInput>;
+  dietLabels?: Maybe<dietLabelCreateManyInput>;
+}
+
+export interface healthLabelCreateManyInput {
+  create?: Maybe<healthLabelCreateInput[] | healthLabelCreateInput>;
+  connect?: Maybe<healthLabelWhereUniqueInput[] | healthLabelWhereUniqueInput>;
+}
+
+export interface healthLabelCreateInput {
+  id?: Maybe<ID_Input>;
+  label: String;
+}
+
+export interface dietLabelCreateManyInput {
+  create?: Maybe<dietLabelCreateInput[] | dietLabelCreateInput>;
+  connect?: Maybe<dietLabelWhereUniqueInput[] | dietLabelWhereUniqueInput>;
+}
+
+export interface dietLabelCreateInput {
+  id?: Maybe<ID_Input>;
+  label: String;
 }
 
 export interface RecipeUpdateInput {
-  name?: Maybe<String>;
+  label?: Maybe<String>;
   uri?: Maybe<String>;
   image?: Maybe<String>;
+  servings?: Maybe<Int>;
+  calories?: Maybe<Float>;
+  totalWeight?: Maybe<Float>;
+  healthLabels?: Maybe<healthLabelUpdateManyInput>;
+  dietLabels?: Maybe<dietLabelUpdateManyInput>;
+}
+
+export interface healthLabelUpdateManyInput {
+  create?: Maybe<healthLabelCreateInput[] | healthLabelCreateInput>;
+  update?: Maybe<
+    | healthLabelUpdateWithWhereUniqueNestedInput[]
+    | healthLabelUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | healthLabelUpsertWithWhereUniqueNestedInput[]
+    | healthLabelUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<healthLabelWhereUniqueInput[] | healthLabelWhereUniqueInput>;
+  connect?: Maybe<healthLabelWhereUniqueInput[] | healthLabelWhereUniqueInput>;
+  set?: Maybe<healthLabelWhereUniqueInput[] | healthLabelWhereUniqueInput>;
+  disconnect?: Maybe<
+    healthLabelWhereUniqueInput[] | healthLabelWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    healthLabelScalarWhereInput[] | healthLabelScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | healthLabelUpdateManyWithWhereNestedInput[]
+    | healthLabelUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface healthLabelUpdateWithWhereUniqueNestedInput {
+  where: healthLabelWhereUniqueInput;
+  data: healthLabelUpdateDataInput;
+}
+
+export interface healthLabelUpdateDataInput {
+  label?: Maybe<String>;
+}
+
+export interface healthLabelUpsertWithWhereUniqueNestedInput {
+  where: healthLabelWhereUniqueInput;
+  update: healthLabelUpdateDataInput;
+  create: healthLabelCreateInput;
+}
+
+export interface healthLabelScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  label?: Maybe<String>;
+  label_not?: Maybe<String>;
+  label_in?: Maybe<String[] | String>;
+  label_not_in?: Maybe<String[] | String>;
+  label_lt?: Maybe<String>;
+  label_lte?: Maybe<String>;
+  label_gt?: Maybe<String>;
+  label_gte?: Maybe<String>;
+  label_contains?: Maybe<String>;
+  label_not_contains?: Maybe<String>;
+  label_starts_with?: Maybe<String>;
+  label_not_starts_with?: Maybe<String>;
+  label_ends_with?: Maybe<String>;
+  label_not_ends_with?: Maybe<String>;
+  AND?: Maybe<healthLabelScalarWhereInput[] | healthLabelScalarWhereInput>;
+  OR?: Maybe<healthLabelScalarWhereInput[] | healthLabelScalarWhereInput>;
+  NOT?: Maybe<healthLabelScalarWhereInput[] | healthLabelScalarWhereInput>;
+}
+
+export interface healthLabelUpdateManyWithWhereNestedInput {
+  where: healthLabelScalarWhereInput;
+  data: healthLabelUpdateManyDataInput;
+}
+
+export interface healthLabelUpdateManyDataInput {
+  label?: Maybe<String>;
+}
+
+export interface dietLabelUpdateManyInput {
+  create?: Maybe<dietLabelCreateInput[] | dietLabelCreateInput>;
+  update?: Maybe<
+    | dietLabelUpdateWithWhereUniqueNestedInput[]
+    | dietLabelUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | dietLabelUpsertWithWhereUniqueNestedInput[]
+    | dietLabelUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<dietLabelWhereUniqueInput[] | dietLabelWhereUniqueInput>;
+  connect?: Maybe<dietLabelWhereUniqueInput[] | dietLabelWhereUniqueInput>;
+  set?: Maybe<dietLabelWhereUniqueInput[] | dietLabelWhereUniqueInput>;
+  disconnect?: Maybe<dietLabelWhereUniqueInput[] | dietLabelWhereUniqueInput>;
+  deleteMany?: Maybe<dietLabelScalarWhereInput[] | dietLabelScalarWhereInput>;
+  updateMany?: Maybe<
+    | dietLabelUpdateManyWithWhereNestedInput[]
+    | dietLabelUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface dietLabelUpdateWithWhereUniqueNestedInput {
+  where: dietLabelWhereUniqueInput;
+  data: dietLabelUpdateDataInput;
+}
+
+export interface dietLabelUpdateDataInput {
+  label?: Maybe<String>;
+}
+
+export interface dietLabelUpsertWithWhereUniqueNestedInput {
+  where: dietLabelWhereUniqueInput;
+  update: dietLabelUpdateDataInput;
+  create: dietLabelCreateInput;
+}
+
+export interface dietLabelScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  label?: Maybe<String>;
+  label_not?: Maybe<String>;
+  label_in?: Maybe<String[] | String>;
+  label_not_in?: Maybe<String[] | String>;
+  label_lt?: Maybe<String>;
+  label_lte?: Maybe<String>;
+  label_gt?: Maybe<String>;
+  label_gte?: Maybe<String>;
+  label_contains?: Maybe<String>;
+  label_not_contains?: Maybe<String>;
+  label_starts_with?: Maybe<String>;
+  label_not_starts_with?: Maybe<String>;
+  label_ends_with?: Maybe<String>;
+  label_not_ends_with?: Maybe<String>;
+  AND?: Maybe<dietLabelScalarWhereInput[] | dietLabelScalarWhereInput>;
+  OR?: Maybe<dietLabelScalarWhereInput[] | dietLabelScalarWhereInput>;
+  NOT?: Maybe<dietLabelScalarWhereInput[] | dietLabelScalarWhereInput>;
+}
+
+export interface dietLabelUpdateManyWithWhereNestedInput {
+  where: dietLabelScalarWhereInput;
+  data: dietLabelUpdateManyDataInput;
+}
+
+export interface dietLabelUpdateManyDataInput {
+  label?: Maybe<String>;
 }
 
 export interface RecipeUpdateManyMutationInput {
-  name?: Maybe<String>;
+  label?: Maybe<String>;
   uri?: Maybe<String>;
   image?: Maybe<String>;
+  servings?: Maybe<Int>;
+  calories?: Maybe<Float>;
+  totalWeight?: Maybe<Float>;
 }
 
 export interface RecipeListCreateInput {
   id?: Maybe<ID_Input>;
   name: String;
   recipes?: Maybe<RecipeCreateManyInput>;
+  user: UserCreateOneWithoutRecipeListsInput;
 }
 
 export interface RecipeCreateManyInput {
@@ -474,9 +880,22 @@ export interface RecipeCreateManyInput {
   connect?: Maybe<RecipeWhereUniqueInput[] | RecipeWhereUniqueInput>;
 }
 
+export interface UserCreateOneWithoutRecipeListsInput {
+  create?: Maybe<UserCreateWithoutRecipeListsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserCreateWithoutRecipeListsInput {
+  id?: Maybe<ID_Input>;
+  password: String;
+  name: String;
+  email: String;
+}
+
 export interface RecipeListUpdateInput {
   name?: Maybe<String>;
   recipes?: Maybe<RecipeUpdateManyInput>;
+  user?: Maybe<UserUpdateOneRequiredWithoutRecipeListsInput>;
 }
 
 export interface RecipeUpdateManyInput {
@@ -506,9 +925,14 @@ export interface RecipeUpdateWithWhereUniqueNestedInput {
 }
 
 export interface RecipeUpdateDataInput {
-  name?: Maybe<String>;
+  label?: Maybe<String>;
   uri?: Maybe<String>;
   image?: Maybe<String>;
+  servings?: Maybe<Int>;
+  calories?: Maybe<Float>;
+  totalWeight?: Maybe<Float>;
+  healthLabels?: Maybe<healthLabelUpdateManyInput>;
+  dietLabels?: Maybe<dietLabelUpdateManyInput>;
 }
 
 export interface RecipeUpsertWithWhereUniqueNestedInput {
@@ -532,20 +956,20 @@ export interface RecipeScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
+  label?: Maybe<String>;
+  label_not?: Maybe<String>;
+  label_in?: Maybe<String[] | String>;
+  label_not_in?: Maybe<String[] | String>;
+  label_lt?: Maybe<String>;
+  label_lte?: Maybe<String>;
+  label_gt?: Maybe<String>;
+  label_gte?: Maybe<String>;
+  label_contains?: Maybe<String>;
+  label_not_contains?: Maybe<String>;
+  label_starts_with?: Maybe<String>;
+  label_not_starts_with?: Maybe<String>;
+  label_ends_with?: Maybe<String>;
+  label_not_ends_with?: Maybe<String>;
   uri?: Maybe<String>;
   uri_not?: Maybe<String>;
   uri_in?: Maybe<String[] | String>;
@@ -574,6 +998,30 @@ export interface RecipeScalarWhereInput {
   image_not_starts_with?: Maybe<String>;
   image_ends_with?: Maybe<String>;
   image_not_ends_with?: Maybe<String>;
+  servings?: Maybe<Int>;
+  servings_not?: Maybe<Int>;
+  servings_in?: Maybe<Int[] | Int>;
+  servings_not_in?: Maybe<Int[] | Int>;
+  servings_lt?: Maybe<Int>;
+  servings_lte?: Maybe<Int>;
+  servings_gt?: Maybe<Int>;
+  servings_gte?: Maybe<Int>;
+  calories?: Maybe<Float>;
+  calories_not?: Maybe<Float>;
+  calories_in?: Maybe<Float[] | Float>;
+  calories_not_in?: Maybe<Float[] | Float>;
+  calories_lt?: Maybe<Float>;
+  calories_lte?: Maybe<Float>;
+  calories_gt?: Maybe<Float>;
+  calories_gte?: Maybe<Float>;
+  totalWeight?: Maybe<Float>;
+  totalWeight_not?: Maybe<Float>;
+  totalWeight_in?: Maybe<Float[] | Float>;
+  totalWeight_not_in?: Maybe<Float[] | Float>;
+  totalWeight_lt?: Maybe<Float>;
+  totalWeight_lte?: Maybe<Float>;
+  totalWeight_gt?: Maybe<Float>;
+  totalWeight_gte?: Maybe<Float>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -601,9 +1049,30 @@ export interface RecipeUpdateManyWithWhereNestedInput {
 }
 
 export interface RecipeUpdateManyDataInput {
-  name?: Maybe<String>;
+  label?: Maybe<String>;
   uri?: Maybe<String>;
   image?: Maybe<String>;
+  servings?: Maybe<Int>;
+  calories?: Maybe<Float>;
+  totalWeight?: Maybe<Float>;
+}
+
+export interface UserUpdateOneRequiredWithoutRecipeListsInput {
+  create?: Maybe<UserCreateWithoutRecipeListsInput>;
+  update?: Maybe<UserUpdateWithoutRecipeListsDataInput>;
+  upsert?: Maybe<UserUpsertWithoutRecipeListsInput>;
+  connect?: Maybe<UserWhereUniqueInput>;
+}
+
+export interface UserUpdateWithoutRecipeListsDataInput {
+  password?: Maybe<String>;
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+}
+
+export interface UserUpsertWithoutRecipeListsInput {
+  update: UserUpdateWithoutRecipeListsDataInput;
+  create: UserCreateWithoutRecipeListsInput;
 }
 
 export interface RecipeListUpdateManyMutationInput {
@@ -615,35 +1084,45 @@ export interface UserCreateInput {
   password: String;
   name: String;
   email: String;
-  recipeLists?: Maybe<RecipeListCreateManyInput>;
+  recipeLists?: Maybe<RecipeListCreateManyWithoutUserInput>;
 }
 
-export interface RecipeListCreateManyInput {
-  create?: Maybe<RecipeListCreateInput[] | RecipeListCreateInput>;
+export interface RecipeListCreateManyWithoutUserInput {
+  create?: Maybe<
+    RecipeListCreateWithoutUserInput[] | RecipeListCreateWithoutUserInput
+  >;
   connect?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
+}
+
+export interface RecipeListCreateWithoutUserInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  recipes?: Maybe<RecipeCreateManyInput>;
 }
 
 export interface UserUpdateInput {
   password?: Maybe<String>;
   name?: Maybe<String>;
   email?: Maybe<String>;
-  recipeLists?: Maybe<RecipeListUpdateManyInput>;
+  recipeLists?: Maybe<RecipeListUpdateManyWithoutUserInput>;
 }
 
-export interface RecipeListUpdateManyInput {
-  create?: Maybe<RecipeListCreateInput[] | RecipeListCreateInput>;
-  update?: Maybe<
-    | RecipeListUpdateWithWhereUniqueNestedInput[]
-    | RecipeListUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | RecipeListUpsertWithWhereUniqueNestedInput[]
-    | RecipeListUpsertWithWhereUniqueNestedInput
+export interface RecipeListUpdateManyWithoutUserInput {
+  create?: Maybe<
+    RecipeListCreateWithoutUserInput[] | RecipeListCreateWithoutUserInput
   >;
   delete?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
   connect?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
   set?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
   disconnect?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
+  update?: Maybe<
+    | RecipeListUpdateWithWhereUniqueWithoutUserInput[]
+    | RecipeListUpdateWithWhereUniqueWithoutUserInput
+  >;
+  upsert?: Maybe<
+    | RecipeListUpsertWithWhereUniqueWithoutUserInput[]
+    | RecipeListUpsertWithWhereUniqueWithoutUserInput
+  >;
   deleteMany?: Maybe<RecipeListScalarWhereInput[] | RecipeListScalarWhereInput>;
   updateMany?: Maybe<
     | RecipeListUpdateManyWithWhereNestedInput[]
@@ -651,20 +1130,20 @@ export interface RecipeListUpdateManyInput {
   >;
 }
 
-export interface RecipeListUpdateWithWhereUniqueNestedInput {
+export interface RecipeListUpdateWithWhereUniqueWithoutUserInput {
   where: RecipeListWhereUniqueInput;
-  data: RecipeListUpdateDataInput;
+  data: RecipeListUpdateWithoutUserDataInput;
 }
 
-export interface RecipeListUpdateDataInput {
+export interface RecipeListUpdateWithoutUserDataInput {
   name?: Maybe<String>;
   recipes?: Maybe<RecipeUpdateManyInput>;
 }
 
-export interface RecipeListUpsertWithWhereUniqueNestedInput {
+export interface RecipeListUpsertWithWhereUniqueWithoutUserInput {
   where: RecipeListWhereUniqueInput;
-  update: RecipeListUpdateDataInput;
-  create: RecipeListCreateInput;
+  update: RecipeListUpdateWithoutUserDataInput;
+  create: RecipeListCreateWithoutUserInput;
 }
 
 export interface RecipeListScalarWhereInput {
@@ -732,6 +1211,22 @@ export interface UserUpdateManyMutationInput {
   email?: Maybe<String>;
 }
 
+export interface dietLabelUpdateInput {
+  label?: Maybe<String>;
+}
+
+export interface dietLabelUpdateManyMutationInput {
+  label?: Maybe<String>;
+}
+
+export interface healthLabelUpdateInput {
+  label?: Maybe<String>;
+}
+
+export interface healthLabelUpdateManyMutationInput {
+  label?: Maybe<String>;
+}
+
 export interface RecipeSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -771,24 +1266,82 @@ export interface UserSubscriptionWhereInput {
   NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
 }
 
+export interface dietLabelSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<dietLabelWhereInput>;
+  AND?: Maybe<
+    dietLabelSubscriptionWhereInput[] | dietLabelSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    dietLabelSubscriptionWhereInput[] | dietLabelSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    dietLabelSubscriptionWhereInput[] | dietLabelSubscriptionWhereInput
+  >;
+}
+
+export interface healthLabelSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<healthLabelWhereInput>;
+  AND?: Maybe<
+    healthLabelSubscriptionWhereInput[] | healthLabelSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    healthLabelSubscriptionWhereInput[] | healthLabelSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    healthLabelSubscriptionWhereInput[] | healthLabelSubscriptionWhereInput
+  >;
+}
+
 export interface NodeNode {
   id: ID_Output;
 }
 
 export interface Recipe {
   id: ID_Output;
-  name: String;
+  label: String;
   uri: String;
   image: String;
+  servings: Int;
+  calories: Float;
+  totalWeight: Float;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
 export interface RecipePromise extends Promise<Recipe>, Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  label: () => Promise<String>;
   uri: () => Promise<String>;
   image: () => Promise<String>;
+  servings: () => Promise<Int>;
+  calories: () => Promise<Float>;
+  totalWeight: () => Promise<Float>;
+  healthLabels: <T = FragmentableArray<healthLabel>>(args?: {
+    where?: healthLabelWhereInput;
+    orderBy?: healthLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  dietLabels: <T = FragmentableArray<dietLabel>>(args?: {
+    where?: dietLabelWhereInput;
+    orderBy?: dietLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -797,9 +1350,30 @@ export interface RecipeSubscription
   extends Promise<AsyncIterator<Recipe>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  label: () => Promise<AsyncIterator<String>>;
   uri: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
+  servings: () => Promise<AsyncIterator<Int>>;
+  calories: () => Promise<AsyncIterator<Float>>;
+  totalWeight: () => Promise<AsyncIterator<Float>>;
+  healthLabels: <T = Promise<AsyncIterator<healthLabelSubscription>>>(args?: {
+    where?: healthLabelWhereInput;
+    orderBy?: healthLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  dietLabels: <T = Promise<AsyncIterator<dietLabelSubscription>>>(args?: {
+    where?: dietLabelWhereInput;
+    orderBy?: dietLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -808,11 +1382,80 @@ export interface RecipeNullablePromise
   extends Promise<Recipe | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  label: () => Promise<String>;
   uri: () => Promise<String>;
   image: () => Promise<String>;
+  servings: () => Promise<Int>;
+  calories: () => Promise<Float>;
+  totalWeight: () => Promise<Float>;
+  healthLabels: <T = FragmentableArray<healthLabel>>(args?: {
+    where?: healthLabelWhereInput;
+    orderBy?: healthLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  dietLabels: <T = FragmentableArray<dietLabel>>(args?: {
+    where?: dietLabelWhereInput;
+    orderBy?: dietLabelOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface healthLabel {
+  id: ID_Output;
+  label: String;
+}
+
+export interface healthLabelPromise extends Promise<healthLabel>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  label: () => Promise<String>;
+}
+
+export interface healthLabelSubscription
+  extends Promise<AsyncIterator<healthLabel>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  label: () => Promise<AsyncIterator<String>>;
+}
+
+export interface healthLabelNullablePromise
+  extends Promise<healthLabel | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  label: () => Promise<String>;
+}
+
+export interface dietLabel {
+  id: ID_Output;
+  label: String;
+}
+
+export interface dietLabelPromise extends Promise<dietLabel>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  label: () => Promise<String>;
+}
+
+export interface dietLabelSubscription
+  extends Promise<AsyncIterator<dietLabel>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  label: () => Promise<AsyncIterator<String>>;
+}
+
+export interface dietLabelNullablePromise
+  extends Promise<dietLabel | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  label: () => Promise<String>;
 }
 
 export interface RecipeConnection {
@@ -911,6 +1554,7 @@ export interface RecipeListPromise extends Promise<RecipeList>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
+  user: <T = UserPromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -929,6 +1573,7 @@ export interface RecipeListSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  user: <T = UserSubscription>() => T;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -947,64 +1592,9 @@ export interface RecipeListNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
+  user: <T = UserPromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface RecipeListConnection {
-  pageInfo: PageInfo;
-  edges: RecipeListEdge[];
-}
-
-export interface RecipeListConnectionPromise
-  extends Promise<RecipeListConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<RecipeListEdge>>() => T;
-  aggregate: <T = AggregateRecipeListPromise>() => T;
-}
-
-export interface RecipeListConnectionSubscription
-  extends Promise<AsyncIterator<RecipeListConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<RecipeListEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateRecipeListSubscription>() => T;
-}
-
-export interface RecipeListEdge {
-  node: RecipeList;
-  cursor: String;
-}
-
-export interface RecipeListEdgePromise
-  extends Promise<RecipeListEdge>,
-    Fragmentable {
-  node: <T = RecipeListPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface RecipeListEdgeSubscription
-  extends Promise<AsyncIterator<RecipeListEdge>>,
-    Fragmentable {
-  node: <T = RecipeListSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateRecipeList {
-  count: Int;
-}
-
-export interface AggregateRecipeListPromise
-  extends Promise<AggregateRecipeList>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateRecipeListSubscription
-  extends Promise<AsyncIterator<AggregateRecipeList>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface User {
@@ -1074,6 +1664,62 @@ export interface UserNullablePromise
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
+export interface RecipeListConnection {
+  pageInfo: PageInfo;
+  edges: RecipeListEdge[];
+}
+
+export interface RecipeListConnectionPromise
+  extends Promise<RecipeListConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<RecipeListEdge>>() => T;
+  aggregate: <T = AggregateRecipeListPromise>() => T;
+}
+
+export interface RecipeListConnectionSubscription
+  extends Promise<AsyncIterator<RecipeListConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<RecipeListEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateRecipeListSubscription>() => T;
+}
+
+export interface RecipeListEdge {
+  node: RecipeList;
+  cursor: String;
+}
+
+export interface RecipeListEdgePromise
+  extends Promise<RecipeListEdge>,
+    Fragmentable {
+  node: <T = RecipeListPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface RecipeListEdgeSubscription
+  extends Promise<AsyncIterator<RecipeListEdge>>,
+    Fragmentable {
+  node: <T = RecipeListSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateRecipeList {
+  count: Int;
+}
+
+export interface AggregateRecipeListPromise
+  extends Promise<AggregateRecipeList>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateRecipeListSubscription
+  extends Promise<AsyncIterator<AggregateRecipeList>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface UserConnection {
   pageInfo: PageInfo;
   edges: UserEdge[];
@@ -1128,6 +1774,118 @@ export interface AggregateUserSubscription
   count: () => Promise<AsyncIterator<Int>>;
 }
 
+export interface dietLabelConnection {
+  pageInfo: PageInfo;
+  edges: dietLabelEdge[];
+}
+
+export interface dietLabelConnectionPromise
+  extends Promise<dietLabelConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<dietLabelEdge>>() => T;
+  aggregate: <T = AggregatedietLabelPromise>() => T;
+}
+
+export interface dietLabelConnectionSubscription
+  extends Promise<AsyncIterator<dietLabelConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<dietLabelEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatedietLabelSubscription>() => T;
+}
+
+export interface dietLabelEdge {
+  node: dietLabel;
+  cursor: String;
+}
+
+export interface dietLabelEdgePromise
+  extends Promise<dietLabelEdge>,
+    Fragmentable {
+  node: <T = dietLabelPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface dietLabelEdgeSubscription
+  extends Promise<AsyncIterator<dietLabelEdge>>,
+    Fragmentable {
+  node: <T = dietLabelSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatedietLabel {
+  count: Int;
+}
+
+export interface AggregatedietLabelPromise
+  extends Promise<AggregatedietLabel>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatedietLabelSubscription
+  extends Promise<AsyncIterator<AggregatedietLabel>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface healthLabelConnection {
+  pageInfo: PageInfo;
+  edges: healthLabelEdge[];
+}
+
+export interface healthLabelConnectionPromise
+  extends Promise<healthLabelConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<healthLabelEdge>>() => T;
+  aggregate: <T = AggregatehealthLabelPromise>() => T;
+}
+
+export interface healthLabelConnectionSubscription
+  extends Promise<AsyncIterator<healthLabelConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<healthLabelEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatehealthLabelSubscription>() => T;
+}
+
+export interface healthLabelEdge {
+  node: healthLabel;
+  cursor: String;
+}
+
+export interface healthLabelEdgePromise
+  extends Promise<healthLabelEdge>,
+    Fragmentable {
+  node: <T = healthLabelPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface healthLabelEdgeSubscription
+  extends Promise<AsyncIterator<healthLabelEdge>>,
+    Fragmentable {
+  node: <T = healthLabelSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatehealthLabel {
+  count: Int;
+}
+
+export interface AggregatehealthLabelPromise
+  extends Promise<AggregatehealthLabel>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatehealthLabelSubscription
+  extends Promise<AsyncIterator<AggregatehealthLabel>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
 export interface BatchPayload {
   count: Long;
 }
@@ -1171,9 +1929,12 @@ export interface RecipeSubscriptionPayloadSubscription
 
 export interface RecipePreviousValues {
   id: ID_Output;
-  name: String;
+  label: String;
   uri: String;
   image: String;
+  servings: Int;
+  calories: Float;
+  totalWeight: Float;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -1182,9 +1943,12 @@ export interface RecipePreviousValuesPromise
   extends Promise<RecipePreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  label: () => Promise<String>;
   uri: () => Promise<String>;
   image: () => Promise<String>;
+  servings: () => Promise<Int>;
+  calories: () => Promise<Float>;
+  totalWeight: () => Promise<Float>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -1193,9 +1957,12 @@ export interface RecipePreviousValuesSubscription
   extends Promise<AsyncIterator<RecipePreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  label: () => Promise<AsyncIterator<String>>;
   uri: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
+  servings: () => Promise<AsyncIterator<Int>>;
+  calories: () => Promise<AsyncIterator<Float>>;
+  totalWeight: () => Promise<AsyncIterator<Float>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -1306,6 +2073,94 @@ export interface UserPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
+export interface dietLabelSubscriptionPayload {
+  mutation: MutationType;
+  node: dietLabel;
+  updatedFields: String[];
+  previousValues: dietLabelPreviousValues;
+}
+
+export interface dietLabelSubscriptionPayloadPromise
+  extends Promise<dietLabelSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = dietLabelPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = dietLabelPreviousValuesPromise>() => T;
+}
+
+export interface dietLabelSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<dietLabelSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = dietLabelSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = dietLabelPreviousValuesSubscription>() => T;
+}
+
+export interface dietLabelPreviousValues {
+  id: ID_Output;
+  label: String;
+}
+
+export interface dietLabelPreviousValuesPromise
+  extends Promise<dietLabelPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  label: () => Promise<String>;
+}
+
+export interface dietLabelPreviousValuesSubscription
+  extends Promise<AsyncIterator<dietLabelPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  label: () => Promise<AsyncIterator<String>>;
+}
+
+export interface healthLabelSubscriptionPayload {
+  mutation: MutationType;
+  node: healthLabel;
+  updatedFields: String[];
+  previousValues: healthLabelPreviousValues;
+}
+
+export interface healthLabelSubscriptionPayloadPromise
+  extends Promise<healthLabelSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = healthLabelPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = healthLabelPreviousValuesPromise>() => T;
+}
+
+export interface healthLabelSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<healthLabelSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = healthLabelSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = healthLabelPreviousValuesSubscription>() => T;
+}
+
+export interface healthLabelPreviousValues {
+  id: ID_Output;
+  label: String;
+}
+
+export interface healthLabelPreviousValuesPromise
+  extends Promise<healthLabelPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  label: () => Promise<String>;
+}
+
+export interface healthLabelPreviousValuesSubscription
+  extends Promise<AsyncIterator<healthLabelPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  label: () => Promise<AsyncIterator<String>>;
+}
+
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
 */
@@ -1318,6 +2173,16 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 export type String = string;
 
 /*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+*/
+export type Int = number;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+*/
+export type Float = number;
+
+/*
 DateTime scalar input type, allowing Date
 */
 export type DateTimeInput = Date | string;
@@ -1326,11 +2191,6 @@ export type DateTimeInput = Date | string;
 DateTime scalar output type, which is always a string
 */
 export type DateTimeOutput = string;
-
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
-*/
-export type Int = number;
 
 /*
 The `Boolean` scalar type represents `true` or `false`.
@@ -1354,6 +2214,14 @@ export const models: Model[] = [
   },
   {
     name: "RecipeList",
+    embedded: false
+  },
+  {
+    name: "healthLabel",
+    embedded: false
+  },
+  {
+    name: "dietLabel",
     embedded: false
   }
 ];

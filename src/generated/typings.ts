@@ -15,6 +15,32 @@ export interface NexusGenInputs {
     dietLabels?: NexusGenEnums['DietEnum'][] | null; // [DietEnum!]
     healthLabels?: NexusGenEnums['HealthEnum'][] | null; // [HealthEnum!]
   }
+  RecipeCreateInput: { // input type
+    calories: number; // Float!
+    dietLabels?: NexusGenInputs['dietLabelCreateManyInput'] | null; // dietLabelCreateManyInput
+    healthLabels?: NexusGenInputs['healthLabelCreateManyInput'] | null; // healthLabelCreateManyInput
+    id?: string | null; // ID
+    image: string; // String!
+    label: string; // String!
+    servings: number; // Int!
+    totalWeight: number; // Float!
+    uri: string; // String!
+  }
+  RecipeCreateManyInput: { // input type
+    connect?: NexusGenInputs['RecipeWhereUniqueInput'][] | null; // [RecipeWhereUniqueInput!]
+    create?: NexusGenInputs['RecipeCreateInput'][] | null; // [RecipeCreateInput!]
+  }
+  RecipeListCreateInput: { // input type
+    id?: string | null; // ID
+    name: string; // String!
+    recipes?: NexusGenInputs['RecipeCreateManyInput'] | null; // RecipeCreateManyInput
+    user: NexusGenInputs['UserCreateOneWithoutRecipeListsInput']; // UserCreateOneWithoutRecipeListsInput!
+  }
+  RecipeListUpdateInput: { // input type
+    name?: string | null; // String
+    recipes?: NexusGenInputs['RecipeUpdateManyInput'] | null; // RecipeUpdateManyInput
+    user?: NexusGenInputs['UserUpdateOneRequiredWithoutRecipeListsInput'] | null; // UserUpdateOneRequiredWithoutRecipeListsInput
+  }
   RecipeListWhereInput: { // input type
     AND?: NexusGenInputs['RecipeListWhereInput'][] | null; // [RecipeListWhereInput!]
     createdAt?: any | null; // DateTime
@@ -66,9 +92,21 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
+    user?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
   }
-  RecipeWhereInput: { // input type
-    AND?: NexusGenInputs['RecipeWhereInput'][] | null; // [RecipeWhereInput!]
+  RecipeListWhereUniqueInput: { // input type
+    id?: string | null; // ID
+  }
+  RecipeScalarWhereInput: { // input type
+    AND?: NexusGenInputs['RecipeScalarWhereInput'][] | null; // [RecipeScalarWhereInput!]
+    calories?: number | null; // Float
+    calories_gt?: number | null; // Float
+    calories_gte?: number | null; // Float
+    calories_in?: number[] | null; // [Float!]
+    calories_lt?: number | null; // Float
+    calories_lte?: number | null; // Float
+    calories_not?: number | null; // Float
+    calories_not_in?: number[] | null; // [Float!]
     createdAt?: any | null; // DateTime
     createdAt_gt?: any | null; // DateTime
     createdAt_gte?: any | null; // DateTime
@@ -105,22 +143,38 @@ export interface NexusGenInputs {
     image_not_in?: string[] | null; // [String!]
     image_not_starts_with?: string | null; // String
     image_starts_with?: string | null; // String
-    name?: string | null; // String
-    name_contains?: string | null; // String
-    name_ends_with?: string | null; // String
-    name_gt?: string | null; // String
-    name_gte?: string | null; // String
-    name_in?: string[] | null; // [String!]
-    name_lt?: string | null; // String
-    name_lte?: string | null; // String
-    name_not?: string | null; // String
-    name_not_contains?: string | null; // String
-    name_not_ends_with?: string | null; // String
-    name_not_in?: string[] | null; // [String!]
-    name_not_starts_with?: string | null; // String
-    name_starts_with?: string | null; // String
-    NOT?: NexusGenInputs['RecipeWhereInput'][] | null; // [RecipeWhereInput!]
-    OR?: NexusGenInputs['RecipeWhereInput'][] | null; // [RecipeWhereInput!]
+    label?: string | null; // String
+    label_contains?: string | null; // String
+    label_ends_with?: string | null; // String
+    label_gt?: string | null; // String
+    label_gte?: string | null; // String
+    label_in?: string[] | null; // [String!]
+    label_lt?: string | null; // String
+    label_lte?: string | null; // String
+    label_not?: string | null; // String
+    label_not_contains?: string | null; // String
+    label_not_ends_with?: string | null; // String
+    label_not_in?: string[] | null; // [String!]
+    label_not_starts_with?: string | null; // String
+    label_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['RecipeScalarWhereInput'][] | null; // [RecipeScalarWhereInput!]
+    OR?: NexusGenInputs['RecipeScalarWhereInput'][] | null; // [RecipeScalarWhereInput!]
+    servings?: number | null; // Int
+    servings_gt?: number | null; // Int
+    servings_gte?: number | null; // Int
+    servings_in?: number[] | null; // [Int!]
+    servings_lt?: number | null; // Int
+    servings_lte?: number | null; // Int
+    servings_not?: number | null; // Int
+    servings_not_in?: number[] | null; // [Int!]
+    totalWeight?: number | null; // Float
+    totalWeight_gt?: number | null; // Float
+    totalWeight_gte?: number | null; // Float
+    totalWeight_in?: number[] | null; // [Float!]
+    totalWeight_lt?: number | null; // Float
+    totalWeight_lte?: number | null; // Float
+    totalWeight_not?: number | null; // Float
+    totalWeight_not_in?: number[] | null; // [Float!]
     updatedAt?: any | null; // DateTime
     updatedAt_gt?: any | null; // DateTime
     updatedAt_gte?: any | null; // DateTime
@@ -144,13 +198,493 @@ export interface NexusGenInputs {
     uri_not_starts_with?: string | null; // String
     uri_starts_with?: string | null; // String
   }
+  RecipeUpdateDataInput: { // input type
+    calories?: number | null; // Float
+    dietLabels?: NexusGenInputs['dietLabelUpdateManyInput'] | null; // dietLabelUpdateManyInput
+    healthLabels?: NexusGenInputs['healthLabelUpdateManyInput'] | null; // healthLabelUpdateManyInput
+    image?: string | null; // String
+    label?: string | null; // String
+    servings?: number | null; // Int
+    totalWeight?: number | null; // Float
+    uri?: string | null; // String
+  }
+  RecipeUpdateManyDataInput: { // input type
+    calories?: number | null; // Float
+    image?: string | null; // String
+    label?: string | null; // String
+    servings?: number | null; // Int
+    totalWeight?: number | null; // Float
+    uri?: string | null; // String
+  }
+  RecipeUpdateManyInput: { // input type
+    connect?: NexusGenInputs['RecipeWhereUniqueInput'][] | null; // [RecipeWhereUniqueInput!]
+    create?: NexusGenInputs['RecipeCreateInput'][] | null; // [RecipeCreateInput!]
+    delete?: NexusGenInputs['RecipeWhereUniqueInput'][] | null; // [RecipeWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['RecipeScalarWhereInput'][] | null; // [RecipeScalarWhereInput!]
+    disconnect?: NexusGenInputs['RecipeWhereUniqueInput'][] | null; // [RecipeWhereUniqueInput!]
+    set?: NexusGenInputs['RecipeWhereUniqueInput'][] | null; // [RecipeWhereUniqueInput!]
+    update?: NexusGenInputs['RecipeUpdateWithWhereUniqueNestedInput'][] | null; // [RecipeUpdateWithWhereUniqueNestedInput!]
+    updateMany?: NexusGenInputs['RecipeUpdateManyWithWhereNestedInput'][] | null; // [RecipeUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['RecipeUpsertWithWhereUniqueNestedInput'][] | null; // [RecipeUpsertWithWhereUniqueNestedInput!]
+  }
+  RecipeUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['RecipeUpdateManyDataInput']; // RecipeUpdateManyDataInput!
+    where: NexusGenInputs['RecipeScalarWhereInput']; // RecipeScalarWhereInput!
+  }
+  RecipeUpdateWithWhereUniqueNestedInput: { // input type
+    data: NexusGenInputs['RecipeUpdateDataInput']; // RecipeUpdateDataInput!
+    where: NexusGenInputs['RecipeWhereUniqueInput']; // RecipeWhereUniqueInput!
+  }
+  RecipeUpsertWithWhereUniqueNestedInput: { // input type
+    create: NexusGenInputs['RecipeCreateInput']; // RecipeCreateInput!
+    update: NexusGenInputs['RecipeUpdateDataInput']; // RecipeUpdateDataInput!
+    where: NexusGenInputs['RecipeWhereUniqueInput']; // RecipeWhereUniqueInput!
+  }
+  RecipeWhereInput: { // input type
+    AND?: NexusGenInputs['RecipeWhereInput'][] | null; // [RecipeWhereInput!]
+    calories?: number | null; // Float
+    calories_gt?: number | null; // Float
+    calories_gte?: number | null; // Float
+    calories_in?: number[] | null; // [Float!]
+    calories_lt?: number | null; // Float
+    calories_lte?: number | null; // Float
+    calories_not?: number | null; // Float
+    calories_not_in?: number[] | null; // [Float!]
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
+    dietLabels_every?: NexusGenInputs['dietLabelWhereInput'] | null; // dietLabelWhereInput
+    dietLabels_none?: NexusGenInputs['dietLabelWhereInput'] | null; // dietLabelWhereInput
+    dietLabels_some?: NexusGenInputs['dietLabelWhereInput'] | null; // dietLabelWhereInput
+    healthLabels_every?: NexusGenInputs['healthLabelWhereInput'] | null; // healthLabelWhereInput
+    healthLabels_none?: NexusGenInputs['healthLabelWhereInput'] | null; // healthLabelWhereInput
+    healthLabels_some?: NexusGenInputs['healthLabelWhereInput'] | null; // healthLabelWhereInput
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    image?: string | null; // String
+    image_contains?: string | null; // String
+    image_ends_with?: string | null; // String
+    image_gt?: string | null; // String
+    image_gte?: string | null; // String
+    image_in?: string[] | null; // [String!]
+    image_lt?: string | null; // String
+    image_lte?: string | null; // String
+    image_not?: string | null; // String
+    image_not_contains?: string | null; // String
+    image_not_ends_with?: string | null; // String
+    image_not_in?: string[] | null; // [String!]
+    image_not_starts_with?: string | null; // String
+    image_starts_with?: string | null; // String
+    label?: string | null; // String
+    label_contains?: string | null; // String
+    label_ends_with?: string | null; // String
+    label_gt?: string | null; // String
+    label_gte?: string | null; // String
+    label_in?: string[] | null; // [String!]
+    label_lt?: string | null; // String
+    label_lte?: string | null; // String
+    label_not?: string | null; // String
+    label_not_contains?: string | null; // String
+    label_not_ends_with?: string | null; // String
+    label_not_in?: string[] | null; // [String!]
+    label_not_starts_with?: string | null; // String
+    label_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['RecipeWhereInput'][] | null; // [RecipeWhereInput!]
+    OR?: NexusGenInputs['RecipeWhereInput'][] | null; // [RecipeWhereInput!]
+    servings?: number | null; // Int
+    servings_gt?: number | null; // Int
+    servings_gte?: number | null; // Int
+    servings_in?: number[] | null; // [Int!]
+    servings_lt?: number | null; // Int
+    servings_lte?: number | null; // Int
+    servings_not?: number | null; // Int
+    servings_not_in?: number[] | null; // [Int!]
+    totalWeight?: number | null; // Float
+    totalWeight_gt?: number | null; // Float
+    totalWeight_gte?: number | null; // Float
+    totalWeight_in?: number[] | null; // [Float!]
+    totalWeight_lt?: number | null; // Float
+    totalWeight_lte?: number | null; // Float
+    totalWeight_not?: number | null; // Float
+    totalWeight_not_in?: number[] | null; // [Float!]
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
+    uri?: string | null; // String
+    uri_contains?: string | null; // String
+    uri_ends_with?: string | null; // String
+    uri_gt?: string | null; // String
+    uri_gte?: string | null; // String
+    uri_in?: string[] | null; // [String!]
+    uri_lt?: string | null; // String
+    uri_lte?: string | null; // String
+    uri_not?: string | null; // String
+    uri_not_contains?: string | null; // String
+    uri_not_ends_with?: string | null; // String
+    uri_not_in?: string[] | null; // [String!]
+    uri_not_starts_with?: string | null; // String
+    uri_starts_with?: string | null; // String
+  }
+  RecipeWhereUniqueInput: { // input type
+    id?: string | null; // ID
+    uri?: string | null; // String
+  }
+  UserCreateOneWithoutRecipeListsInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    create?: NexusGenInputs['UserCreateWithoutRecipeListsInput'] | null; // UserCreateWithoutRecipeListsInput
+  }
+  UserCreateWithoutRecipeListsInput: { // input type
+    email: string; // String!
+    id?: string | null; // ID
+    name: string; // String!
+    password: string; // String!
+  }
+  UserUpdateOneRequiredWithoutRecipeListsInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+    create?: NexusGenInputs['UserCreateWithoutRecipeListsInput'] | null; // UserCreateWithoutRecipeListsInput
+    update?: NexusGenInputs['UserUpdateWithoutRecipeListsDataInput'] | null; // UserUpdateWithoutRecipeListsDataInput
+    upsert?: NexusGenInputs['UserUpsertWithoutRecipeListsInput'] | null; // UserUpsertWithoutRecipeListsInput
+  }
+  UserUpdateWithoutRecipeListsDataInput: { // input type
+    email?: string | null; // String
+    name?: string | null; // String
+    password?: string | null; // String
+  }
+  UserUpsertWithoutRecipeListsInput: { // input type
+    create: NexusGenInputs['UserCreateWithoutRecipeListsInput']; // UserCreateWithoutRecipeListsInput!
+    update: NexusGenInputs['UserUpdateWithoutRecipeListsDataInput']; // UserUpdateWithoutRecipeListsDataInput!
+  }
+  UserWhereInput: { // input type
+    AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    createdAt?: any | null; // DateTime
+    createdAt_gt?: any | null; // DateTime
+    createdAt_gte?: any | null; // DateTime
+    createdAt_in?: any[] | null; // [DateTime!]
+    createdAt_lt?: any | null; // DateTime
+    createdAt_lte?: any | null; // DateTime
+    createdAt_not?: any | null; // DateTime
+    createdAt_not_in?: any[] | null; // [DateTime!]
+    email?: string | null; // String
+    email_contains?: string | null; // String
+    email_ends_with?: string | null; // String
+    email_gt?: string | null; // String
+    email_gte?: string | null; // String
+    email_in?: string[] | null; // [String!]
+    email_lt?: string | null; // String
+    email_lte?: string | null; // String
+    email_not?: string | null; // String
+    email_not_contains?: string | null; // String
+    email_not_ends_with?: string | null; // String
+    email_not_in?: string[] | null; // [String!]
+    email_not_starts_with?: string | null; // String
+    email_starts_with?: string | null; // String
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    name?: string | null; // String
+    name_contains?: string | null; // String
+    name_ends_with?: string | null; // String
+    name_gt?: string | null; // String
+    name_gte?: string | null; // String
+    name_in?: string[] | null; // [String!]
+    name_lt?: string | null; // String
+    name_lte?: string | null; // String
+    name_not?: string | null; // String
+    name_not_contains?: string | null; // String
+    name_not_ends_with?: string | null; // String
+    name_not_in?: string[] | null; // [String!]
+    name_not_starts_with?: string | null; // String
+    name_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
+    password?: string | null; // String
+    password_contains?: string | null; // String
+    password_ends_with?: string | null; // String
+    password_gt?: string | null; // String
+    password_gte?: string | null; // String
+    password_in?: string[] | null; // [String!]
+    password_lt?: string | null; // String
+    password_lte?: string | null; // String
+    password_not?: string | null; // String
+    password_not_contains?: string | null; // String
+    password_not_ends_with?: string | null; // String
+    password_not_in?: string[] | null; // [String!]
+    password_not_starts_with?: string | null; // String
+    password_starts_with?: string | null; // String
+    recipeLists_every?: NexusGenInputs['RecipeListWhereInput'] | null; // RecipeListWhereInput
+    recipeLists_none?: NexusGenInputs['RecipeListWhereInput'] | null; // RecipeListWhereInput
+    recipeLists_some?: NexusGenInputs['RecipeListWhereInput'] | null; // RecipeListWhereInput
+    updatedAt?: any | null; // DateTime
+    updatedAt_gt?: any | null; // DateTime
+    updatedAt_gte?: any | null; // DateTime
+    updatedAt_in?: any[] | null; // [DateTime!]
+    updatedAt_lt?: any | null; // DateTime
+    updatedAt_lte?: any | null; // DateTime
+    updatedAt_not?: any | null; // DateTime
+    updatedAt_not_in?: any[] | null; // [DateTime!]
+  }
+  UserWhereUniqueInput: { // input type
+    email?: string | null; // String
+    id?: string | null; // ID
+  }
+  dietLabelCreateInput: { // input type
+    id?: string | null; // ID
+    label: string; // String!
+  }
+  dietLabelCreateManyInput: { // input type
+    connect?: NexusGenInputs['dietLabelWhereUniqueInput'][] | null; // [dietLabelWhereUniqueInput!]
+    create?: NexusGenInputs['dietLabelCreateInput'][] | null; // [dietLabelCreateInput!]
+  }
+  dietLabelScalarWhereInput: { // input type
+    AND?: NexusGenInputs['dietLabelScalarWhereInput'][] | null; // [dietLabelScalarWhereInput!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    label?: string | null; // String
+    label_contains?: string | null; // String
+    label_ends_with?: string | null; // String
+    label_gt?: string | null; // String
+    label_gte?: string | null; // String
+    label_in?: string[] | null; // [String!]
+    label_lt?: string | null; // String
+    label_lte?: string | null; // String
+    label_not?: string | null; // String
+    label_not_contains?: string | null; // String
+    label_not_ends_with?: string | null; // String
+    label_not_in?: string[] | null; // [String!]
+    label_not_starts_with?: string | null; // String
+    label_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['dietLabelScalarWhereInput'][] | null; // [dietLabelScalarWhereInput!]
+    OR?: NexusGenInputs['dietLabelScalarWhereInput'][] | null; // [dietLabelScalarWhereInput!]
+  }
+  dietLabelUpdateDataInput: { // input type
+    label?: string | null; // String
+  }
+  dietLabelUpdateManyDataInput: { // input type
+    label?: string | null; // String
+  }
+  dietLabelUpdateManyInput: { // input type
+    connect?: NexusGenInputs['dietLabelWhereUniqueInput'][] | null; // [dietLabelWhereUniqueInput!]
+    create?: NexusGenInputs['dietLabelCreateInput'][] | null; // [dietLabelCreateInput!]
+    delete?: NexusGenInputs['dietLabelWhereUniqueInput'][] | null; // [dietLabelWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['dietLabelScalarWhereInput'][] | null; // [dietLabelScalarWhereInput!]
+    disconnect?: NexusGenInputs['dietLabelWhereUniqueInput'][] | null; // [dietLabelWhereUniqueInput!]
+    set?: NexusGenInputs['dietLabelWhereUniqueInput'][] | null; // [dietLabelWhereUniqueInput!]
+    update?: NexusGenInputs['dietLabelUpdateWithWhereUniqueNestedInput'][] | null; // [dietLabelUpdateWithWhereUniqueNestedInput!]
+    updateMany?: NexusGenInputs['dietLabelUpdateManyWithWhereNestedInput'][] | null; // [dietLabelUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['dietLabelUpsertWithWhereUniqueNestedInput'][] | null; // [dietLabelUpsertWithWhereUniqueNestedInput!]
+  }
+  dietLabelUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['dietLabelUpdateManyDataInput']; // dietLabelUpdateManyDataInput!
+    where: NexusGenInputs['dietLabelScalarWhereInput']; // dietLabelScalarWhereInput!
+  }
+  dietLabelUpdateWithWhereUniqueNestedInput: { // input type
+    data: NexusGenInputs['dietLabelUpdateDataInput']; // dietLabelUpdateDataInput!
+    where: NexusGenInputs['dietLabelWhereUniqueInput']; // dietLabelWhereUniqueInput!
+  }
+  dietLabelUpsertWithWhereUniqueNestedInput: { // input type
+    create: NexusGenInputs['dietLabelCreateInput']; // dietLabelCreateInput!
+    update: NexusGenInputs['dietLabelUpdateDataInput']; // dietLabelUpdateDataInput!
+    where: NexusGenInputs['dietLabelWhereUniqueInput']; // dietLabelWhereUniqueInput!
+  }
+  dietLabelWhereInput: { // input type
+    AND?: NexusGenInputs['dietLabelWhereInput'][] | null; // [dietLabelWhereInput!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    label?: string | null; // String
+    label_contains?: string | null; // String
+    label_ends_with?: string | null; // String
+    label_gt?: string | null; // String
+    label_gte?: string | null; // String
+    label_in?: string[] | null; // [String!]
+    label_lt?: string | null; // String
+    label_lte?: string | null; // String
+    label_not?: string | null; // String
+    label_not_contains?: string | null; // String
+    label_not_ends_with?: string | null; // String
+    label_not_in?: string[] | null; // [String!]
+    label_not_starts_with?: string | null; // String
+    label_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['dietLabelWhereInput'][] | null; // [dietLabelWhereInput!]
+    OR?: NexusGenInputs['dietLabelWhereInput'][] | null; // [dietLabelWhereInput!]
+  }
+  dietLabelWhereUniqueInput: { // input type
+    id?: string | null; // ID
+    label?: string | null; // String
+  }
+  healthLabelCreateInput: { // input type
+    id?: string | null; // ID
+    label: string; // String!
+  }
+  healthLabelCreateManyInput: { // input type
+    connect?: NexusGenInputs['healthLabelWhereUniqueInput'][] | null; // [healthLabelWhereUniqueInput!]
+    create?: NexusGenInputs['healthLabelCreateInput'][] | null; // [healthLabelCreateInput!]
+  }
+  healthLabelScalarWhereInput: { // input type
+    AND?: NexusGenInputs['healthLabelScalarWhereInput'][] | null; // [healthLabelScalarWhereInput!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    label?: string | null; // String
+    label_contains?: string | null; // String
+    label_ends_with?: string | null; // String
+    label_gt?: string | null; // String
+    label_gte?: string | null; // String
+    label_in?: string[] | null; // [String!]
+    label_lt?: string | null; // String
+    label_lte?: string | null; // String
+    label_not?: string | null; // String
+    label_not_contains?: string | null; // String
+    label_not_ends_with?: string | null; // String
+    label_not_in?: string[] | null; // [String!]
+    label_not_starts_with?: string | null; // String
+    label_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['healthLabelScalarWhereInput'][] | null; // [healthLabelScalarWhereInput!]
+    OR?: NexusGenInputs['healthLabelScalarWhereInput'][] | null; // [healthLabelScalarWhereInput!]
+  }
+  healthLabelUpdateDataInput: { // input type
+    label?: string | null; // String
+  }
+  healthLabelUpdateManyDataInput: { // input type
+    label?: string | null; // String
+  }
+  healthLabelUpdateManyInput: { // input type
+    connect?: NexusGenInputs['healthLabelWhereUniqueInput'][] | null; // [healthLabelWhereUniqueInput!]
+    create?: NexusGenInputs['healthLabelCreateInput'][] | null; // [healthLabelCreateInput!]
+    delete?: NexusGenInputs['healthLabelWhereUniqueInput'][] | null; // [healthLabelWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['healthLabelScalarWhereInput'][] | null; // [healthLabelScalarWhereInput!]
+    disconnect?: NexusGenInputs['healthLabelWhereUniqueInput'][] | null; // [healthLabelWhereUniqueInput!]
+    set?: NexusGenInputs['healthLabelWhereUniqueInput'][] | null; // [healthLabelWhereUniqueInput!]
+    update?: NexusGenInputs['healthLabelUpdateWithWhereUniqueNestedInput'][] | null; // [healthLabelUpdateWithWhereUniqueNestedInput!]
+    updateMany?: NexusGenInputs['healthLabelUpdateManyWithWhereNestedInput'][] | null; // [healthLabelUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['healthLabelUpsertWithWhereUniqueNestedInput'][] | null; // [healthLabelUpsertWithWhereUniqueNestedInput!]
+  }
+  healthLabelUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['healthLabelUpdateManyDataInput']; // healthLabelUpdateManyDataInput!
+    where: NexusGenInputs['healthLabelScalarWhereInput']; // healthLabelScalarWhereInput!
+  }
+  healthLabelUpdateWithWhereUniqueNestedInput: { // input type
+    data: NexusGenInputs['healthLabelUpdateDataInput']; // healthLabelUpdateDataInput!
+    where: NexusGenInputs['healthLabelWhereUniqueInput']; // healthLabelWhereUniqueInput!
+  }
+  healthLabelUpsertWithWhereUniqueNestedInput: { // input type
+    create: NexusGenInputs['healthLabelCreateInput']; // healthLabelCreateInput!
+    update: NexusGenInputs['healthLabelUpdateDataInput']; // healthLabelUpdateDataInput!
+    where: NexusGenInputs['healthLabelWhereUniqueInput']; // healthLabelWhereUniqueInput!
+  }
+  healthLabelWhereInput: { // input type
+    AND?: NexusGenInputs['healthLabelWhereInput'][] | null; // [healthLabelWhereInput!]
+    id?: string | null; // ID
+    id_contains?: string | null; // ID
+    id_ends_with?: string | null; // ID
+    id_gt?: string | null; // ID
+    id_gte?: string | null; // ID
+    id_in?: string[] | null; // [ID!]
+    id_lt?: string | null; // ID
+    id_lte?: string | null; // ID
+    id_not?: string | null; // ID
+    id_not_contains?: string | null; // ID
+    id_not_ends_with?: string | null; // ID
+    id_not_in?: string[] | null; // [ID!]
+    id_not_starts_with?: string | null; // ID
+    id_starts_with?: string | null; // ID
+    label?: string | null; // String
+    label_contains?: string | null; // String
+    label_ends_with?: string | null; // String
+    label_gt?: string | null; // String
+    label_gte?: string | null; // String
+    label_in?: string[] | null; // [String!]
+    label_lt?: string | null; // String
+    label_lte?: string | null; // String
+    label_not?: string | null; // String
+    label_not_contains?: string | null; // String
+    label_not_ends_with?: string | null; // String
+    label_not_in?: string[] | null; // [String!]
+    label_not_starts_with?: string | null; // String
+    label_starts_with?: string | null; // String
+    NOT?: NexusGenInputs['healthLabelWhereInput'][] | null; // [healthLabelWhereInput!]
+    OR?: NexusGenInputs['healthLabelWhereInput'][] | null; // [healthLabelWhereInput!]
+  }
+  healthLabelWhereUniqueInput: { // input type
+    id?: string | null; // ID
+    label?: string | null; // String
+  }
 }
 
 export interface NexusGenEnums {
   DietEnum: "balanced" | "high-protein" | "low-carb" | "low-fat"
   HealthEnum: "alcohol-free" | "peanut-free" | "sugar-conscious" | "tree-nut-free" | "vegan" | "vegetarian"
   RecipeListOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  RecipeOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "uri_ASC" | "uri_DESC"
+  RecipeOrderByInput: "calories_ASC" | "calories_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "label_ASC" | "label_DESC" | "servings_ASC" | "servings_DESC" | "totalWeight_ASC" | "totalWeight_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "uri_ASC" | "uri_DESC"
+  dietLabelOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "label_ASC" | "label_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
+  healthLabelOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "label_ASC" | "label_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -158,17 +692,28 @@ export interface NexusGenRootTypes {
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
+  EdamamRecipe: { // root type
+    calories?: number | null; // Float
+    dietLabels?: string[] | null; // [String!]
+    healthLabels?: string[] | null; // [String!]
+    image: string; // String!
+    label: string; // String!
+    servings?: number | null; // Int
+    totalWeight?: number | null; // Float
+    uri: string; // String!
+  }
   Mutation: {};
   Query: {};
   Recipe: { // root type
     calories: number; // Float!
-    dietLabels: string[]; // [String!]!
-    healthLabels: string[]; // [String!]!
+    createdAt: any; // DateTime!
+    id: string; // ID!
     image: string; // String!
     label: string; // String!
+    servings: number; // Int!
     totalWeight: number; // Float!
+    updatedAt: any; // DateTime!
     uri: string; // String!
-    yield: number; // Int!
   }
   RecipeList: { // root type
     createdAt: any; // DateTime!
@@ -183,6 +728,14 @@ export interface NexusGenRootTypes {
     name: string; // String!
     updatedAt: any; // DateTime!
   }
+  dietLabel: { // root type
+    id: string; // ID!
+    label: string; // String!
+  }
+  healthLabel: { // root type
+    id: string; // ID!
+    label: string; // String!
+  }
   String: string;
   Int: number;
   Float: number;
@@ -193,12 +746,56 @@ export interface NexusGenRootTypes {
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
   Filters: NexusGenInputs['Filters'];
+  RecipeCreateInput: NexusGenInputs['RecipeCreateInput'];
+  RecipeCreateManyInput: NexusGenInputs['RecipeCreateManyInput'];
+  RecipeListCreateInput: NexusGenInputs['RecipeListCreateInput'];
+  RecipeListUpdateInput: NexusGenInputs['RecipeListUpdateInput'];
   RecipeListWhereInput: NexusGenInputs['RecipeListWhereInput'];
+  RecipeListWhereUniqueInput: NexusGenInputs['RecipeListWhereUniqueInput'];
+  RecipeScalarWhereInput: NexusGenInputs['RecipeScalarWhereInput'];
+  RecipeUpdateDataInput: NexusGenInputs['RecipeUpdateDataInput'];
+  RecipeUpdateManyDataInput: NexusGenInputs['RecipeUpdateManyDataInput'];
+  RecipeUpdateManyInput: NexusGenInputs['RecipeUpdateManyInput'];
+  RecipeUpdateManyWithWhereNestedInput: NexusGenInputs['RecipeUpdateManyWithWhereNestedInput'];
+  RecipeUpdateWithWhereUniqueNestedInput: NexusGenInputs['RecipeUpdateWithWhereUniqueNestedInput'];
+  RecipeUpsertWithWhereUniqueNestedInput: NexusGenInputs['RecipeUpsertWithWhereUniqueNestedInput'];
   RecipeWhereInput: NexusGenInputs['RecipeWhereInput'];
+  RecipeWhereUniqueInput: NexusGenInputs['RecipeWhereUniqueInput'];
+  UserCreateOneWithoutRecipeListsInput: NexusGenInputs['UserCreateOneWithoutRecipeListsInput'];
+  UserCreateWithoutRecipeListsInput: NexusGenInputs['UserCreateWithoutRecipeListsInput'];
+  UserUpdateOneRequiredWithoutRecipeListsInput: NexusGenInputs['UserUpdateOneRequiredWithoutRecipeListsInput'];
+  UserUpdateWithoutRecipeListsDataInput: NexusGenInputs['UserUpdateWithoutRecipeListsDataInput'];
+  UserUpsertWithoutRecipeListsInput: NexusGenInputs['UserUpsertWithoutRecipeListsInput'];
+  UserWhereInput: NexusGenInputs['UserWhereInput'];
+  UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
+  dietLabelCreateInput: NexusGenInputs['dietLabelCreateInput'];
+  dietLabelCreateManyInput: NexusGenInputs['dietLabelCreateManyInput'];
+  dietLabelScalarWhereInput: NexusGenInputs['dietLabelScalarWhereInput'];
+  dietLabelUpdateDataInput: NexusGenInputs['dietLabelUpdateDataInput'];
+  dietLabelUpdateManyDataInput: NexusGenInputs['dietLabelUpdateManyDataInput'];
+  dietLabelUpdateManyInput: NexusGenInputs['dietLabelUpdateManyInput'];
+  dietLabelUpdateManyWithWhereNestedInput: NexusGenInputs['dietLabelUpdateManyWithWhereNestedInput'];
+  dietLabelUpdateWithWhereUniqueNestedInput: NexusGenInputs['dietLabelUpdateWithWhereUniqueNestedInput'];
+  dietLabelUpsertWithWhereUniqueNestedInput: NexusGenInputs['dietLabelUpsertWithWhereUniqueNestedInput'];
+  dietLabelWhereInput: NexusGenInputs['dietLabelWhereInput'];
+  dietLabelWhereUniqueInput: NexusGenInputs['dietLabelWhereUniqueInput'];
+  healthLabelCreateInput: NexusGenInputs['healthLabelCreateInput'];
+  healthLabelCreateManyInput: NexusGenInputs['healthLabelCreateManyInput'];
+  healthLabelScalarWhereInput: NexusGenInputs['healthLabelScalarWhereInput'];
+  healthLabelUpdateDataInput: NexusGenInputs['healthLabelUpdateDataInput'];
+  healthLabelUpdateManyDataInput: NexusGenInputs['healthLabelUpdateManyDataInput'];
+  healthLabelUpdateManyInput: NexusGenInputs['healthLabelUpdateManyInput'];
+  healthLabelUpdateManyWithWhereNestedInput: NexusGenInputs['healthLabelUpdateManyWithWhereNestedInput'];
+  healthLabelUpdateWithWhereUniqueNestedInput: NexusGenInputs['healthLabelUpdateWithWhereUniqueNestedInput'];
+  healthLabelUpsertWithWhereUniqueNestedInput: NexusGenInputs['healthLabelUpsertWithWhereUniqueNestedInput'];
+  healthLabelWhereInput: NexusGenInputs['healthLabelWhereInput'];
+  healthLabelWhereUniqueInput: NexusGenInputs['healthLabelWhereUniqueInput'];
   DietEnum: NexusGenEnums['DietEnum'];
   HealthEnum: NexusGenEnums['HealthEnum'];
   RecipeListOrderByInput: NexusGenEnums['RecipeListOrderByInput'];
   RecipeOrderByInput: NexusGenEnums['RecipeOrderByInput'];
+  dietLabelOrderByInput: NexusGenEnums['dietLabelOrderByInput'];
+  healthLabelOrderByInput: NexusGenEnums['healthLabelOrderByInput'];
 }
 
 export interface NexusGenFieldTypes {
@@ -206,25 +803,41 @@ export interface NexusGenFieldTypes {
     token: string; // String!
     user: NexusGenRootTypes['User']; // User!
   }
+  EdamamRecipe: { // field return type
+    calories: number | null; // Float
+    dietLabels: string[] | null; // [String!]
+    healthLabels: string[] | null; // [String!]
+    image: string; // String!
+    label: string; // String!
+    servings: number | null; // Int
+    totalWeight: number | null; // Float
+    uri: string; // String!
+  }
   Mutation: { // field return type
+    addRecipeToList: NexusGenRootTypes['RecipeList']; // RecipeList!
+    createRecipeList: NexusGenRootTypes['RecipeList']; // RecipeList!
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    updateRecipeList: NexusGenRootTypes['RecipeList'] | null; // RecipeList
   }
   Query: { // field return type
-    findRecipeByURI: NexusGenRootTypes['Recipe'] | null; // Recipe
+    findRecipeByURI: NexusGenRootTypes['EdamamRecipe'] | null; // EdamamRecipe
     hello: string; // String!
-    searchRecipes: NexusGenRootTypes['Recipe'][] | null; // [Recipe!]
+    searchRecipes: NexusGenRootTypes['EdamamRecipe'][] | null; // [EdamamRecipe!]
     testProtected: string; // String!
   }
   Recipe: { // field return type
     calories: number; // Float!
-    dietLabels: string[]; // [String!]!
-    healthLabels: string[]; // [String!]!
+    createdAt: any; // DateTime!
+    dietLabels: NexusGenRootTypes['dietLabel'][] | null; // [dietLabel!]
+    healthLabels: NexusGenRootTypes['healthLabel'][] | null; // [healthLabel!]
+    id: string; // ID!
     image: string; // String!
     label: string; // String!
+    servings: number; // Int!
     totalWeight: number; // Float!
+    updatedAt: any; // DateTime!
     uri: string; // String!
-    yield: number; // Int!
   }
   RecipeList: { // field return type
     createdAt: any; // DateTime!
@@ -232,6 +845,7 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     recipes: NexusGenRootTypes['Recipe'][] | null; // [Recipe!]
     updatedAt: any; // DateTime!
+    user: NexusGenRootTypes['User']; // User!
   }
   User: { // field return type
     createdAt: any; // DateTime!
@@ -241,10 +855,25 @@ export interface NexusGenFieldTypes {
     recipeLists: NexusGenRootTypes['RecipeList'][] | null; // [RecipeList!]
     updatedAt: any; // DateTime!
   }
+  dietLabel: { // field return type
+    id: string; // ID!
+    label: string; // String!
+  }
+  healthLabel: { // field return type
+    id: string; // ID!
+    label: string; // String!
+  }
 }
 
 export interface NexusGenArgTypes {
   Mutation: {
+    addRecipeToList: { // args
+      listId?: string | null; // ID
+      recipeURI?: string | null; // String
+    }
+    createRecipeList: { // args
+      data: NexusGenInputs['RecipeListCreateInput']; // RecipeListCreateInput!
+    }
     login: { // args
       email?: string | null; // String
       password?: string | null; // String
@@ -253,6 +882,10 @@ export interface NexusGenArgTypes {
       email?: string | null; // String
       name?: string | null; // String
       password?: string | null; // String
+    }
+    updateRecipeList: { // args
+      data: NexusGenInputs['RecipeListUpdateInput']; // RecipeListUpdateInput!
+      where: NexusGenInputs['RecipeListWhereUniqueInput']; // RecipeListWhereUniqueInput!
     }
   }
   Query: {
@@ -265,6 +898,26 @@ export interface NexusGenArgTypes {
     searchRecipes: { // args
       filters?: NexusGenInputs['Filters'] | null; // Filters
       searchQuery: string; // String!
+    }
+  }
+  Recipe: {
+    dietLabels: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['dietLabelOrderByInput'] | null; // dietLabelOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['dietLabelWhereInput'] | null; // dietLabelWhereInput
+    }
+    healthLabels: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['healthLabelOrderByInput'] | null; // healthLabelOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['healthLabelWhereInput'] | null; // healthLabelWhereInput
     }
   }
   RecipeList: {
@@ -296,11 +949,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "Mutation" | "Query" | "Recipe" | "RecipeList" | "User";
+export type NexusGenObjectNames = "AuthPayload" | "EdamamRecipe" | "Mutation" | "Query" | "Recipe" | "RecipeList" | "User" | "dietLabel" | "healthLabel";
 
-export type NexusGenInputNames = "Filters" | "RecipeListWhereInput" | "RecipeWhereInput";
+export type NexusGenInputNames = "Filters" | "RecipeCreateInput" | "RecipeCreateManyInput" | "RecipeListCreateInput" | "RecipeListUpdateInput" | "RecipeListWhereInput" | "RecipeListWhereUniqueInput" | "RecipeScalarWhereInput" | "RecipeUpdateDataInput" | "RecipeUpdateManyDataInput" | "RecipeUpdateManyInput" | "RecipeUpdateManyWithWhereNestedInput" | "RecipeUpdateWithWhereUniqueNestedInput" | "RecipeUpsertWithWhereUniqueNestedInput" | "RecipeWhereInput" | "RecipeWhereUniqueInput" | "UserCreateOneWithoutRecipeListsInput" | "UserCreateWithoutRecipeListsInput" | "UserUpdateOneRequiredWithoutRecipeListsInput" | "UserUpdateWithoutRecipeListsDataInput" | "UserUpsertWithoutRecipeListsInput" | "UserWhereInput" | "UserWhereUniqueInput" | "dietLabelCreateInput" | "dietLabelCreateManyInput" | "dietLabelScalarWhereInput" | "dietLabelUpdateDataInput" | "dietLabelUpdateManyDataInput" | "dietLabelUpdateManyInput" | "dietLabelUpdateManyWithWhereNestedInput" | "dietLabelUpdateWithWhereUniqueNestedInput" | "dietLabelUpsertWithWhereUniqueNestedInput" | "dietLabelWhereInput" | "dietLabelWhereUniqueInput" | "healthLabelCreateInput" | "healthLabelCreateManyInput" | "healthLabelScalarWhereInput" | "healthLabelUpdateDataInput" | "healthLabelUpdateManyDataInput" | "healthLabelUpdateManyInput" | "healthLabelUpdateManyWithWhereNestedInput" | "healthLabelUpdateWithWhereUniqueNestedInput" | "healthLabelUpsertWithWhereUniqueNestedInput" | "healthLabelWhereInput" | "healthLabelWhereUniqueInput";
 
-export type NexusGenEnumNames = "DietEnum" | "HealthEnum" | "RecipeListOrderByInput" | "RecipeOrderByInput";
+export type NexusGenEnumNames = "DietEnum" | "HealthEnum" | "RecipeListOrderByInput" | "RecipeOrderByInput" | "dietLabelOrderByInput" | "healthLabelOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 
