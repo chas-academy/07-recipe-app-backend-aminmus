@@ -1,4 +1,4 @@
-import { rule, shield, and } from 'graphql-shield';
+import { rule, shield, and, chain } from 'graphql-shield';
 import getUserId from '../utils/getUserId';
 import { Context } from '../types';
 
@@ -24,14 +24,14 @@ const rules = {
 const permissions = shield({
   Query: {
     testProtected: rules.isAuthenticated,
-    recipeList: and(rules.isAuthenticated, rules.isListOwner),
-    recipeLists: and(rules.isAuthenticated, rules.isListOwner),
+    recipeList: chain(rules.isAuthenticated, rules.isListOwner),
+    recipeLists: chain(rules.isAuthenticated, rules.isListOwner),
   },
   Mutation: {
     createRecipeList: rules.isAuthenticated,
-    addRecipeToList: and(rules.isAuthenticated, rules.isListOwner),
-    updateRecipeList: and(rules.isAuthenticated, rules.isListOwner),
-    deleteRecipeList: and(rules.isAuthenticated, rules.isListOwner),
+    addRecipeToList: chain(rules.isAuthenticated, rules.isListOwner),
+    updateRecipeList: chain(rules.isAuthenticated, rules.isListOwner),
+    deleteRecipeList: chain(rules.isAuthenticated, rules.isListOwner),
   },
 });
 
