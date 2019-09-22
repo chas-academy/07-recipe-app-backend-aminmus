@@ -33,13 +33,13 @@ export interface NexusGenInputs {
   RecipeListCreateInput: { // input type
     id?: string | null; // ID
     name: string; // String!
+    owner: NexusGenInputs['UserCreateOneWithoutRecipeListsInput']; // UserCreateOneWithoutRecipeListsInput!
     recipes?: NexusGenInputs['RecipeCreateManyInput'] | null; // RecipeCreateManyInput
-    user: NexusGenInputs['UserCreateOneWithoutRecipeListsInput']; // UserCreateOneWithoutRecipeListsInput!
   }
   RecipeListUpdateInput: { // input type
     name?: string | null; // String
+    owner?: NexusGenInputs['UserUpdateOneRequiredWithoutRecipeListsInput'] | null; // UserUpdateOneRequiredWithoutRecipeListsInput
     recipes?: NexusGenInputs['RecipeUpdateManyInput'] | null; // RecipeUpdateManyInput
-    user?: NexusGenInputs['UserUpdateOneRequiredWithoutRecipeListsInput'] | null; // UserUpdateOneRequiredWithoutRecipeListsInput
   }
   RecipeListWhereInput: { // input type
     AND?: NexusGenInputs['RecipeListWhereInput'][] | null; // [RecipeListWhereInput!]
@@ -81,6 +81,7 @@ export interface NexusGenInputs {
     name_starts_with?: string | null; // String
     NOT?: NexusGenInputs['RecipeListWhereInput'][] | null; // [RecipeListWhereInput!]
     OR?: NexusGenInputs['RecipeListWhereInput'][] | null; // [RecipeListWhereInput!]
+    owner?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     recipes_every?: NexusGenInputs['RecipeWhereInput'] | null; // RecipeWhereInput
     recipes_none?: NexusGenInputs['RecipeWhereInput'] | null; // RecipeWhereInput
     recipes_some?: NexusGenInputs['RecipeWhereInput'] | null; // RecipeWhereInput
@@ -92,7 +93,6 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
-    user?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
   }
   RecipeListWhereUniqueInput: { // input type
     id?: string | null; // ID
@@ -843,9 +843,9 @@ export interface NexusGenFieldTypes {
     createdAt: any; // DateTime!
     id: string; // ID!
     name: string; // String!
+    owner: NexusGenRootTypes['User']; // User!
     recipes: NexusGenRootTypes['Recipe'][] | null; // [Recipe!]
     updatedAt: any; // DateTime!
-    user: NexusGenRootTypes['User']; // User!
   }
   User: { // field return type
     createdAt: any; // DateTime!

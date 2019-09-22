@@ -365,16 +365,16 @@ type RecipeList {
   createdAt: DateTime!
   id: ID!
   name: String!
+  owner: User!
   recipes(after: String, before: String, first: Int, last: Int, orderBy: RecipeOrderByInput, skip: Int, where: RecipeWhereInput): [Recipe!]
   updatedAt: DateTime!
-  user: User!
 }
 
 input RecipeListCreateInput {
   id: ID
   name: String!
+  owner: UserCreateOneWithoutRecipeListsInput!
   recipes: RecipeCreateManyInput
-  user: UserCreateOneWithoutRecipeListsInput!
 }
 
 enum RecipeListOrderByInput {
@@ -390,8 +390,8 @@ enum RecipeListOrderByInput {
 
 input RecipeListUpdateInput {
   name: String
+  owner: UserUpdateOneRequiredWithoutRecipeListsInput
   recipes: RecipeUpdateManyInput
-  user: UserUpdateOneRequiredWithoutRecipeListsInput
 }
 
 input RecipeListWhereInput {
@@ -434,6 +434,7 @@ input RecipeListWhereInput {
   name_starts_with: String
   NOT: [RecipeListWhereInput!]
   OR: [RecipeListWhereInput!]
+  owner: UserWhereInput
   recipes_every: RecipeWhereInput
   recipes_none: RecipeWhereInput
   recipes_some: RecipeWhereInput
@@ -445,7 +446,6 @@ input RecipeListWhereInput {
   updatedAt_lte: DateTime
   updatedAt_not: DateTime
   updatedAt_not_in: [DateTime!]
-  user: UserWhereInput
 }
 
 input RecipeListWhereUniqueInput {

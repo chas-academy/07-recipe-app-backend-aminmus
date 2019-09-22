@@ -536,7 +536,7 @@ export interface RecipeListWhereInput {
   recipes_every?: Maybe<RecipeWhereInput>;
   recipes_some?: Maybe<RecipeWhereInput>;
   recipes_none?: Maybe<RecipeWhereInput>;
-  user?: Maybe<UserWhereInput>;
+  owner?: Maybe<UserWhereInput>;
   createdAt?: Maybe<DateTimeInput>;
   createdAt_not?: Maybe<DateTimeInput>;
   createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
@@ -872,7 +872,7 @@ export interface RecipeListCreateInput {
   id?: Maybe<ID_Input>;
   name: String;
   recipes?: Maybe<RecipeCreateManyInput>;
-  user: UserCreateOneWithoutRecipeListsInput;
+  owner: UserCreateOneWithoutRecipeListsInput;
 }
 
 export interface RecipeCreateManyInput {
@@ -895,7 +895,7 @@ export interface UserCreateWithoutRecipeListsInput {
 export interface RecipeListUpdateInput {
   name?: Maybe<String>;
   recipes?: Maybe<RecipeUpdateManyInput>;
-  user?: Maybe<UserUpdateOneRequiredWithoutRecipeListsInput>;
+  owner?: Maybe<UserUpdateOneRequiredWithoutRecipeListsInput>;
 }
 
 export interface RecipeUpdateManyInput {
@@ -1084,17 +1084,17 @@ export interface UserCreateInput {
   password: String;
   name: String;
   email: String;
-  recipeLists?: Maybe<RecipeListCreateManyWithoutUserInput>;
+  recipeLists?: Maybe<RecipeListCreateManyWithoutOwnerInput>;
 }
 
-export interface RecipeListCreateManyWithoutUserInput {
+export interface RecipeListCreateManyWithoutOwnerInput {
   create?: Maybe<
-    RecipeListCreateWithoutUserInput[] | RecipeListCreateWithoutUserInput
+    RecipeListCreateWithoutOwnerInput[] | RecipeListCreateWithoutOwnerInput
   >;
   connect?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
 }
 
-export interface RecipeListCreateWithoutUserInput {
+export interface RecipeListCreateWithoutOwnerInput {
   id?: Maybe<ID_Input>;
   name: String;
   recipes?: Maybe<RecipeCreateManyInput>;
@@ -1104,24 +1104,24 @@ export interface UserUpdateInput {
   password?: Maybe<String>;
   name?: Maybe<String>;
   email?: Maybe<String>;
-  recipeLists?: Maybe<RecipeListUpdateManyWithoutUserInput>;
+  recipeLists?: Maybe<RecipeListUpdateManyWithoutOwnerInput>;
 }
 
-export interface RecipeListUpdateManyWithoutUserInput {
+export interface RecipeListUpdateManyWithoutOwnerInput {
   create?: Maybe<
-    RecipeListCreateWithoutUserInput[] | RecipeListCreateWithoutUserInput
+    RecipeListCreateWithoutOwnerInput[] | RecipeListCreateWithoutOwnerInput
   >;
   delete?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
   connect?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
   set?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
   disconnect?: Maybe<RecipeListWhereUniqueInput[] | RecipeListWhereUniqueInput>;
   update?: Maybe<
-    | RecipeListUpdateWithWhereUniqueWithoutUserInput[]
-    | RecipeListUpdateWithWhereUniqueWithoutUserInput
+    | RecipeListUpdateWithWhereUniqueWithoutOwnerInput[]
+    | RecipeListUpdateWithWhereUniqueWithoutOwnerInput
   >;
   upsert?: Maybe<
-    | RecipeListUpsertWithWhereUniqueWithoutUserInput[]
-    | RecipeListUpsertWithWhereUniqueWithoutUserInput
+    | RecipeListUpsertWithWhereUniqueWithoutOwnerInput[]
+    | RecipeListUpsertWithWhereUniqueWithoutOwnerInput
   >;
   deleteMany?: Maybe<RecipeListScalarWhereInput[] | RecipeListScalarWhereInput>;
   updateMany?: Maybe<
@@ -1130,20 +1130,20 @@ export interface RecipeListUpdateManyWithoutUserInput {
   >;
 }
 
-export interface RecipeListUpdateWithWhereUniqueWithoutUserInput {
+export interface RecipeListUpdateWithWhereUniqueWithoutOwnerInput {
   where: RecipeListWhereUniqueInput;
-  data: RecipeListUpdateWithoutUserDataInput;
+  data: RecipeListUpdateWithoutOwnerDataInput;
 }
 
-export interface RecipeListUpdateWithoutUserDataInput {
+export interface RecipeListUpdateWithoutOwnerDataInput {
   name?: Maybe<String>;
   recipes?: Maybe<RecipeUpdateManyInput>;
 }
 
-export interface RecipeListUpsertWithWhereUniqueWithoutUserInput {
+export interface RecipeListUpsertWithWhereUniqueWithoutOwnerInput {
   where: RecipeListWhereUniqueInput;
-  update: RecipeListUpdateWithoutUserDataInput;
-  create: RecipeListCreateWithoutUserInput;
+  update: RecipeListUpdateWithoutOwnerDataInput;
+  create: RecipeListCreateWithoutOwnerInput;
 }
 
 export interface RecipeListScalarWhereInput {
@@ -1554,7 +1554,7 @@ export interface RecipeListPromise extends Promise<RecipeList>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
-  user: <T = UserPromise>() => T;
+  owner: <T = UserPromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -1573,7 +1573,7 @@ export interface RecipeListSubscription
     first?: Int;
     last?: Int;
   }) => T;
-  user: <T = UserSubscription>() => T;
+  owner: <T = UserSubscription>() => T;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -1592,7 +1592,7 @@ export interface RecipeListNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
-  user: <T = UserPromise>() => T;
+  owner: <T = UserPromise>() => T;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }

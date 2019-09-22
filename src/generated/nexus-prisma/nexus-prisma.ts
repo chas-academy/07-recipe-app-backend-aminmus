@@ -101,8 +101,8 @@ export interface NexusPrismaTypes {
       healthLabelWhereUniqueInput: healthLabelWhereUniqueInputInputObject
       dietLabelWhereUniqueInput: dietLabelWhereUniqueInputInputObject
       UserCreateInput: UserCreateInputInputObject
-      RecipeListCreateManyWithoutUserInput: RecipeListCreateManyWithoutUserInputInputObject
-      RecipeListCreateWithoutUserInput: RecipeListCreateWithoutUserInputInputObject
+      RecipeListCreateManyWithoutOwnerInput: RecipeListCreateManyWithoutOwnerInputInputObject
+      RecipeListCreateWithoutOwnerInput: RecipeListCreateWithoutOwnerInputInputObject
       RecipeCreateManyInput: RecipeCreateManyInputInputObject
       RecipeCreateInput: RecipeCreateInputInputObject
       healthLabelCreateManyInput: healthLabelCreateManyInputInputObject
@@ -110,9 +110,9 @@ export interface NexusPrismaTypes {
       dietLabelCreateManyInput: dietLabelCreateManyInputInputObject
       dietLabelCreateInput: dietLabelCreateInputInputObject
       UserUpdateInput: UserUpdateInputInputObject
-      RecipeListUpdateManyWithoutUserInput: RecipeListUpdateManyWithoutUserInputInputObject
-      RecipeListUpdateWithWhereUniqueWithoutUserInput: RecipeListUpdateWithWhereUniqueWithoutUserInputInputObject
-      RecipeListUpdateWithoutUserDataInput: RecipeListUpdateWithoutUserDataInputInputObject
+      RecipeListUpdateManyWithoutOwnerInput: RecipeListUpdateManyWithoutOwnerInputInputObject
+      RecipeListUpdateWithWhereUniqueWithoutOwnerInput: RecipeListUpdateWithWhereUniqueWithoutOwnerInputInputObject
+      RecipeListUpdateWithoutOwnerDataInput: RecipeListUpdateWithoutOwnerDataInputInputObject
       RecipeUpdateManyInput: RecipeUpdateManyInputInputObject
       RecipeUpdateWithWhereUniqueNestedInput: RecipeUpdateWithWhereUniqueNestedInputInputObject
       RecipeUpdateDataInput: RecipeUpdateDataInputInputObject
@@ -134,7 +134,7 @@ export interface NexusPrismaTypes {
       RecipeScalarWhereInput: RecipeScalarWhereInputInputObject
       RecipeUpdateManyWithWhereNestedInput: RecipeUpdateManyWithWhereNestedInputInputObject
       RecipeUpdateManyDataInput: RecipeUpdateManyDataInputInputObject
-      RecipeListUpsertWithWhereUniqueWithoutUserInput: RecipeListUpsertWithWhereUniqueWithoutUserInputInputObject
+      RecipeListUpsertWithWhereUniqueWithoutOwnerInput: RecipeListUpsertWithWhereUniqueWithoutOwnerInputInputObject
       RecipeListScalarWhereInput: RecipeListScalarWhereInputInputObject
       RecipeListUpdateManyWithWhereNestedInput: RecipeListUpdateManyWithWhereNestedInputInputObject
       RecipeListUpdateManyDataInput: RecipeListUpdateManyDataInputInputObject
@@ -603,7 +603,7 @@ type RecipeListObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'recipes', args?: RecipeListRecipesArgs[] | false, alias?: string  } 
-  | { name: 'user', args?: [] | false, alias?: string  } 
+  | { name: 'owner', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
@@ -611,7 +611,7 @@ type RecipeListFields =
   | 'id'
   | 'name'
   | 'recipes'
-  | 'user'
+  | 'owner'
   | 'createdAt'
   | 'updatedAt'
 
@@ -656,7 +656,7 @@ export interface RecipeListFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Recipe[]> | prisma.Recipe[]
   }
-  user: {
+  owner: {
     type: 'User'
     args: {}
     description: string
@@ -2953,7 +2953,7 @@ export interface RecipeListWhereInput {
   recipes_every?: RecipeWhereInput | null
   recipes_some?: RecipeWhereInput | null
   recipes_none?: RecipeWhereInput | null
-  user?: UserWhereInput | null
+  owner?: UserWhereInput | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -3007,7 +3007,7 @@ export type RecipeListWhereInputInputObject =
   | { name: 'recipes_every', alias?: string  } 
   | { name: 'recipes_some', alias?: string  } 
   | { name: 'recipes_none', alias?: string  } 
-  | { name: 'user', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -3577,7 +3577,7 @@ export interface UserCreateInput {
   password?: string
   name?: string
   email?: string
-  recipeLists?: RecipeListCreateManyWithoutUserInput | null
+  recipeLists?: RecipeListCreateManyWithoutOwnerInput | null
 }
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
@@ -3587,22 +3587,22 @@ export type UserCreateInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'recipeLists', alias?: string  } 
   
-export interface RecipeListCreateManyWithoutUserInput {
-  create?: RecipeListCreateWithoutUserInput[]
+export interface RecipeListCreateManyWithoutOwnerInput {
+  create?: RecipeListCreateWithoutOwnerInput[]
   connect?: RecipeListWhereUniqueInput[]
 }
-export type RecipeListCreateManyWithoutUserInputInputObject =
-  | Extract<keyof RecipeListCreateManyWithoutUserInput, string>
+export type RecipeListCreateManyWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListCreateManyWithoutOwnerInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface RecipeListCreateWithoutUserInput {
+export interface RecipeListCreateWithoutOwnerInput {
   id?: string | null
   name?: string
   recipes?: RecipeCreateManyInput | null
 }
-export type RecipeListCreateWithoutUserInputInputObject =
-  | Extract<keyof RecipeListCreateWithoutUserInput, string>
+export type RecipeListCreateWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListCreateWithoutOwnerInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'recipes', alias?: string  } 
@@ -3679,7 +3679,7 @@ export interface UserUpdateInput {
   password?: string | null
   name?: string | null
   email?: string | null
-  recipeLists?: RecipeListUpdateManyWithoutUserInput | null
+  recipeLists?: RecipeListUpdateManyWithoutOwnerInput | null
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
@@ -3688,19 +3688,19 @@ export type UserUpdateInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'recipeLists', alias?: string  } 
   
-export interface RecipeListUpdateManyWithoutUserInput {
-  create?: RecipeListCreateWithoutUserInput[]
+export interface RecipeListUpdateManyWithoutOwnerInput {
+  create?: RecipeListCreateWithoutOwnerInput[]
   delete?: RecipeListWhereUniqueInput[]
   connect?: RecipeListWhereUniqueInput[]
   set?: RecipeListWhereUniqueInput[]
   disconnect?: RecipeListWhereUniqueInput[]
-  update?: RecipeListUpdateWithWhereUniqueWithoutUserInput[]
-  upsert?: RecipeListUpsertWithWhereUniqueWithoutUserInput[]
+  update?: RecipeListUpdateWithWhereUniqueWithoutOwnerInput[]
+  upsert?: RecipeListUpsertWithWhereUniqueWithoutOwnerInput[]
   deleteMany?: RecipeListScalarWhereInput[]
   updateMany?: RecipeListUpdateManyWithWhereNestedInput[]
 }
-export type RecipeListUpdateManyWithoutUserInputInputObject =
-  | Extract<keyof RecipeListUpdateManyWithoutUserInput, string>
+export type RecipeListUpdateManyWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListUpdateManyWithoutOwnerInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
@@ -3711,21 +3711,21 @@ export type RecipeListUpdateManyWithoutUserInputInputObject =
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface RecipeListUpdateWithWhereUniqueWithoutUserInput {
+export interface RecipeListUpdateWithWhereUniqueWithoutOwnerInput {
   where?: RecipeListWhereUniqueInput
-  data?: RecipeListUpdateWithoutUserDataInput
+  data?: RecipeListUpdateWithoutOwnerDataInput
 }
-export type RecipeListUpdateWithWhereUniqueWithoutUserInputInputObject =
-  | Extract<keyof RecipeListUpdateWithWhereUniqueWithoutUserInput, string>
+export type RecipeListUpdateWithWhereUniqueWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListUpdateWithWhereUniqueWithoutOwnerInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface RecipeListUpdateWithoutUserDataInput {
+export interface RecipeListUpdateWithoutOwnerDataInput {
   name?: string | null
   recipes?: RecipeUpdateManyInput | null
 }
-export type RecipeListUpdateWithoutUserDataInputInputObject =
-  | Extract<keyof RecipeListUpdateWithoutUserDataInput, string>
+export type RecipeListUpdateWithoutOwnerDataInputInputObject =
+  | Extract<keyof RecipeListUpdateWithoutOwnerDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'recipes', alias?: string  } 
   
@@ -4288,13 +4288,13 @@ export type RecipeUpdateManyDataInputInputObject =
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
   
-export interface RecipeListUpsertWithWhereUniqueWithoutUserInput {
+export interface RecipeListUpsertWithWhereUniqueWithoutOwnerInput {
   where?: RecipeListWhereUniqueInput
-  update?: RecipeListUpdateWithoutUserDataInput
-  create?: RecipeListCreateWithoutUserInput
+  update?: RecipeListUpdateWithoutOwnerDataInput
+  create?: RecipeListCreateWithoutOwnerInput
 }
-export type RecipeListUpsertWithWhereUniqueWithoutUserInputInputObject =
-  | Extract<keyof RecipeListUpsertWithWhereUniqueWithoutUserInput, string>
+export type RecipeListUpsertWithWhereUniqueWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListUpsertWithWhereUniqueWithoutOwnerInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
@@ -4467,14 +4467,14 @@ export interface RecipeListCreateInput {
   id?: string | null
   name?: string
   recipes?: RecipeCreateManyInput | null
-  user?: UserCreateOneWithoutRecipeListsInput
+  owner?: UserCreateOneWithoutRecipeListsInput
 }
 export type RecipeListCreateInputInputObject =
   | Extract<keyof RecipeListCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'recipes', alias?: string  } 
-  | { name: 'user', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
   
 export interface UserCreateOneWithoutRecipeListsInput {
   create?: UserCreateWithoutRecipeListsInput | null
@@ -4501,13 +4501,13 @@ export type UserCreateWithoutRecipeListsInputInputObject =
 export interface RecipeListUpdateInput {
   name?: string | null
   recipes?: RecipeUpdateManyInput | null
-  user?: UserUpdateOneRequiredWithoutRecipeListsInput | null
+  owner?: UserUpdateOneRequiredWithoutRecipeListsInput | null
 }
 export type RecipeListUpdateInputInputObject =
   | Extract<keyof RecipeListUpdateInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'recipes', alias?: string  } 
-  | { name: 'user', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
   
 export interface UserUpdateOneRequiredWithoutRecipeListsInput {
   create?: UserCreateWithoutRecipeListsInput | null

@@ -491,7 +491,7 @@ type RecipeList {
   id: ID!
   name: String!
   recipes(where: RecipeWhereInput, orderBy: RecipeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Recipe!]
-  user: User!
+  owner: User!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -506,15 +506,15 @@ input RecipeListCreateInput {
   id: ID
   name: String!
   recipes: RecipeCreateManyInput
-  user: UserCreateOneWithoutRecipeListsInput!
+  owner: UserCreateOneWithoutRecipeListsInput!
 }
 
-input RecipeListCreateManyWithoutUserInput {
-  create: [RecipeListCreateWithoutUserInput!]
+input RecipeListCreateManyWithoutOwnerInput {
+  create: [RecipeListCreateWithoutOwnerInput!]
   connect: [RecipeListWhereUniqueInput!]
 }
 
-input RecipeListCreateWithoutUserInput {
+input RecipeListCreateWithoutOwnerInput {
   id: ID
   name: String!
   recipes: RecipeCreateManyInput
@@ -614,7 +614,7 @@ input RecipeListSubscriptionWhereInput {
 input RecipeListUpdateInput {
   name: String
   recipes: RecipeUpdateManyInput
-  user: UserUpdateOneRequiredWithoutRecipeListsInput
+  owner: UserUpdateOneRequiredWithoutRecipeListsInput
 }
 
 input RecipeListUpdateManyDataInput {
@@ -625,14 +625,14 @@ input RecipeListUpdateManyMutationInput {
   name: String
 }
 
-input RecipeListUpdateManyWithoutUserInput {
-  create: [RecipeListCreateWithoutUserInput!]
+input RecipeListUpdateManyWithoutOwnerInput {
+  create: [RecipeListCreateWithoutOwnerInput!]
   delete: [RecipeListWhereUniqueInput!]
   connect: [RecipeListWhereUniqueInput!]
   set: [RecipeListWhereUniqueInput!]
   disconnect: [RecipeListWhereUniqueInput!]
-  update: [RecipeListUpdateWithWhereUniqueWithoutUserInput!]
-  upsert: [RecipeListUpsertWithWhereUniqueWithoutUserInput!]
+  update: [RecipeListUpdateWithWhereUniqueWithoutOwnerInput!]
+  upsert: [RecipeListUpsertWithWhereUniqueWithoutOwnerInput!]
   deleteMany: [RecipeListScalarWhereInput!]
   updateMany: [RecipeListUpdateManyWithWhereNestedInput!]
 }
@@ -642,20 +642,20 @@ input RecipeListUpdateManyWithWhereNestedInput {
   data: RecipeListUpdateManyDataInput!
 }
 
-input RecipeListUpdateWithoutUserDataInput {
+input RecipeListUpdateWithoutOwnerDataInput {
   name: String
   recipes: RecipeUpdateManyInput
 }
 
-input RecipeListUpdateWithWhereUniqueWithoutUserInput {
+input RecipeListUpdateWithWhereUniqueWithoutOwnerInput {
   where: RecipeListWhereUniqueInput!
-  data: RecipeListUpdateWithoutUserDataInput!
+  data: RecipeListUpdateWithoutOwnerDataInput!
 }
 
-input RecipeListUpsertWithWhereUniqueWithoutUserInput {
+input RecipeListUpsertWithWhereUniqueWithoutOwnerInput {
   where: RecipeListWhereUniqueInput!
-  update: RecipeListUpdateWithoutUserDataInput!
-  create: RecipeListCreateWithoutUserInput!
+  update: RecipeListUpdateWithoutOwnerDataInput!
+  create: RecipeListCreateWithoutOwnerInput!
 }
 
 input RecipeListWhereInput {
@@ -690,7 +690,7 @@ input RecipeListWhereInput {
   recipes_every: RecipeWhereInput
   recipes_some: RecipeWhereInput
   recipes_none: RecipeWhereInput
-  user: UserWhereInput
+  owner: UserWhereInput
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -1079,7 +1079,7 @@ input UserCreateInput {
   password: String!
   name: String!
   email: String!
-  recipeLists: RecipeListCreateManyWithoutUserInput
+  recipeLists: RecipeListCreateManyWithoutOwnerInput
 }
 
 input UserCreateOneWithoutRecipeListsInput {
@@ -1145,7 +1145,7 @@ input UserUpdateInput {
   password: String
   name: String
   email: String
-  recipeLists: RecipeListUpdateManyWithoutUserInput
+  recipeLists: RecipeListUpdateManyWithoutOwnerInput
 }
 
 input UserUpdateManyMutationInput {

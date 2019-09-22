@@ -1686,7 +1686,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "user",
+            "name": "owner",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
@@ -5058,7 +5058,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "user",
+            "name": "owner",
             "description": null,
             "args": [],
             "type": {
@@ -7941,7 +7941,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "RecipeListCreateManyWithoutUserInput",
+              "name": "RecipeListCreateManyWithoutOwnerInput",
               "ofType": null
             },
             "defaultValue": null
@@ -7953,7 +7953,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "RecipeListCreateManyWithoutUserInput",
+        "name": "RecipeListCreateManyWithoutOwnerInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -7968,7 +7968,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "RecipeListCreateWithoutUserInput",
+                  "name": "RecipeListCreateWithoutOwnerInput",
                   "ofType": null
                 }
               }
@@ -8000,7 +8000,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "RecipeListCreateWithoutUserInput",
+        "name": "RecipeListCreateWithoutOwnerInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8420,7 +8420,7 @@ export default {
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "RecipeListUpdateManyWithoutUserInput",
+              "name": "RecipeListUpdateManyWithoutOwnerInput",
               "ofType": null
             },
             "defaultValue": null
@@ -8432,7 +8432,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "RecipeListUpdateManyWithoutUserInput",
+        "name": "RecipeListUpdateManyWithoutOwnerInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8447,7 +8447,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "RecipeListCreateWithoutUserInput",
+                  "name": "RecipeListCreateWithoutOwnerInput",
                   "ofType": null
                 }
               }
@@ -8537,7 +8537,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "RecipeListUpdateWithWhereUniqueWithoutUserInput",
+                  "name": "RecipeListUpdateWithWhereUniqueWithoutOwnerInput",
                   "ofType": null
                 }
               }
@@ -8555,7 +8555,7 @@ export default {
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "RecipeListUpsertWithWhereUniqueWithoutUserInput",
+                  "name": "RecipeListUpsertWithWhereUniqueWithoutOwnerInput",
                   "ofType": null
                 }
               }
@@ -8605,7 +8605,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "RecipeListUpdateWithWhereUniqueWithoutUserInput",
+        "name": "RecipeListUpdateWithWhereUniqueWithoutOwnerInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -8631,7 +8631,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "RecipeListUpdateWithoutUserDataInput",
+                "name": "RecipeListUpdateWithoutOwnerDataInput",
                 "ofType": null
               }
             },
@@ -8644,7 +8644,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "RecipeListUpdateWithoutUserDataInput",
+        "name": "RecipeListUpdateWithoutOwnerDataInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -11756,7 +11756,7 @@ export default {
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "RecipeListUpsertWithWhereUniqueWithoutUserInput",
+        "name": "RecipeListUpsertWithWhereUniqueWithoutOwnerInput",
         "description": null,
         "fields": null,
         "inputFields": [
@@ -11782,7 +11782,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "RecipeListUpdateWithoutUserDataInput",
+                "name": "RecipeListUpdateWithoutOwnerDataInput",
                 "ofType": null
               }
             },
@@ -11796,7 +11796,7 @@ export default {
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "RecipeListCreateWithoutUserInput",
+                "name": "RecipeListCreateWithoutOwnerInput",
                 "ofType": null
               }
             },
@@ -12717,7 +12717,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "user",
+            "name": "owner",
             "description": null,
             "type": {
               "kind": "NON_NULL",
@@ -12856,7 +12856,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "user",
+            "name": "owner",
             "description": null,
             "type": {
               "kind": "INPUT_OBJECT",
