@@ -1,4 +1,4 @@
-import { rule, shield, and, chain } from 'graphql-shield';
+import { rule, shield, chain } from 'graphql-shield';
 import getUserId from '../utils/getUserId';
 import { Context } from '../types';
 
