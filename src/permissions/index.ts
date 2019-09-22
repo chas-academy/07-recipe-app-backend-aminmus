@@ -8,16 +8,16 @@ const rules = {
     const userId = getUserId(context);
     return Boolean(userId);
   }),
-  isListOwner: rule()(async (root, { listId }, context: Context) => {
+  isListOwner: rule()(async (root, args, context: Context) => {
+    // The list id is found in different places inside args depending on the resolver
+    const id = args.id || args.where.id;
     const userId = getUserId(context);
-    // Check if there is a recipe list that matches listId arg and userId
-    if (userId) {
-      return context.prisma.$exists.recipeList({
-        id: listId,
-        owner: { id: userId },
-      });
-    }
-    return false;
+
+    const actualOwner = await context.prisma.recipeList({ id }).owner();
+    const isOwnerBoolean: boolean = userId === actualOwner.id;
+
+    if (isOwnerBoolean) return true;
+    return Error('Recipe list not found for given user');
   }),
 };
 
@@ -27,7 +27,8 @@ const permissions = shield({
   },
   Mutation: {
     createRecipeList: rules.isAuthenticated,
-    updateRecipeList: rules.isAuthenticated,
+    updateRecipeList: and(rules.isAuthenticated, rules.isListOwner),
+    deleteRecipeList: and(rules.isAuthenticated, rules.isListOwner),
     addRecipeToList: and(rules.isAuthenticated, rules.isListOwner),
   },
 });

@@ -816,6 +816,7 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     addRecipeToList: NexusGenRootTypes['RecipeList']; // RecipeList!
     createRecipeList: NexusGenRootTypes['RecipeList']; // RecipeList!
+    deleteRecipeList: NexusGenRootTypes['RecipeList'] | null; // RecipeList
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     updateRecipeList: NexusGenRootTypes['RecipeList'] | null; // RecipeList
@@ -868,11 +869,14 @@ export interface NexusGenFieldTypes {
 export interface NexusGenArgTypes {
   Mutation: {
     addRecipeToList: { // args
-      listId?: string | null; // ID
+      id?: string | null; // ID
       recipeURI?: string | null; // String
     }
     createRecipeList: { // args
       data: NexusGenInputs['RecipeListCreateInput']; // RecipeListCreateInput!
+    }
+    deleteRecipeList: { // args
+      where: NexusGenInputs['RecipeListWhereUniqueInput']; // RecipeListWhereUniqueInput!
     }
     login: { // args
       email?: string | null; // String

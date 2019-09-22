@@ -313,8 +313,13 @@ input healthLabelWhereUniqueInput {
 }
 
 type Mutation {
-  addRecipeToList(listId: ID, recipeURI: String): RecipeList!
+  addRecipeToList(
+    """ID of RecipeList to add recipe to"""
+    id: ID
+    recipeURI: String
+  ): RecipeList!
   createRecipeList(data: RecipeListCreateInput!): RecipeList!
+  deleteRecipeList(where: RecipeListWhereUniqueInput!): RecipeList
   login(email: String, password: String): AuthPayload!
   signup(email: String, name: String, password: String): AuthPayload!
   updateRecipeList(data: RecipeListUpdateInput!, where: RecipeListWhereUniqueInput!): RecipeList
