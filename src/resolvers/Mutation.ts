@@ -11,15 +11,15 @@ import { Context } from '../types';
 const Mutation = prismaObjectType({
   name: 'Mutation',
   definition(t) {
-    t.prismaFields(['createRecipeList', 'updateRecipeList']);
+    t.prismaFields(['createRecipeList', 'updateRecipeList', 'deleteRecipeList']);
 
     t.field('addRecipeToList', {
       type: 'RecipeList',
       args: {
         recipeURI: stringArg(),
-        listId: idArg(),
+        id: idArg({ description: 'ID of RecipeList to add recipe to' }),
       },
-      resolve: async (_root, { recipeURI, listId }, context: Context) => {
+      resolve: async (_root, { recipeURI, id }, context: Context) => {
         let recipe: Recipe | null;
 
         const recipeExists = await context.prisma.$exists.recipe({
@@ -55,7 +55,7 @@ const Mutation = prismaObjectType({
               connect: { id: recipe.id },
             },
           },
-          where: { id: listId },
+          where: { id },
         });
 
         // At the moment it seems no error is given if recipe already exists in the list
