@@ -329,6 +329,8 @@ type Query {
   """Find a recipe by uri"""
   findRecipeByURI(uri: String!): EdamamRecipe
   hello(name: String): String!
+  recipeList(where: RecipeListWhereUniqueInput!): RecipeList
+  recipeLists(after: String, before: String, first: Int, last: Int, orderBy: RecipeListOrderByInput, skip: Int, where: RecipeListWhereInput): [RecipeList!]!
 
   """Search for recipes"""
   searchRecipes(filters: Filters, searchQuery: String!): [EdamamRecipe!]

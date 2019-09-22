@@ -824,6 +824,8 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     findRecipeByURI: NexusGenRootTypes['EdamamRecipe'] | null; // EdamamRecipe
     hello: string; // String!
+    recipeList: NexusGenRootTypes['RecipeList'] | null; // RecipeList
+    recipeLists: NexusGenRootTypes['RecipeList'][]; // [RecipeList!]!
     searchRecipes: NexusGenRootTypes['EdamamRecipe'][] | null; // [EdamamRecipe!]
     testProtected: string; // String!
   }
@@ -898,6 +900,18 @@ export interface NexusGenArgTypes {
     }
     hello: { // args
       name?: string | null; // String
+    }
+    recipeList: { // args
+      where: NexusGenInputs['RecipeListWhereUniqueInput']; // RecipeListWhereUniqueInput!
+    }
+    recipeLists: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenEnums['RecipeListOrderByInput'] | null; // RecipeListOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['RecipeListWhereInput'] | null; // RecipeListWhereInput
     }
     searchRecipes: { // args
       filters?: NexusGenInputs['Filters'] | null; // Filters

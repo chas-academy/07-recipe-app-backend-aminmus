@@ -1,12 +1,16 @@
 import { queryType, stringArg, arg } from 'nexus';
 
 // import Recipe from './Recipe';
+import { prismaObjectType } from 'nexus-prisma';
 import { Filters } from './Filters';
 import { searchRecipes, findRecipeByURI } from '../services/getRecipes';
 import EdamamRecipe from './EdamamRecipe';
 
-const Query = queryType({
+const Query = prismaObjectType({
+  name: 'Query',
   definition(t) {
+    t.prismaFields(['recipeList', 'recipeLists']);
+
     t.string('hello', {
       args: { name: stringArg({ nullable: true }) },
       resolve: (_parent, { name }) => `Hello ${name || 'World'}!`,
