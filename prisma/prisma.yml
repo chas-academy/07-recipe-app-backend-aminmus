@@ -13,6 +13,3 @@ generate:
 hooks:
   post-deploy:
     - npx nexus-prisma-generate --client ./src/generated/prisma-client --output ./src/generated/nexus-prisma # Runs the codegen tool from nexus-prisma.
-
-seed:
-  run: npx ts-node ./prisma/seed.ts

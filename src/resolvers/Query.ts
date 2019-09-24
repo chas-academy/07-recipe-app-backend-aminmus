@@ -1,38 +1,22 @@
 import { queryType, stringArg, arg } from 'nexus';
-import { prismaObjectType } from 'nexus-prisma';
 
-// import Recipe from './Recipe';
-import getUserId from '../utils/getUserId';
+import Recipe from './Recipe';
 import { Filters } from './Filters';
 import { searchRecipes, findRecipeByURI } from '../services/getRecipes';
-import EdamamRecipe from './EdamamRecipe';
-import User from './User';
-import { Context } from '../types';
+import getUserId from '../utils/getUserId';
 
-const Query = prismaObjectType({
-  name: 'Query',
+const Query = queryType({
   definition(t) {
-    t.prismaFields(['recipeList', 'recipeLists']);
-
     t.string('hello', {
       args: { name: stringArg({ nullable: true }) },
       resolve: (_parent, { name }) => `Hello ${name || 'World'}!`,
     });
-
     t.string('testProtected', {
-      resolve: () => 'Only authenticated requests should see this response that you are reading now',
-    });
-
-    t.field('me', {
-      type: User,
-      resolve: async (_root, _args, context: Context) => {
-        const id = getUserId(context);
-        return context.prisma.user({ id });
-      },
+      resolve: (_parent, _args, context) => 'Only authenticated requests should see this response that you are reading now',
     });
 
     t.list.field('searchRecipes', {
-      type: EdamamRecipe,
+      type: Recipe,
       description: 'Search for recipes',
       nullable: true,
       args: {
@@ -43,7 +27,7 @@ const Query = prismaObjectType({
     });
 
     t.field('findRecipeByURI', {
-      type: EdamamRecipe,
+      type: Recipe,
       description: 'Find a recipe by uri',
       nullable: true,
       args: { uri: stringArg({ nullable: false }) },
