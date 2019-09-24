@@ -1,10 +1,13 @@
 import { queryType, stringArg, arg } from 'nexus';
+import { prismaObjectType } from 'nexus-prisma';
 
 // import Recipe from './Recipe';
-import { prismaObjectType } from 'nexus-prisma';
+import getUserId from '../utils/getUserId';
 import { Filters } from './Filters';
 import { searchRecipes, findRecipeByURI } from '../services/getRecipes';
 import EdamamRecipe from './EdamamRecipe';
+import User from './User';
+import { Context } from '../types';
 
 const Query = prismaObjectType({
   name: 'Query',
@@ -18,6 +21,14 @@ const Query = prismaObjectType({
 
     t.string('testProtected', {
       resolve: () => 'Only authenticated requests should see this response that you are reading now',
+    });
+
+    t.field('me', {
+      type: User,
+      resolve: async (_root, _args, context: Context) => {
+        const id = getUserId(context);
+        return context.prisma.user({ id });
+      },
     });
 
     t.list.field('searchRecipes', {

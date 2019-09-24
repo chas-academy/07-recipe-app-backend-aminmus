@@ -824,6 +824,7 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     findRecipeByURI: NexusGenRootTypes['EdamamRecipe'] | null; // EdamamRecipe
     hello: string; // String!
+    me: NexusGenRootTypes['User']; // User!
     recipeList: NexusGenRootTypes['RecipeList'] | null; // RecipeList
     recipeLists: NexusGenRootTypes['RecipeList'][]; // [RecipeList!]!
     searchRecipes: NexusGenRootTypes['EdamamRecipe'][] | null; // [EdamamRecipe!]
