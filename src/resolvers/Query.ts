@@ -12,7 +12,7 @@ import { Context } from '../types';
 const Query = prismaObjectType({
   name: 'Query',
   definition(t) {
-    t.prismaFields(['recipeList', 'recipeLists']);
+    t.prismaFields(['recipeList']);
 
     t.string('hello', {
       args: { name: stringArg({ nullable: true }) },
@@ -31,15 +31,12 @@ const Query = prismaObjectType({
       },
     });
 
-    t.list.field('searchRecipes', {
-      type: EdamamRecipe,
-      description: 'Search for recipes',
-      nullable: true,
-      args: {
-        searchQuery: stringArg({ nullable: false }),
-        filters: arg({ type: Filters }),
+    t.list.field('myRecipeLists', {
+      type: 'RecipeList',
+      resolve: async (_root, _args, context: Context) => {
+        const id = getUserId(context);
+        return context.prisma.user({ id }).recipeLists();
       },
-      resolve: (_root, { searchQuery, filters }) => searchRecipes(searchQuery, filters),
     });
 
     t.field('findRecipeByURI', {

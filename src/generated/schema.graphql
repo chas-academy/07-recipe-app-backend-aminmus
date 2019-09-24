@@ -317,11 +317,8 @@ type Query {
   findRecipeByURI(uri: String!): EdamamRecipe
   hello(name: String): String!
   me: User!
+  myRecipeLists: [RecipeList!]!
   recipeList(where: RecipeListWhereUniqueInput!): RecipeList
-  recipeLists(after: String, before: String, first: Int, last: Int, orderBy: RecipeListOrderByInput, skip: Int, where: RecipeListWhereInput): [RecipeList!]!
-
-  """Search for recipes"""
-  searchRecipes(filters: Filters, searchQuery: String!): [EdamamRecipe!]
   testProtected: String!
 }
 
@@ -364,6 +361,8 @@ input RecipeCreateInput {
   image: String!
   label: String!
   servings: Int!
+  source: String!
+  sourceUrl: String!
   totalWeight: Float!
   uri: String!
 }
@@ -477,6 +476,10 @@ enum RecipeOrderByInput {
   label_DESC
   servings_ASC
   servings_DESC
+  source_ASC
+  source_DESC
+  sourceUrl_ASC
+  sourceUrl_DESC
   totalWeight_ASC
   totalWeight_DESC
   updatedAt_ASC
@@ -555,6 +558,34 @@ input RecipeScalarWhereInput {
   servings_lte: Int
   servings_not: Int
   servings_not_in: [Int!]
+  source: String
+  source_contains: String
+  source_ends_with: String
+  source_gt: String
+  source_gte: String
+  source_in: [String!]
+  source_lt: String
+  source_lte: String
+  source_not: String
+  source_not_contains: String
+  source_not_ends_with: String
+  source_not_in: [String!]
+  source_not_starts_with: String
+  source_starts_with: String
+  sourceUrl: String
+  sourceUrl_contains: String
+  sourceUrl_ends_with: String
+  sourceUrl_gt: String
+  sourceUrl_gte: String
+  sourceUrl_in: [String!]
+  sourceUrl_lt: String
+  sourceUrl_lte: String
+  sourceUrl_not: String
+  sourceUrl_not_contains: String
+  sourceUrl_not_ends_with: String
+  sourceUrl_not_in: [String!]
+  sourceUrl_not_starts_with: String
+  sourceUrl_starts_with: String
   totalWeight: Float
   totalWeight_gt: Float
   totalWeight_gte: Float
@@ -594,6 +625,8 @@ input RecipeUpdateDataInput {
   image: String
   label: String
   servings: Int
+  source: String
+  sourceUrl: String
   totalWeight: Float
   uri: String
 }
@@ -603,6 +636,8 @@ input RecipeUpdateManyDataInput {
   image: String
   label: String
   servings: Int
+  source: String
+  sourceUrl: String
   totalWeight: Float
   uri: String
 }
@@ -711,6 +746,34 @@ input RecipeWhereInput {
   servings_lte: Int
   servings_not: Int
   servings_not_in: [Int!]
+  source: String
+  source_contains: String
+  source_ends_with: String
+  source_gt: String
+  source_gte: String
+  source_in: [String!]
+  source_lt: String
+  source_lte: String
+  source_not: String
+  source_not_contains: String
+  source_not_ends_with: String
+  source_not_in: [String!]
+  source_not_starts_with: String
+  source_starts_with: String
+  sourceUrl: String
+  sourceUrl_contains: String
+  sourceUrl_ends_with: String
+  sourceUrl_gt: String
+  sourceUrl_gte: String
+  sourceUrl_in: [String!]
+  sourceUrl_lt: String
+  sourceUrl_lte: String
+  sourceUrl_not: String
+  sourceUrl_not_contains: String
+  sourceUrl_not_ends_with: String
+  sourceUrl_not_in: [String!]
+  sourceUrl_not_starts_with: String
+  sourceUrl_starts_with: String
   totalWeight: Float
   totalWeight_gt: Float
   totalWeight_gte: Float

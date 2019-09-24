@@ -23,6 +23,8 @@ export interface NexusGenInputs {
     image: string; // String!
     label: string; // String!
     servings: number; // Int!
+    source: string; // String!
+    sourceUrl: string; // String!
     totalWeight: number; // Float!
     uri: string; // String!
   }
@@ -167,6 +169,34 @@ export interface NexusGenInputs {
     servings_lte?: number | null; // Int
     servings_not?: number | null; // Int
     servings_not_in?: number[] | null; // [Int!]
+    source?: string | null; // String
+    source_contains?: string | null; // String
+    source_ends_with?: string | null; // String
+    source_gt?: string | null; // String
+    source_gte?: string | null; // String
+    source_in?: string[] | null; // [String!]
+    source_lt?: string | null; // String
+    source_lte?: string | null; // String
+    source_not?: string | null; // String
+    source_not_contains?: string | null; // String
+    source_not_ends_with?: string | null; // String
+    source_not_in?: string[] | null; // [String!]
+    source_not_starts_with?: string | null; // String
+    source_starts_with?: string | null; // String
+    sourceUrl?: string | null; // String
+    sourceUrl_contains?: string | null; // String
+    sourceUrl_ends_with?: string | null; // String
+    sourceUrl_gt?: string | null; // String
+    sourceUrl_gte?: string | null; // String
+    sourceUrl_in?: string[] | null; // [String!]
+    sourceUrl_lt?: string | null; // String
+    sourceUrl_lte?: string | null; // String
+    sourceUrl_not?: string | null; // String
+    sourceUrl_not_contains?: string | null; // String
+    sourceUrl_not_ends_with?: string | null; // String
+    sourceUrl_not_in?: string[] | null; // [String!]
+    sourceUrl_not_starts_with?: string | null; // String
+    sourceUrl_starts_with?: string | null; // String
     totalWeight?: number | null; // Float
     totalWeight_gt?: number | null; // Float
     totalWeight_gte?: number | null; // Float
@@ -205,6 +235,8 @@ export interface NexusGenInputs {
     image?: string | null; // String
     label?: string | null; // String
     servings?: number | null; // Int
+    source?: string | null; // String
+    sourceUrl?: string | null; // String
     totalWeight?: number | null; // Float
     uri?: string | null; // String
   }
@@ -213,6 +245,8 @@ export interface NexusGenInputs {
     image?: string | null; // String
     label?: string | null; // String
     servings?: number | null; // Int
+    source?: string | null; // String
+    sourceUrl?: string | null; // String
     totalWeight?: number | null; // Float
     uri?: string | null; // String
   }
@@ -316,6 +350,34 @@ export interface NexusGenInputs {
     servings_lte?: number | null; // Int
     servings_not?: number | null; // Int
     servings_not_in?: number[] | null; // [Int!]
+    source?: string | null; // String
+    source_contains?: string | null; // String
+    source_ends_with?: string | null; // String
+    source_gt?: string | null; // String
+    source_gte?: string | null; // String
+    source_in?: string[] | null; // [String!]
+    source_lt?: string | null; // String
+    source_lte?: string | null; // String
+    source_not?: string | null; // String
+    source_not_contains?: string | null; // String
+    source_not_ends_with?: string | null; // String
+    source_not_in?: string[] | null; // [String!]
+    source_not_starts_with?: string | null; // String
+    source_starts_with?: string | null; // String
+    sourceUrl?: string | null; // String
+    sourceUrl_contains?: string | null; // String
+    sourceUrl_ends_with?: string | null; // String
+    sourceUrl_gt?: string | null; // String
+    sourceUrl_gte?: string | null; // String
+    sourceUrl_in?: string[] | null; // [String!]
+    sourceUrl_lt?: string | null; // String
+    sourceUrl_lte?: string | null; // String
+    sourceUrl_not?: string | null; // String
+    sourceUrl_not_contains?: string | null; // String
+    sourceUrl_not_ends_with?: string | null; // String
+    sourceUrl_not_in?: string[] | null; // [String!]
+    sourceUrl_not_starts_with?: string | null; // String
+    sourceUrl_starts_with?: string | null; // String
     totalWeight?: number | null; // Float
     totalWeight_gt?: number | null; // Float
     totalWeight_gte?: number | null; // Float
@@ -682,7 +744,7 @@ export interface NexusGenEnums {
   DietEnum: "balanced" | "high-protein" | "low-carb" | "low-fat"
   HealthEnum: "alcohol-free" | "peanut-free" | "sugar-conscious" | "tree-nut-free" | "vegan" | "vegetarian"
   RecipeListOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  RecipeOrderByInput: "calories_ASC" | "calories_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "label_ASC" | "label_DESC" | "servings_ASC" | "servings_DESC" | "totalWeight_ASC" | "totalWeight_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "uri_ASC" | "uri_DESC"
+  RecipeOrderByInput: "calories_ASC" | "calories_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "label_ASC" | "label_DESC" | "servings_ASC" | "servings_DESC" | "source_ASC" | "source_DESC" | "sourceUrl_ASC" | "sourceUrl_DESC" | "totalWeight_ASC" | "totalWeight_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "uri_ASC" | "uri_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -818,9 +880,8 @@ export interface NexusGenFieldTypes {
     findRecipeByURI: NexusGenRootTypes['EdamamRecipe'] | null; // EdamamRecipe
     hello: string; // String!
     me: NexusGenRootTypes['User']; // User!
+    myRecipeLists: NexusGenRootTypes['RecipeList'][]; // [RecipeList!]!
     recipeList: NexusGenRootTypes['RecipeList'] | null; // RecipeList
-    recipeLists: NexusGenRootTypes['RecipeList'][]; // [RecipeList!]!
-    searchRecipes: NexusGenRootTypes['EdamamRecipe'][] | null; // [EdamamRecipe!]
     testProtected: string; // String!
   }
   Recipe: { // field return type
@@ -888,19 +949,6 @@ export interface NexusGenArgTypes {
     }
     recipeList: { // args
       where: NexusGenInputs['RecipeListWhereUniqueInput']; // RecipeListWhereUniqueInput!
-    }
-    recipeLists: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['RecipeListOrderByInput'] | null; // RecipeListOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['RecipeListWhereInput'] | null; // RecipeListWhereInput
-    }
-    searchRecipes: { // args
-      filters?: NexusGenInputs['Filters'] | null; // Filters
-      searchQuery: string; // String!
     }
   }
   RecipeList: {
