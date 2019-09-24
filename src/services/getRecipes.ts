@@ -40,8 +40,11 @@ export async function searchRecipes(query: string, filters?: SearchFilter): Prom
   const recipeHits: Array<object> = result.hits;
 
   const recipes = await recipeHits.map((current: any) => {
-    const { recipe } = current;
-    return recipe as Recipe;
+    const { recipe: curRecipe } = current;
+    const { yield: servings } = curRecipe;
+
+    const recipe: Recipe = { ...curRecipe, servings };
+    return recipe;
   });
 
   return recipes;
@@ -63,7 +66,28 @@ export async function findRecipeByURI(recipeUri: string): Promise<Recipe> {
   const jsonResult = await fetch(requestUrl);
   const result = await jsonResult.json();
 
-  const recipe: Recipe = result[0];
+  // Add 'yield' as 'servings' instead because 'yield' is a specific keyword in JS
+  const {
+    yield: servings,
+    label,
+    uri,
+    image,
+    calories,
+    totalWeight,
+    healthLabels,
+    dietLabels,
+  } = result[0];
+
+  const recipe: Recipe = {
+    label,
+    uri,
+    image,
+    calories,
+    totalWeight,
+    healthLabels,
+    dietLabels,
+    servings,
+  };
 
   return recipe;
 }

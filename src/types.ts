@@ -5,7 +5,7 @@ export interface Recipe {
   uri: string;
   label: string;
   image?: string;
-  yield?: number;
+  servings?: number;
   calories?: number;
   totalWeight?: number;
   totalNutrients?: object;

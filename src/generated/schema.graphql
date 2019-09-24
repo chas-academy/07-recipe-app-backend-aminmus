@@ -16,6 +16,153 @@ enum DietEnum {
   lowFat
 }
 
+type dietLabel {
+  id: ID!
+  label: String!
+}
+
+input dietLabelCreateInput {
+  id: ID
+  label: String!
+}
+
+input dietLabelCreateManyInput {
+  connect: [dietLabelWhereUniqueInput!]
+  create: [dietLabelCreateInput!]
+}
+
+enum dietLabelOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  label_ASC
+  label_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input dietLabelScalarWhereInput {
+  AND: [dietLabelScalarWhereInput!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  label: String
+  label_contains: String
+  label_ends_with: String
+  label_gt: String
+  label_gte: String
+  label_in: [String!]
+  label_lt: String
+  label_lte: String
+  label_not: String
+  label_not_contains: String
+  label_not_ends_with: String
+  label_not_in: [String!]
+  label_not_starts_with: String
+  label_starts_with: String
+  NOT: [dietLabelScalarWhereInput!]
+  OR: [dietLabelScalarWhereInput!]
+}
+
+input dietLabelUpdateDataInput {
+  label: String
+}
+
+input dietLabelUpdateManyDataInput {
+  label: String
+}
+
+input dietLabelUpdateManyInput {
+  connect: [dietLabelWhereUniqueInput!]
+  create: [dietLabelCreateInput!]
+  delete: [dietLabelWhereUniqueInput!]
+  deleteMany: [dietLabelScalarWhereInput!]
+  disconnect: [dietLabelWhereUniqueInput!]
+  set: [dietLabelWhereUniqueInput!]
+  update: [dietLabelUpdateWithWhereUniqueNestedInput!]
+  updateMany: [dietLabelUpdateManyWithWhereNestedInput!]
+  upsert: [dietLabelUpsertWithWhereUniqueNestedInput!]
+}
+
+input dietLabelUpdateManyWithWhereNestedInput {
+  data: dietLabelUpdateManyDataInput!
+  where: dietLabelScalarWhereInput!
+}
+
+input dietLabelUpdateWithWhereUniqueNestedInput {
+  data: dietLabelUpdateDataInput!
+  where: dietLabelWhereUniqueInput!
+}
+
+input dietLabelUpsertWithWhereUniqueNestedInput {
+  create: dietLabelCreateInput!
+  update: dietLabelUpdateDataInput!
+  where: dietLabelWhereUniqueInput!
+}
+
+input dietLabelWhereInput {
+  AND: [dietLabelWhereInput!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  label: String
+  label_contains: String
+  label_ends_with: String
+  label_gt: String
+  label_gte: String
+  label_in: [String!]
+  label_lt: String
+  label_lte: String
+  label_not: String
+  label_not_contains: String
+  label_not_ends_with: String
+  label_not_in: [String!]
+  label_not_starts_with: String
+  label_starts_with: String
+  NOT: [dietLabelWhereInput!]
+  OR: [dietLabelWhereInput!]
+}
+
+input dietLabelWhereUniqueInput {
+  id: ID
+  label: String
+}
+
+"""Recipe directly fetched from the Edamam Recipe API"""
+type EdamamRecipe {
+  calories: Float
+  dietLabels: [String!]
+  healthLabels: [String!]
+  image: String!
+  label: String!
+  servings: Int
+  totalWeight: Float
+  uri: String!
+}
+
 input Filters {
   dietLabels: [DietEnum!]
   healthLabels: [HealthEnum!]
@@ -30,38 +177,212 @@ enum HealthEnum {
   vegetarian
 }
 
+type healthLabel {
+  id: ID!
+  label: String!
+}
+
+input healthLabelCreateInput {
+  id: ID
+  label: String!
+}
+
+input healthLabelCreateManyInput {
+  connect: [healthLabelWhereUniqueInput!]
+  create: [healthLabelCreateInput!]
+}
+
+enum healthLabelOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  label_ASC
+  label_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+input healthLabelScalarWhereInput {
+  AND: [healthLabelScalarWhereInput!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  label: String
+  label_contains: String
+  label_ends_with: String
+  label_gt: String
+  label_gte: String
+  label_in: [String!]
+  label_lt: String
+  label_lte: String
+  label_not: String
+  label_not_contains: String
+  label_not_ends_with: String
+  label_not_in: [String!]
+  label_not_starts_with: String
+  label_starts_with: String
+  NOT: [healthLabelScalarWhereInput!]
+  OR: [healthLabelScalarWhereInput!]
+}
+
+input healthLabelUpdateDataInput {
+  label: String
+}
+
+input healthLabelUpdateManyDataInput {
+  label: String
+}
+
+input healthLabelUpdateManyInput {
+  connect: [healthLabelWhereUniqueInput!]
+  create: [healthLabelCreateInput!]
+  delete: [healthLabelWhereUniqueInput!]
+  deleteMany: [healthLabelScalarWhereInput!]
+  disconnect: [healthLabelWhereUniqueInput!]
+  set: [healthLabelWhereUniqueInput!]
+  update: [healthLabelUpdateWithWhereUniqueNestedInput!]
+  updateMany: [healthLabelUpdateManyWithWhereNestedInput!]
+  upsert: [healthLabelUpsertWithWhereUniqueNestedInput!]
+}
+
+input healthLabelUpdateManyWithWhereNestedInput {
+  data: healthLabelUpdateManyDataInput!
+  where: healthLabelScalarWhereInput!
+}
+
+input healthLabelUpdateWithWhereUniqueNestedInput {
+  data: healthLabelUpdateDataInput!
+  where: healthLabelWhereUniqueInput!
+}
+
+input healthLabelUpsertWithWhereUniqueNestedInput {
+  create: healthLabelCreateInput!
+  update: healthLabelUpdateDataInput!
+  where: healthLabelWhereUniqueInput!
+}
+
+input healthLabelWhereInput {
+  AND: [healthLabelWhereInput!]
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  label: String
+  label_contains: String
+  label_ends_with: String
+  label_gt: String
+  label_gte: String
+  label_in: [String!]
+  label_lt: String
+  label_lte: String
+  label_not: String
+  label_not_contains: String
+  label_not_ends_with: String
+  label_not_in: [String!]
+  label_not_starts_with: String
+  label_starts_with: String
+  NOT: [healthLabelWhereInput!]
+  OR: [healthLabelWhereInput!]
+}
+
+input healthLabelWhereUniqueInput {
+  id: ID
+  label: String
+}
+
 type Mutation {
+  addRecipeToList(
+    """ID of RecipeList to add recipe to"""
+    id: ID
+    recipeURI: String
+  ): RecipeList!
+  createRecipeList(data: RecipeListCreateInput!): RecipeList!
+  deleteRecipeList(where: RecipeListWhereUniqueInput!): RecipeList
   login(email: String, password: String): AuthPayload!
   signup(email: String, name: String, password: String): AuthPayload!
+  updateRecipeList(data: RecipeListUpdateInput!, where: RecipeListWhereUniqueInput!): RecipeList
 }
 
 type Query {
   """Find a recipe by uri"""
-  findRecipeByURI(uri: String!): Recipe
+  findRecipeByURI(uri: String!): EdamamRecipe
   hello(name: String): String!
+  me: User!
+  recipeList(where: RecipeListWhereUniqueInput!): RecipeList
+  recipeLists(after: String, before: String, first: Int, last: Int, orderBy: RecipeListOrderByInput, skip: Int, where: RecipeListWhereInput): [RecipeList!]!
 
   """Search for recipes"""
-  searchRecipes(filters: Filters, searchQuery: String!): [Recipe!]
+  searchRecipes(filters: Filters, searchQuery: String!): [EdamamRecipe!]
   testProtected: String!
 }
 
 type Recipe {
   calories: Float!
-  dietLabels: [String!]!
-  healthLabels: [String!]!
+  createdAt: DateTime!
+  dietLabels(after: String, before: String, first: Int, last: Int, orderBy: dietLabelOrderByInput, skip: Int, where: dietLabelWhereInput): [dietLabel!]
+  healthLabels(after: String, before: String, first: Int, last: Int, orderBy: healthLabelOrderByInput, skip: Int, where: healthLabelWhereInput): [healthLabel!]
+  id: ID!
   image: String!
   label: String!
+  servings: Int!
+  totalWeight: Float!
+  updatedAt: DateTime!
+  uri: String!
+}
+
+input RecipeCreateInput {
+  calories: Float!
+  dietLabels: dietLabelCreateManyInput
+  healthLabels: healthLabelCreateManyInput
+  id: ID
+  image: String!
+  label: String!
+  servings: Int!
   totalWeight: Float!
   uri: String!
-  yield: Int!
+}
+
+input RecipeCreateManyInput {
+  connect: [RecipeWhereUniqueInput!]
+  create: [RecipeCreateInput!]
 }
 
 type RecipeList {
   createdAt: DateTime!
   id: ID!
   name: String!
+  owner: User!
   recipes(after: String, before: String, first: Int, last: Int, orderBy: RecipeOrderByInput, skip: Int, where: RecipeWhereInput): [Recipe!]
   updatedAt: DateTime!
+}
+
+input RecipeListCreateInput {
+  id: ID
+  name: String!
+  owner: UserCreateOneWithoutRecipeListsInput!
+  recipes: RecipeCreateManyInput
 }
 
 enum RecipeListOrderByInput {
@@ -73,6 +394,12 @@ enum RecipeListOrderByInput {
   name_DESC
   updatedAt_ASC
   updatedAt_DESC
+}
+
+input RecipeListUpdateInput {
+  name: String
+  owner: UserUpdateOneRequiredWithoutRecipeListsInput
+  recipes: RecipeUpdateManyInput
 }
 
 input RecipeListWhereInput {
@@ -115,6 +442,7 @@ input RecipeListWhereInput {
   name_starts_with: String
   NOT: [RecipeListWhereInput!]
   OR: [RecipeListWhereInput!]
+  owner: UserWhereInput
   recipes_every: RecipeWhereInput
   recipes_none: RecipeWhereInput
   recipes_some: RecipeWhereInput
@@ -128,23 +456,41 @@ input RecipeListWhereInput {
   updatedAt_not_in: [DateTime!]
 }
 
+input RecipeListWhereUniqueInput {
+  id: ID
+}
+
 enum RecipeOrderByInput {
+  calories_ASC
+  calories_DESC
   createdAt_ASC
   createdAt_DESC
   id_ASC
   id_DESC
   image_ASC
   image_DESC
-  name_ASC
-  name_DESC
+  label_ASC
+  label_DESC
+  servings_ASC
+  servings_DESC
+  totalWeight_ASC
+  totalWeight_DESC
   updatedAt_ASC
   updatedAt_DESC
   uri_ASC
   uri_DESC
 }
 
-input RecipeWhereInput {
-  AND: [RecipeWhereInput!]
+input RecipeScalarWhereInput {
+  AND: [RecipeScalarWhereInput!]
+  calories: Float
+  calories_gt: Float
+  calories_gte: Float
+  calories_in: [Float!]
+  calories_lt: Float
+  calories_lte: Float
+  calories_not: Float
+  calories_not_in: [Float!]
   createdAt: DateTime
   createdAt_gt: DateTime
   createdAt_gte: DateTime
@@ -181,22 +527,38 @@ input RecipeWhereInput {
   image_not_in: [String!]
   image_not_starts_with: String
   image_starts_with: String
-  name: String
-  name_contains: String
-  name_ends_with: String
-  name_gt: String
-  name_gte: String
-  name_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_not: String
-  name_not_contains: String
-  name_not_ends_with: String
-  name_not_in: [String!]
-  name_not_starts_with: String
-  name_starts_with: String
-  NOT: [RecipeWhereInput!]
-  OR: [RecipeWhereInput!]
+  label: String
+  label_contains: String
+  label_ends_with: String
+  label_gt: String
+  label_gte: String
+  label_in: [String!]
+  label_lt: String
+  label_lte: String
+  label_not: String
+  label_not_contains: String
+  label_not_ends_with: String
+  label_not_in: [String!]
+  label_not_starts_with: String
+  label_starts_with: String
+  NOT: [RecipeScalarWhereInput!]
+  OR: [RecipeScalarWhereInput!]
+  servings: Int
+  servings_gt: Int
+  servings_gte: Int
+  servings_in: [Int!]
+  servings_lt: Int
+  servings_lte: Int
+  servings_not: Int
+  servings_not_in: [Int!]
+  totalWeight: Float
+  totalWeight_gt: Float
+  totalWeight_gte: Float
+  totalWeight_in: [Float!]
+  totalWeight_lt: Float
+  totalWeight_lte: Float
+  totalWeight_not: Float
+  totalWeight_not_in: [Float!]
   updatedAt: DateTime
   updatedAt_gt: DateTime
   updatedAt_gte: DateTime
@@ -221,6 +583,167 @@ input RecipeWhereInput {
   uri_starts_with: String
 }
 
+input RecipeUpdateDataInput {
+  calories: Float
+  dietLabels: dietLabelUpdateManyInput
+  healthLabels: healthLabelUpdateManyInput
+  image: String
+  label: String
+  servings: Int
+  totalWeight: Float
+  uri: String
+}
+
+input RecipeUpdateManyDataInput {
+  calories: Float
+  image: String
+  label: String
+  servings: Int
+  totalWeight: Float
+  uri: String
+}
+
+input RecipeUpdateManyInput {
+  connect: [RecipeWhereUniqueInput!]
+  create: [RecipeCreateInput!]
+  delete: [RecipeWhereUniqueInput!]
+  deleteMany: [RecipeScalarWhereInput!]
+  disconnect: [RecipeWhereUniqueInput!]
+  set: [RecipeWhereUniqueInput!]
+  update: [RecipeUpdateWithWhereUniqueNestedInput!]
+  updateMany: [RecipeUpdateManyWithWhereNestedInput!]
+  upsert: [RecipeUpsertWithWhereUniqueNestedInput!]
+}
+
+input RecipeUpdateManyWithWhereNestedInput {
+  data: RecipeUpdateManyDataInput!
+  where: RecipeScalarWhereInput!
+}
+
+input RecipeUpdateWithWhereUniqueNestedInput {
+  data: RecipeUpdateDataInput!
+  where: RecipeWhereUniqueInput!
+}
+
+input RecipeUpsertWithWhereUniqueNestedInput {
+  create: RecipeCreateInput!
+  update: RecipeUpdateDataInput!
+  where: RecipeWhereUniqueInput!
+}
+
+input RecipeWhereInput {
+  AND: [RecipeWhereInput!]
+  calories: Float
+  calories_gt: Float
+  calories_gte: Float
+  calories_in: [Float!]
+  calories_lt: Float
+  calories_lte: Float
+  calories_not: Float
+  calories_not_in: [Float!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  dietLabels_every: dietLabelWhereInput
+  dietLabels_none: dietLabelWhereInput
+  dietLabels_some: dietLabelWhereInput
+  healthLabels_every: healthLabelWhereInput
+  healthLabels_none: healthLabelWhereInput
+  healthLabels_some: healthLabelWhereInput
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  image: String
+  image_contains: String
+  image_ends_with: String
+  image_gt: String
+  image_gte: String
+  image_in: [String!]
+  image_lt: String
+  image_lte: String
+  image_not: String
+  image_not_contains: String
+  image_not_ends_with: String
+  image_not_in: [String!]
+  image_not_starts_with: String
+  image_starts_with: String
+  label: String
+  label_contains: String
+  label_ends_with: String
+  label_gt: String
+  label_gte: String
+  label_in: [String!]
+  label_lt: String
+  label_lte: String
+  label_not: String
+  label_not_contains: String
+  label_not_ends_with: String
+  label_not_in: [String!]
+  label_not_starts_with: String
+  label_starts_with: String
+  NOT: [RecipeWhereInput!]
+  OR: [RecipeWhereInput!]
+  servings: Int
+  servings_gt: Int
+  servings_gte: Int
+  servings_in: [Int!]
+  servings_lt: Int
+  servings_lte: Int
+  servings_not: Int
+  servings_not_in: [Int!]
+  totalWeight: Float
+  totalWeight_gt: Float
+  totalWeight_gte: Float
+  totalWeight_in: [Float!]
+  totalWeight_lt: Float
+  totalWeight_lte: Float
+  totalWeight_not: Float
+  totalWeight_not_in: [Float!]
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+  uri: String
+  uri_contains: String
+  uri_ends_with: String
+  uri_gt: String
+  uri_gte: String
+  uri_in: [String!]
+  uri_lt: String
+  uri_lte: String
+  uri_not: String
+  uri_not_contains: String
+  uri_not_ends_with: String
+  uri_not_in: [String!]
+  uri_not_starts_with: String
+  uri_starts_with: String
+}
+
+input RecipeWhereUniqueInput {
+  id: ID
+  uri: String
+}
+
 type User {
   createdAt: DateTime!
   email: String!
@@ -228,4 +751,120 @@ type User {
   name: String!
   recipeLists(after: String, before: String, first: Int, last: Int, orderBy: RecipeListOrderByInput, skip: Int, where: RecipeListWhereInput): [RecipeList!]
   updatedAt: DateTime!
+}
+
+input UserCreateOneWithoutRecipeListsInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutRecipeListsInput
+}
+
+input UserCreateWithoutRecipeListsInput {
+  email: String!
+  id: ID
+  name: String!
+  password: String!
+}
+
+input UserUpdateOneRequiredWithoutRecipeListsInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutRecipeListsInput
+  update: UserUpdateWithoutRecipeListsDataInput
+  upsert: UserUpsertWithoutRecipeListsInput
+}
+
+input UserUpdateWithoutRecipeListsDataInput {
+  email: String
+  name: String
+  password: String
+}
+
+input UserUpsertWithoutRecipeListsInput {
+  create: UserCreateWithoutRecipeListsInput!
+  update: UserUpdateWithoutRecipeListsDataInput!
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  createdAt: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_not: DateTime
+  createdAt_not_in: [DateTime!]
+  email: String
+  email_contains: String
+  email_ends_with: String
+  email_gt: String
+  email_gte: String
+  email_in: [String!]
+  email_lt: String
+  email_lte: String
+  email_not: String
+  email_not_contains: String
+  email_not_ends_with: String
+  email_not_in: [String!]
+  email_not_starts_with: String
+  email_starts_with: String
+  id: ID
+  id_contains: ID
+  id_ends_with: ID
+  id_gt: ID
+  id_gte: ID
+  id_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_not: ID
+  id_not_contains: ID
+  id_not_ends_with: ID
+  id_not_in: [ID!]
+  id_not_starts_with: ID
+  id_starts_with: ID
+  name: String
+  name_contains: String
+  name_ends_with: String
+  name_gt: String
+  name_gte: String
+  name_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_not: String
+  name_not_contains: String
+  name_not_ends_with: String
+  name_not_in: [String!]
+  name_not_starts_with: String
+  name_starts_with: String
+  NOT: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  password: String
+  password_contains: String
+  password_ends_with: String
+  password_gt: String
+  password_gte: String
+  password_in: [String!]
+  password_lt: String
+  password_lte: String
+  password_not: String
+  password_not_contains: String
+  password_not_ends_with: String
+  password_not_in: [String!]
+  password_not_starts_with: String
+  password_starts_with: String
+  recipeLists_every: RecipeListWhereInput
+  recipeLists_none: RecipeListWhereInput
+  recipeLists_some: RecipeListWhereInput
+  updatedAt: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_not: DateTime
+  updatedAt_not_in: [DateTime!]
+}
+
+input UserWhereUniqueInput {
+  email: String
+  id: ID
 }

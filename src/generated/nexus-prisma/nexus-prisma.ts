@@ -18,6 +18,8 @@ export interface NexusPrismaTypes {
       User: UserObject
       RecipeList: RecipeListObject
       Recipe: RecipeObject
+      healthLabel: healthLabelObject
+      dietLabel: dietLabelObject
       UserConnection: UserConnectionObject
       PageInfo: PageInfoObject
       UserEdge: UserEdgeObject
@@ -28,6 +30,12 @@ export interface NexusPrismaTypes {
       RecipeListConnection: RecipeListConnectionObject
       RecipeListEdge: RecipeListEdgeObject
       AggregateRecipeList: AggregateRecipeListObject
+      healthLabelConnection: healthLabelConnectionObject
+      healthLabelEdge: healthLabelEdgeObject
+      AggregatehealthLabel: AggregatehealthLabelObject
+      dietLabelConnection: dietLabelConnectionObject
+      dietLabelEdge: dietLabelEdgeObject
+      AggregatedietLabel: AggregatedietLabelObject
       Mutation: MutationObject
       BatchPayload: BatchPayloadObject
       Subscription: SubscriptionObject
@@ -37,12 +45,18 @@ export interface NexusPrismaTypes {
       RecipePreviousValues: RecipePreviousValuesObject
       RecipeListSubscriptionPayload: RecipeListSubscriptionPayloadObject
       RecipeListPreviousValues: RecipeListPreviousValuesObject
+      healthLabelSubscriptionPayload: healthLabelSubscriptionPayloadObject
+      healthLabelPreviousValues: healthLabelPreviousValuesObject
+      dietLabelSubscriptionPayload: dietLabelSubscriptionPayloadObject
+      dietLabelPreviousValues: dietLabelPreviousValuesObject
     }
     fieldsDetails: {
       Query: QueryFieldDetails
       User: UserFieldDetails
       RecipeList: RecipeListFieldDetails
       Recipe: RecipeFieldDetails
+      healthLabel: healthLabelFieldDetails
+      dietLabel: dietLabelFieldDetails
       UserConnection: UserConnectionFieldDetails
       PageInfo: PageInfoFieldDetails
       UserEdge: UserEdgeFieldDetails
@@ -53,6 +67,12 @@ export interface NexusPrismaTypes {
       RecipeListConnection: RecipeListConnectionFieldDetails
       RecipeListEdge: RecipeListEdgeFieldDetails
       AggregateRecipeList: AggregateRecipeListFieldDetails
+      healthLabelConnection: healthLabelConnectionFieldDetails
+      healthLabelEdge: healthLabelEdgeFieldDetails
+      AggregatehealthLabel: AggregatehealthLabelFieldDetails
+      dietLabelConnection: dietLabelConnectionFieldDetails
+      dietLabelEdge: dietLabelEdgeFieldDetails
+      AggregatedietLabel: AggregatedietLabelFieldDetails
       Mutation: MutationFieldDetails
       BatchPayload: BatchPayloadFieldDetails
       Subscription: SubscriptionFieldDetails
@@ -62,6 +82,10 @@ export interface NexusPrismaTypes {
       RecipePreviousValues: RecipePreviousValuesFieldDetails
       RecipeListSubscriptionPayload: RecipeListSubscriptionPayloadFieldDetails
       RecipeListPreviousValues: RecipeListPreviousValuesFieldDetails
+      healthLabelSubscriptionPayload: healthLabelSubscriptionPayloadFieldDetails
+      healthLabelPreviousValues: healthLabelPreviousValuesFieldDetails
+      dietLabelSubscriptionPayload: dietLabelSubscriptionPayloadFieldDetails
+      dietLabelPreviousValues: dietLabelPreviousValuesFieldDetails
     }
   }
   inputTypes: {
@@ -69,42 +93,78 @@ export interface NexusPrismaTypes {
       UserWhereUniqueInput: UserWhereUniqueInputInputObject
       RecipeListWhereInput: RecipeListWhereInputInputObject
       RecipeWhereInput: RecipeWhereInputInputObject
+      healthLabelWhereInput: healthLabelWhereInputInputObject
+      dietLabelWhereInput: dietLabelWhereInputInputObject
       UserWhereInput: UserWhereInputInputObject
       RecipeWhereUniqueInput: RecipeWhereUniqueInputInputObject
       RecipeListWhereUniqueInput: RecipeListWhereUniqueInputInputObject
+      healthLabelWhereUniqueInput: healthLabelWhereUniqueInputInputObject
+      dietLabelWhereUniqueInput: dietLabelWhereUniqueInputInputObject
       UserCreateInput: UserCreateInputInputObject
-      RecipeListCreateManyInput: RecipeListCreateManyInputInputObject
-      RecipeListCreateInput: RecipeListCreateInputInputObject
+      RecipeListCreateManyWithoutOwnerInput: RecipeListCreateManyWithoutOwnerInputInputObject
+      RecipeListCreateWithoutOwnerInput: RecipeListCreateWithoutOwnerInputInputObject
       RecipeCreateManyInput: RecipeCreateManyInputInputObject
       RecipeCreateInput: RecipeCreateInputInputObject
+      healthLabelCreateManyInput: healthLabelCreateManyInputInputObject
+      healthLabelCreateInput: healthLabelCreateInputInputObject
+      dietLabelCreateManyInput: dietLabelCreateManyInputInputObject
+      dietLabelCreateInput: dietLabelCreateInputInputObject
       UserUpdateInput: UserUpdateInputInputObject
-      RecipeListUpdateManyInput: RecipeListUpdateManyInputInputObject
-      RecipeListUpdateWithWhereUniqueNestedInput: RecipeListUpdateWithWhereUniqueNestedInputInputObject
-      RecipeListUpdateDataInput: RecipeListUpdateDataInputInputObject
+      RecipeListUpdateManyWithoutOwnerInput: RecipeListUpdateManyWithoutOwnerInputInputObject
+      RecipeListUpdateWithWhereUniqueWithoutOwnerInput: RecipeListUpdateWithWhereUniqueWithoutOwnerInputInputObject
+      RecipeListUpdateWithoutOwnerDataInput: RecipeListUpdateWithoutOwnerDataInputInputObject
       RecipeUpdateManyInput: RecipeUpdateManyInputInputObject
       RecipeUpdateWithWhereUniqueNestedInput: RecipeUpdateWithWhereUniqueNestedInputInputObject
       RecipeUpdateDataInput: RecipeUpdateDataInputInputObject
+      healthLabelUpdateManyInput: healthLabelUpdateManyInputInputObject
+      healthLabelUpdateWithWhereUniqueNestedInput: healthLabelUpdateWithWhereUniqueNestedInputInputObject
+      healthLabelUpdateDataInput: healthLabelUpdateDataInputInputObject
+      healthLabelUpsertWithWhereUniqueNestedInput: healthLabelUpsertWithWhereUniqueNestedInputInputObject
+      healthLabelScalarWhereInput: healthLabelScalarWhereInputInputObject
+      healthLabelUpdateManyWithWhereNestedInput: healthLabelUpdateManyWithWhereNestedInputInputObject
+      healthLabelUpdateManyDataInput: healthLabelUpdateManyDataInputInputObject
+      dietLabelUpdateManyInput: dietLabelUpdateManyInputInputObject
+      dietLabelUpdateWithWhereUniqueNestedInput: dietLabelUpdateWithWhereUniqueNestedInputInputObject
+      dietLabelUpdateDataInput: dietLabelUpdateDataInputInputObject
+      dietLabelUpsertWithWhereUniqueNestedInput: dietLabelUpsertWithWhereUniqueNestedInputInputObject
+      dietLabelScalarWhereInput: dietLabelScalarWhereInputInputObject
+      dietLabelUpdateManyWithWhereNestedInput: dietLabelUpdateManyWithWhereNestedInputInputObject
+      dietLabelUpdateManyDataInput: dietLabelUpdateManyDataInputInputObject
       RecipeUpsertWithWhereUniqueNestedInput: RecipeUpsertWithWhereUniqueNestedInputInputObject
       RecipeScalarWhereInput: RecipeScalarWhereInputInputObject
       RecipeUpdateManyWithWhereNestedInput: RecipeUpdateManyWithWhereNestedInputInputObject
       RecipeUpdateManyDataInput: RecipeUpdateManyDataInputInputObject
-      RecipeListUpsertWithWhereUniqueNestedInput: RecipeListUpsertWithWhereUniqueNestedInputInputObject
+      RecipeListUpsertWithWhereUniqueWithoutOwnerInput: RecipeListUpsertWithWhereUniqueWithoutOwnerInputInputObject
       RecipeListScalarWhereInput: RecipeListScalarWhereInputInputObject
       RecipeListUpdateManyWithWhereNestedInput: RecipeListUpdateManyWithWhereNestedInputInputObject
       RecipeListUpdateManyDataInput: RecipeListUpdateManyDataInputInputObject
       UserUpdateManyMutationInput: UserUpdateManyMutationInputInputObject
       RecipeUpdateInput: RecipeUpdateInputInputObject
       RecipeUpdateManyMutationInput: RecipeUpdateManyMutationInputInputObject
+      RecipeListCreateInput: RecipeListCreateInputInputObject
+      UserCreateOneWithoutRecipeListsInput: UserCreateOneWithoutRecipeListsInputInputObject
+      UserCreateWithoutRecipeListsInput: UserCreateWithoutRecipeListsInputInputObject
       RecipeListUpdateInput: RecipeListUpdateInputInputObject
+      UserUpdateOneRequiredWithoutRecipeListsInput: UserUpdateOneRequiredWithoutRecipeListsInputInputObject
+      UserUpdateWithoutRecipeListsDataInput: UserUpdateWithoutRecipeListsDataInputInputObject
+      UserUpsertWithoutRecipeListsInput: UserUpsertWithoutRecipeListsInputInputObject
       RecipeListUpdateManyMutationInput: RecipeListUpdateManyMutationInputInputObject
+      healthLabelUpdateInput: healthLabelUpdateInputInputObject
+      healthLabelUpdateManyMutationInput: healthLabelUpdateManyMutationInputInputObject
+      dietLabelUpdateInput: dietLabelUpdateInputInputObject
+      dietLabelUpdateManyMutationInput: dietLabelUpdateManyMutationInputInputObject
       UserSubscriptionWhereInput: UserSubscriptionWhereInputInputObject
       RecipeSubscriptionWhereInput: RecipeSubscriptionWhereInputInputObject
       RecipeListSubscriptionWhereInput: RecipeListSubscriptionWhereInputInputObject
+      healthLabelSubscriptionWhereInput: healthLabelSubscriptionWhereInputInputObject
+      dietLabelSubscriptionWhereInput: dietLabelSubscriptionWhereInputInputObject
     }
   }
   enumTypes: {
     RecipeListOrderByInput: RecipeListOrderByInputValues,
     RecipeOrderByInput: RecipeOrderByInputValues,
+    healthLabelOrderByInput: healthLabelOrderByInputValues,
+    dietLabelOrderByInput: dietLabelOrderByInputValues,
     UserOrderByInput: UserOrderByInputValues,
     MutationType: MutationTypeValues,
   }
@@ -123,6 +183,12 @@ type QueryObject =
   | { name: 'recipeList', args?: QueryRecipeListArgs[] | false, alias?: string  } 
   | { name: 'recipeLists', args?: QueryRecipeListsArgs[] | false, alias?: string  } 
   | { name: 'recipeListsConnection', args?: QueryRecipeListsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'healthLabel', args?: QueryHealthLabelArgs[] | false, alias?: string  } 
+  | { name: 'healthLabels', args?: QueryHealthLabelsArgs[] | false, alias?: string  } 
+  | { name: 'healthLabelsConnection', args?: QueryHealthLabelsConnectionArgs[] | false, alias?: string  } 
+  | { name: 'dietLabel', args?: QueryDietLabelArgs[] | false, alias?: string  } 
+  | { name: 'dietLabels', args?: QueryDietLabelsArgs[] | false, alias?: string  } 
+  | { name: 'dietLabelsConnection', args?: QueryDietLabelsConnectionArgs[] | false, alias?: string  } 
 
 type QueryFields =
   | 'user'
@@ -134,6 +200,12 @@ type QueryFields =
   | 'recipeList'
   | 'recipeLists'
   | 'recipeListsConnection'
+  | 'healthLabel'
+  | 'healthLabels'
+  | 'healthLabelsConnection'
+  | 'dietLabel'
+  | 'dietLabels'
+  | 'dietLabelsConnection'
 
 
 type QueryUserArgs =
@@ -183,6 +255,42 @@ type QueryRecipeListsArgs =
   | 'first'
   | 'last'
 type QueryRecipeListsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryHealthLabelArgs =
+  | 'where'
+type QueryHealthLabelsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryHealthLabelsConnectionArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryDietLabelArgs =
+  | 'where'
+type QueryDietLabelsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type QueryDietLabelsConnectionArgs =
   | 'where'
   | 'orderBy'
   | 'skip'
@@ -310,6 +418,84 @@ export interface QueryFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.RecipeListConnection> | prisma.RecipeListConnection
   }
+  healthLabel: {
+    type: 'healthLabel'
+    args: Record<QueryHealthLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: healthLabelWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabel | null> | prisma.healthLabel | null
+  }
+  healthLabels: {
+    type: 'healthLabel'
+    args: Record<QueryHealthLabelsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: healthLabelWhereInput | null, orderBy?: prisma.healthLabelOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabel[]> | prisma.healthLabel[]
+  }
+  healthLabelsConnection: {
+    type: 'healthLabelConnection'
+    args: Record<QueryHealthLabelsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: healthLabelWhereInput | null, orderBy?: prisma.healthLabelOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabelConnection> | prisma.healthLabelConnection
+  }
+  dietLabel: {
+    type: 'dietLabel'
+    args: Record<QueryDietLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where: dietLabelWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabel | null> | prisma.dietLabel | null
+  }
+  dietLabels: {
+    type: 'dietLabel'
+    args: Record<QueryDietLabelsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: dietLabelWhereInput | null, orderBy?: prisma.dietLabelOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabel[]> | prisma.dietLabel[]
+  }
+  dietLabelsConnection: {
+    type: 'dietLabelConnection'
+    args: Record<QueryDietLabelsConnectionArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Query">,
+      args: { where?: dietLabelWhereInput | null, orderBy?: prisma.dietLabelOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabelConnection> | prisma.dietLabelConnection
+  }
 }
   
 
@@ -417,6 +603,7 @@ type RecipeListObject =
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'name', args?: [] | false, alias?: string  } 
   | { name: 'recipes', args?: RecipeListRecipesArgs[] | false, alias?: string  } 
+  | { name: 'owner', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
@@ -424,6 +611,7 @@ type RecipeListFields =
   | 'id'
   | 'name'
   | 'recipes'
+  | 'owner'
   | 'createdAt'
   | 'updatedAt'
 
@@ -468,6 +656,19 @@ export interface RecipeListFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.Recipe[]> | prisma.Recipe[]
   }
+  owner: {
+    type: 'User'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"RecipeList">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.User> | prisma.User
+  }
   createdAt: {
     type: 'DateTime'
     args: {}
@@ -492,22 +693,47 @@ export interface RecipeListFieldDetails {
 type RecipeObject =
   | RecipeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'label', args?: [] | false, alias?: string  } 
   | { name: 'uri', args?: [] | false, alias?: string  } 
   | { name: 'image', args?: [] | false, alias?: string  } 
+  | { name: 'servings', args?: [] | false, alias?: string  } 
+  | { name: 'calories', args?: [] | false, alias?: string  } 
+  | { name: 'totalWeight', args?: [] | false, alias?: string  } 
+  | { name: 'healthLabels', args?: RecipeHealthLabelsArgs[] | false, alias?: string  } 
+  | { name: 'dietLabels', args?: RecipeDietLabelsArgs[] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
 type RecipeFields =
   | 'id'
-  | 'name'
+  | 'label'
   | 'uri'
   | 'image'
+  | 'servings'
+  | 'calories'
+  | 'totalWeight'
+  | 'healthLabels'
+  | 'dietLabels'
   | 'createdAt'
   | 'updatedAt'
 
 
-
+type RecipeHealthLabelsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
+type RecipeDietLabelsArgs =
+  | 'where'
+  | 'orderBy'
+  | 'skip'
+  | 'after'
+  | 'before'
+  | 'first'
+  | 'last'
   
 
 export interface RecipeFieldDetails {
@@ -519,7 +745,7 @@ export interface RecipeFieldDetails {
     nullable: false
     resolve: undefined
   }
-  name: {
+  label: {
     type: 'String'
     args: {}
     description: string
@@ -543,6 +769,56 @@ export interface RecipeFieldDetails {
     nullable: false
     resolve: undefined
   }
+  servings: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  calories: {
+    type: 'Float'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  totalWeight: {
+    type: 'Float'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  healthLabels: {
+    type: 'healthLabel'
+    args: Record<RecipeHealthLabelsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Recipe">,
+      args: { where?: healthLabelWhereInput | null, orderBy?: prisma.healthLabelOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabel[]> | prisma.healthLabel[]
+  }
+  dietLabels: {
+    type: 'dietLabel'
+    args: Record<RecipeDietLabelsArgs, core.NexusArgDef<string>>
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Recipe">,
+      args: { where?: dietLabelWhereInput | null, orderBy?: prisma.dietLabelOrderByInput | null, skip?: number | null, after?: string | null, before?: string | null, first?: number | null, last?: number | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabel[]> | prisma.dietLabel[]
+  }
   createdAt: {
     type: 'DateTime'
     args: {}
@@ -553,6 +829,76 @@ export interface RecipeFieldDetails {
   }
   updatedAt: {
     type: 'DateTime'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for healthLabel
+
+type healthLabelObject =
+  | healthLabelFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'label', args?: [] | false, alias?: string  } 
+
+type healthLabelFields =
+  | 'id'
+  | 'label'
+
+
+
+  
+
+export interface healthLabelFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  label: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for dietLabel
+
+type dietLabelObject =
+  | dietLabelFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'label', args?: [] | false, alias?: string  } 
+
+type dietLabelFields =
+  | 'id'
+  | 'label'
+
+
+
+  
+
+export interface dietLabelFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  label: {
+    type: 'String'
     args: {}
     description: string
     list: undefined
@@ -992,6 +1338,256 @@ export interface AggregateRecipeListFieldDetails {
 }
   
 
+// Types for healthLabelConnection
+
+type healthLabelConnectionObject =
+  | healthLabelConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type healthLabelConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface healthLabelConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"healthLabelConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'healthLabelEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"healthLabelConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabelEdge[]> | prisma.healthLabelEdge[]
+  }
+  aggregate: {
+    type: 'AggregatehealthLabel'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"healthLabelConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregatehealthLabel> | prisma.AggregatehealthLabel
+  }
+}
+  
+
+// Types for healthLabelEdge
+
+type healthLabelEdgeObject =
+  | healthLabelEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type healthLabelEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface healthLabelEdgeFieldDetails {
+  node: {
+    type: 'healthLabel'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"healthLabelEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabel> | prisma.healthLabel
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregatehealthLabel
+
+type AggregatehealthLabelObject =
+  | AggregatehealthLabelFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregatehealthLabelFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregatehealthLabelFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for dietLabelConnection
+
+type dietLabelConnectionObject =
+  | dietLabelConnectionFields
+  | { name: 'pageInfo', args?: [] | false, alias?: string  } 
+  | { name: 'edges', args?: [] | false, alias?: string  } 
+  | { name: 'aggregate', args?: [] | false, alias?: string  } 
+
+type dietLabelConnectionFields =
+  | 'pageInfo'
+  | 'edges'
+  | 'aggregate'
+
+
+
+  
+
+export interface dietLabelConnectionFieldDetails {
+  pageInfo: {
+    type: 'PageInfo'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"dietLabelConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.PageInfo> | prisma.PageInfo
+  }
+  edges: {
+    type: 'dietLabelEdge'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: (
+      root: core.RootValue<"dietLabelConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabelEdge[]> | prisma.dietLabelEdge[]
+  }
+  aggregate: {
+    type: 'AggregatedietLabel'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"dietLabelConnection">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.AggregatedietLabel> | prisma.AggregatedietLabel
+  }
+}
+  
+
+// Types for dietLabelEdge
+
+type dietLabelEdgeObject =
+  | dietLabelEdgeFields
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'cursor', args?: [] | false, alias?: string  } 
+
+type dietLabelEdgeFields =
+  | 'node'
+  | 'cursor'
+
+
+
+  
+
+export interface dietLabelEdgeFieldDetails {
+  node: {
+    type: 'dietLabel'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"dietLabelEdge">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabel> | prisma.dietLabel
+  }
+  cursor: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for AggregatedietLabel
+
+type AggregatedietLabelObject =
+  | AggregatedietLabelFields
+  | { name: 'count', args?: [] | false, alias?: string  } 
+
+type AggregatedietLabelFields =
+  | 'count'
+
+
+
+  
+
+export interface AggregatedietLabelFieldDetails {
+  count: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 // Types for Mutation
 
 type MutationObject =
@@ -1014,6 +1610,18 @@ type MutationObject =
   | { name: 'upsertRecipeList', args?: MutationUpsertRecipeListArgs[] | false, alias?: string  } 
   | { name: 'deleteRecipeList', args?: MutationDeleteRecipeListArgs[] | false, alias?: string  } 
   | { name: 'deleteManyRecipeLists', args?: MutationDeleteManyRecipeListsArgs[] | false, alias?: string  } 
+  | { name: 'createhealthLabel', args?: MutationCreatehealthLabelArgs[] | false, alias?: string  } 
+  | { name: 'updatehealthLabel', args?: MutationUpdatehealthLabelArgs[] | false, alias?: string  } 
+  | { name: 'updateManyhealthLabels', args?: MutationUpdateManyhealthLabelsArgs[] | false, alias?: string  } 
+  | { name: 'upserthealthLabel', args?: MutationUpserthealthLabelArgs[] | false, alias?: string  } 
+  | { name: 'deletehealthLabel', args?: MutationDeletehealthLabelArgs[] | false, alias?: string  } 
+  | { name: 'deleteManyhealthLabels', args?: MutationDeleteManyhealthLabelsArgs[] | false, alias?: string  } 
+  | { name: 'createdietLabel', args?: MutationCreatedietLabelArgs[] | false, alias?: string  } 
+  | { name: 'updatedietLabel', args?: MutationUpdatedietLabelArgs[] | false, alias?: string  } 
+  | { name: 'updateManydietLabels', args?: MutationUpdateManydietLabelsArgs[] | false, alias?: string  } 
+  | { name: 'upsertdietLabel', args?: MutationUpsertdietLabelArgs[] | false, alias?: string  } 
+  | { name: 'deletedietLabel', args?: MutationDeletedietLabelArgs[] | false, alias?: string  } 
+  | { name: 'deleteManydietLabels', args?: MutationDeleteManydietLabelsArgs[] | false, alias?: string  } 
 
 type MutationFields =
   | 'createUser'
@@ -1034,6 +1642,18 @@ type MutationFields =
   | 'upsertRecipeList'
   | 'deleteRecipeList'
   | 'deleteManyRecipeLists'
+  | 'createhealthLabel'
+  | 'updatehealthLabel'
+  | 'updateManyhealthLabels'
+  | 'upserthealthLabel'
+  | 'deletehealthLabel'
+  | 'deleteManyhealthLabels'
+  | 'createdietLabel'
+  | 'updatedietLabel'
+  | 'updateManydietLabels'
+  | 'upsertdietLabel'
+  | 'deletedietLabel'
+  | 'deleteManydietLabels'
 
 
 type MutationCreateUserArgs =
@@ -1083,6 +1703,38 @@ type MutationUpsertRecipeListArgs =
 type MutationDeleteRecipeListArgs =
   | 'where'
 type MutationDeleteManyRecipeListsArgs =
+  | 'where'
+type MutationCreatehealthLabelArgs =
+  | 'data'
+type MutationUpdatehealthLabelArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManyhealthLabelsArgs =
+  | 'data'
+  | 'where'
+type MutationUpserthealthLabelArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeletehealthLabelArgs =
+  | 'where'
+type MutationDeleteManyhealthLabelsArgs =
+  | 'where'
+type MutationCreatedietLabelArgs =
+  | 'data'
+type MutationUpdatedietLabelArgs =
+  | 'data'
+  | 'where'
+type MutationUpdateManydietLabelsArgs =
+  | 'data'
+  | 'where'
+type MutationUpsertdietLabelArgs =
+  | 'where'
+  | 'create'
+  | 'update'
+type MutationDeletedietLabelArgs =
+  | 'where'
+type MutationDeleteManydietLabelsArgs =
   | 'where'
   
 
@@ -1321,6 +1973,162 @@ export interface MutationFieldDetails {
       info?: GraphQLResolveInfo
     ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
   }
+  createhealthLabel: {
+    type: 'healthLabel'
+    args: Record<MutationCreatehealthLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: healthLabelCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabel> | prisma.healthLabel
+  }
+  updatehealthLabel: {
+    type: 'healthLabel'
+    args: Record<MutationUpdatehealthLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: healthLabelUpdateInput, where: healthLabelWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabel | null> | prisma.healthLabel | null
+  }
+  updateManyhealthLabels: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManyhealthLabelsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: healthLabelUpdateManyMutationInput, where?: healthLabelWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upserthealthLabel: {
+    type: 'healthLabel'
+    args: Record<MutationUpserthealthLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: healthLabelWhereUniqueInput, create: healthLabelCreateInput, update: healthLabelUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabel> | prisma.healthLabel
+  }
+  deletehealthLabel: {
+    type: 'healthLabel'
+    args: Record<MutationDeletehealthLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: healthLabelWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabel | null> | prisma.healthLabel | null
+  }
+  deleteManyhealthLabels: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManyhealthLabelsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: healthLabelWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  createdietLabel: {
+    type: 'dietLabel'
+    args: Record<MutationCreatedietLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: dietLabelCreateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabel> | prisma.dietLabel
+  }
+  updatedietLabel: {
+    type: 'dietLabel'
+    args: Record<MutationUpdatedietLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: dietLabelUpdateInput, where: dietLabelWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabel | null> | prisma.dietLabel | null
+  }
+  updateManydietLabels: {
+    type: 'BatchPayload'
+    args: Record<MutationUpdateManydietLabelsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { data: dietLabelUpdateManyMutationInput, where?: dietLabelWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
+  upsertdietLabel: {
+    type: 'dietLabel'
+    args: Record<MutationUpsertdietLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: dietLabelWhereUniqueInput, create: dietLabelCreateInput, update: dietLabelUpdateInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabel> | prisma.dietLabel
+  }
+  deletedietLabel: {
+    type: 'dietLabel'
+    args: Record<MutationDeletedietLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where: dietLabelWhereUniqueInput }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabel | null> | prisma.dietLabel | null
+  }
+  deleteManydietLabels: {
+    type: 'BatchPayload'
+    args: Record<MutationDeleteManydietLabelsArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"Mutation">,
+      args: { where?: dietLabelWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.BatchPayload> | prisma.BatchPayload
+  }
 }
   
 
@@ -1356,11 +2164,15 @@ type SubscriptionObject =
   | { name: 'user', args?: SubscriptionUserArgs[] | false, alias?: string  } 
   | { name: 'recipe', args?: SubscriptionRecipeArgs[] | false, alias?: string  } 
   | { name: 'recipeList', args?: SubscriptionRecipeListArgs[] | false, alias?: string  } 
+  | { name: 'healthLabel', args?: SubscriptionHealthLabelArgs[] | false, alias?: string  } 
+  | { name: 'dietLabel', args?: SubscriptionDietLabelArgs[] | false, alias?: string  } 
 
 type SubscriptionFields =
   | 'user'
   | 'recipe'
   | 'recipeList'
+  | 'healthLabel'
+  | 'dietLabel'
 
 
 type SubscriptionUserArgs =
@@ -1368,6 +2180,10 @@ type SubscriptionUserArgs =
 type SubscriptionRecipeArgs =
   | 'where'
 type SubscriptionRecipeListArgs =
+  | 'where'
+type SubscriptionHealthLabelArgs =
+  | 'where'
+type SubscriptionDietLabelArgs =
   | 'where'
   
 
@@ -1410,6 +2226,32 @@ export interface SubscriptionFieldDetails {
       context: core.GetGen<"context">,
       info?: GraphQLResolveInfo
     ) => Promise<prisma.RecipeListSubscriptionPayload | null> | prisma.RecipeListSubscriptionPayload | null
+  }
+  healthLabel: {
+    type: 'healthLabelSubscriptionPayload'
+    args: Record<SubscriptionHealthLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: healthLabelSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabelSubscriptionPayload | null> | prisma.healthLabelSubscriptionPayload | null
+  }
+  dietLabel: {
+    type: 'dietLabelSubscriptionPayload'
+    args: Record<SubscriptionDietLabelArgs, core.NexusArgDef<string>>
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"Subscription">,
+      args: { where?: dietLabelSubscriptionWhereInput | null }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabelSubscriptionPayload | null> | prisma.dietLabelSubscriptionPayload | null
   }
 }
   
@@ -1634,17 +2476,23 @@ export interface RecipeSubscriptionPayloadFieldDetails {
 type RecipePreviousValuesObject =
   | RecipePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
-  | { name: 'name', args?: [] | false, alias?: string  } 
+  | { name: 'label', args?: [] | false, alias?: string  } 
   | { name: 'uri', args?: [] | false, alias?: string  } 
   | { name: 'image', args?: [] | false, alias?: string  } 
+  | { name: 'servings', args?: [] | false, alias?: string  } 
+  | { name: 'calories', args?: [] | false, alias?: string  } 
+  | { name: 'totalWeight', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
   | { name: 'updatedAt', args?: [] | false, alias?: string  } 
 
 type RecipePreviousValuesFields =
   | 'id'
-  | 'name'
+  | 'label'
   | 'uri'
   | 'image'
+  | 'servings'
+  | 'calories'
+  | 'totalWeight'
   | 'createdAt'
   | 'updatedAt'
 
@@ -1661,7 +2509,7 @@ export interface RecipePreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  name: {
+  label: {
     type: 'String'
     args: {}
     description: string
@@ -1679,6 +2527,30 @@ export interface RecipePreviousValuesFieldDetails {
   }
   image: {
     type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  servings: {
+    type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  calories: {
+    type: 'Float'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  totalWeight: {
+    type: 'Float'
     args: {}
     description: string
     list: undefined
@@ -1829,6 +2701,216 @@ export interface RecipeListPreviousValuesFieldDetails {
 }
   
 
+// Types for healthLabelSubscriptionPayload
+
+type healthLabelSubscriptionPayloadObject =
+  | healthLabelSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type healthLabelSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface healthLabelSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"healthLabelSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'healthLabel'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"healthLabelSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabel | null> | prisma.healthLabel | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'healthLabelPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"healthLabelSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.healthLabelPreviousValues | null> | prisma.healthLabelPreviousValues | null
+  }
+}
+  
+
+// Types for healthLabelPreviousValues
+
+type healthLabelPreviousValuesObject =
+  | healthLabelPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'label', args?: [] | false, alias?: string  } 
+
+type healthLabelPreviousValuesFields =
+  | 'id'
+  | 'label'
+
+
+
+  
+
+export interface healthLabelPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  label: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
+// Types for dietLabelSubscriptionPayload
+
+type dietLabelSubscriptionPayloadObject =
+  | dietLabelSubscriptionPayloadFields
+  | { name: 'mutation', args?: [] | false, alias?: string  } 
+  | { name: 'node', args?: [] | false, alias?: string  } 
+  | { name: 'updatedFields', args?: [] | false, alias?: string  } 
+  | { name: 'previousValues', args?: [] | false, alias?: string  } 
+
+type dietLabelSubscriptionPayloadFields =
+  | 'mutation'
+  | 'node'
+  | 'updatedFields'
+  | 'previousValues'
+
+
+
+  
+
+export interface dietLabelSubscriptionPayloadFieldDetails {
+  mutation: {
+    type: 'MutationType'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: (
+      root: core.RootValue<"dietLabelSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.MutationType> | prisma.MutationType
+  }
+  node: {
+    type: 'dietLabel'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"dietLabelSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabel | null> | prisma.dietLabel | null
+  }
+  updatedFields: {
+    type: 'String'
+    args: {}
+    description: string
+    list: true
+    nullable: false
+    resolve: undefined
+  }
+  previousValues: {
+    type: 'dietLabelPreviousValues'
+    args: {}
+    description: string
+    list: undefined
+    nullable: true
+    resolve: (
+      root: core.RootValue<"dietLabelSubscriptionPayload">,
+      args: {  }  ,
+      context: core.GetGen<"context">,
+      info?: GraphQLResolveInfo
+    ) => Promise<prisma.dietLabelPreviousValues | null> | prisma.dietLabelPreviousValues | null
+  }
+}
+  
+
+// Types for dietLabelPreviousValues
+
+type dietLabelPreviousValuesObject =
+  | dietLabelPreviousValuesFields
+  | { name: 'id', args?: [] | false, alias?: string  } 
+  | { name: 'label', args?: [] | false, alias?: string  } 
+
+type dietLabelPreviousValuesFields =
+  | 'id'
+  | 'label'
+
+
+
+  
+
+export interface dietLabelPreviousValuesFieldDetails {
+  id: {
+    type: 'ID'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  label: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+}
+  
+
 
 export interface UserWhereUniqueInput {
   id?: string | null
@@ -1871,6 +2953,7 @@ export interface RecipeListWhereInput {
   recipes_every?: RecipeWhereInput | null
   recipes_some?: RecipeWhereInput | null
   recipes_none?: RecipeWhereInput | null
+  owner?: UserWhereInput | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -1924,6 +3007,7 @@ export type RecipeListWhereInputInputObject =
   | { name: 'recipes_every', alias?: string  } 
   | { name: 'recipes_some', alias?: string  } 
   | { name: 'recipes_none', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -1959,20 +3043,20 @@ export interface RecipeWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
+  label?: string | null
+  label_not?: string | null
+  label_in?: string[]
+  label_not_in?: string[]
+  label_lt?: string | null
+  label_lte?: string | null
+  label_gt?: string | null
+  label_gte?: string | null
+  label_contains?: string | null
+  label_not_contains?: string | null
+  label_starts_with?: string | null
+  label_not_starts_with?: string | null
+  label_ends_with?: string | null
+  label_not_ends_with?: string | null
   uri?: string | null
   uri_not?: string | null
   uri_in?: string[]
@@ -2001,6 +3085,36 @@ export interface RecipeWhereInput {
   image_not_starts_with?: string | null
   image_ends_with?: string | null
   image_not_ends_with?: string | null
+  servings?: number | null
+  servings_not?: number | null
+  servings_in?: number[]
+  servings_not_in?: number[]
+  servings_lt?: number | null
+  servings_lte?: number | null
+  servings_gt?: number | null
+  servings_gte?: number | null
+  calories?: number | null
+  calories_not?: number | null
+  calories_in?: number[]
+  calories_not_in?: number[]
+  calories_lt?: number | null
+  calories_lte?: number | null
+  calories_gt?: number | null
+  calories_gte?: number | null
+  totalWeight?: number | null
+  totalWeight_not?: number | null
+  totalWeight_in?: number[]
+  totalWeight_not_in?: number[]
+  totalWeight_lt?: number | null
+  totalWeight_lte?: number | null
+  totalWeight_gt?: number | null
+  totalWeight_gte?: number | null
+  healthLabels_every?: healthLabelWhereInput | null
+  healthLabels_some?: healthLabelWhereInput | null
+  healthLabels_none?: healthLabelWhereInput | null
+  dietLabels_every?: dietLabelWhereInput | null
+  dietLabels_some?: dietLabelWhereInput | null
+  dietLabels_none?: dietLabelWhereInput | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -2037,20 +3151,20 @@ export type RecipeWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'label', alias?: string  } 
+  | { name: 'label_not', alias?: string  } 
+  | { name: 'label_in', alias?: string  } 
+  | { name: 'label_not_in', alias?: string  } 
+  | { name: 'label_lt', alias?: string  } 
+  | { name: 'label_lte', alias?: string  } 
+  | { name: 'label_gt', alias?: string  } 
+  | { name: 'label_gte', alias?: string  } 
+  | { name: 'label_contains', alias?: string  } 
+  | { name: 'label_not_contains', alias?: string  } 
+  | { name: 'label_starts_with', alias?: string  } 
+  | { name: 'label_not_starts_with', alias?: string  } 
+  | { name: 'label_ends_with', alias?: string  } 
+  | { name: 'label_not_ends_with', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'uri_not', alias?: string  } 
   | { name: 'uri_in', alias?: string  } 
@@ -2079,6 +3193,36 @@ export type RecipeWhereInputInputObject =
   | { name: 'image_not_starts_with', alias?: string  } 
   | { name: 'image_ends_with', alias?: string  } 
   | { name: 'image_not_ends_with', alias?: string  } 
+  | { name: 'servings', alias?: string  } 
+  | { name: 'servings_not', alias?: string  } 
+  | { name: 'servings_in', alias?: string  } 
+  | { name: 'servings_not_in', alias?: string  } 
+  | { name: 'servings_lt', alias?: string  } 
+  | { name: 'servings_lte', alias?: string  } 
+  | { name: 'servings_gt', alias?: string  } 
+  | { name: 'servings_gte', alias?: string  } 
+  | { name: 'calories', alias?: string  } 
+  | { name: 'calories_not', alias?: string  } 
+  | { name: 'calories_in', alias?: string  } 
+  | { name: 'calories_not_in', alias?: string  } 
+  | { name: 'calories_lt', alias?: string  } 
+  | { name: 'calories_lte', alias?: string  } 
+  | { name: 'calories_gt', alias?: string  } 
+  | { name: 'calories_gte', alias?: string  } 
+  | { name: 'totalWeight', alias?: string  } 
+  | { name: 'totalWeight_not', alias?: string  } 
+  | { name: 'totalWeight_in', alias?: string  } 
+  | { name: 'totalWeight_not_in', alias?: string  } 
+  | { name: 'totalWeight_lt', alias?: string  } 
+  | { name: 'totalWeight_lte', alias?: string  } 
+  | { name: 'totalWeight_gt', alias?: string  } 
+  | { name: 'totalWeight_gte', alias?: string  } 
+  | { name: 'healthLabels_every', alias?: string  } 
+  | { name: 'healthLabels_some', alias?: string  } 
+  | { name: 'healthLabels_none', alias?: string  } 
+  | { name: 'dietLabels_every', alias?: string  } 
+  | { name: 'dietLabels_some', alias?: string  } 
+  | { name: 'dietLabels_none', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -2095,6 +3239,140 @@ export type RecipeWhereInputInputObject =
   | { name: 'updatedAt_lte', alias?: string  } 
   | { name: 'updatedAt_gt', alias?: string  } 
   | { name: 'updatedAt_gte', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface healthLabelWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  label?: string | null
+  label_not?: string | null
+  label_in?: string[]
+  label_not_in?: string[]
+  label_lt?: string | null
+  label_lte?: string | null
+  label_gt?: string | null
+  label_gte?: string | null
+  label_contains?: string | null
+  label_not_contains?: string | null
+  label_starts_with?: string | null
+  label_not_starts_with?: string | null
+  label_ends_with?: string | null
+  label_not_ends_with?: string | null
+  AND?: healthLabelWhereInput[]
+  OR?: healthLabelWhereInput[]
+  NOT?: healthLabelWhereInput[]
+}
+export type healthLabelWhereInputInputObject =
+  | Extract<keyof healthLabelWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'label', alias?: string  } 
+  | { name: 'label_not', alias?: string  } 
+  | { name: 'label_in', alias?: string  } 
+  | { name: 'label_not_in', alias?: string  } 
+  | { name: 'label_lt', alias?: string  } 
+  | { name: 'label_lte', alias?: string  } 
+  | { name: 'label_gt', alias?: string  } 
+  | { name: 'label_gte', alias?: string  } 
+  | { name: 'label_contains', alias?: string  } 
+  | { name: 'label_not_contains', alias?: string  } 
+  | { name: 'label_starts_with', alias?: string  } 
+  | { name: 'label_not_starts_with', alias?: string  } 
+  | { name: 'label_ends_with', alias?: string  } 
+  | { name: 'label_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface dietLabelWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  label?: string | null
+  label_not?: string | null
+  label_in?: string[]
+  label_not_in?: string[]
+  label_lt?: string | null
+  label_lte?: string | null
+  label_gt?: string | null
+  label_gte?: string | null
+  label_contains?: string | null
+  label_not_contains?: string | null
+  label_starts_with?: string | null
+  label_not_starts_with?: string | null
+  label_ends_with?: string | null
+  label_not_ends_with?: string | null
+  AND?: dietLabelWhereInput[]
+  OR?: dietLabelWhereInput[]
+  NOT?: dietLabelWhereInput[]
+}
+export type dietLabelWhereInputInputObject =
+  | Extract<keyof dietLabelWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'label', alias?: string  } 
+  | { name: 'label_not', alias?: string  } 
+  | { name: 'label_in', alias?: string  } 
+  | { name: 'label_not_in', alias?: string  } 
+  | { name: 'label_lt', alias?: string  } 
+  | { name: 'label_lte', alias?: string  } 
+  | { name: 'label_gt', alias?: string  } 
+  | { name: 'label_gte', alias?: string  } 
+  | { name: 'label_contains', alias?: string  } 
+  | { name: 'label_not_contains', alias?: string  } 
+  | { name: 'label_starts_with', alias?: string  } 
+  | { name: 'label_not_starts_with', alias?: string  } 
+  | { name: 'label_ends_with', alias?: string  } 
+  | { name: 'label_not_ends_with', alias?: string  } 
   | { name: 'AND', alias?: string  } 
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
@@ -2262,10 +3540,12 @@ export type UserWhereInputInputObject =
   
 export interface RecipeWhereUniqueInput {
   id?: string | null
+  uri?: string | null
 }
 export type RecipeWhereUniqueInputInputObject =
   | Extract<keyof RecipeWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
+  | { name: 'uri', alias?: string  } 
   
 export interface RecipeListWhereUniqueInput {
   id?: string | null
@@ -2274,12 +3554,30 @@ export type RecipeListWhereUniqueInputInputObject =
   | Extract<keyof RecipeListWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
   
+export interface healthLabelWhereUniqueInput {
+  id?: string | null
+  label?: string | null
+}
+export type healthLabelWhereUniqueInputInputObject =
+  | Extract<keyof healthLabelWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'label', alias?: string  } 
+  
+export interface dietLabelWhereUniqueInput {
+  id?: string | null
+  label?: string | null
+}
+export type dietLabelWhereUniqueInputInputObject =
+  | Extract<keyof dietLabelWhereUniqueInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'label', alias?: string  } 
+  
 export interface UserCreateInput {
   id?: string | null
   password?: string
   name?: string
   email?: string
-  recipeLists?: RecipeListCreateManyInput | null
+  recipeLists?: RecipeListCreateManyWithoutOwnerInput | null
 }
 export type UserCreateInputInputObject =
   | Extract<keyof UserCreateInput, string>
@@ -2289,22 +3587,22 @@ export type UserCreateInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'recipeLists', alias?: string  } 
   
-export interface RecipeListCreateManyInput {
-  create?: RecipeListCreateInput[]
+export interface RecipeListCreateManyWithoutOwnerInput {
+  create?: RecipeListCreateWithoutOwnerInput[]
   connect?: RecipeListWhereUniqueInput[]
 }
-export type RecipeListCreateManyInputInputObject =
-  | Extract<keyof RecipeListCreateManyInput, string>
+export type RecipeListCreateManyWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListCreateManyWithoutOwnerInput, string>
   | { name: 'create', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   
-export interface RecipeListCreateInput {
+export interface RecipeListCreateWithoutOwnerInput {
   id?: string | null
   name?: string
   recipes?: RecipeCreateManyInput | null
 }
-export type RecipeListCreateInputInputObject =
-  | Extract<keyof RecipeListCreateInput, string>
+export type RecipeListCreateWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListCreateWithoutOwnerInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'name', alias?: string  } 
   | { name: 'recipes', alias?: string  } 
@@ -2320,22 +3618,68 @@ export type RecipeCreateManyInputInputObject =
   
 export interface RecipeCreateInput {
   id?: string | null
-  name?: string
+  label?: string
   uri?: string
   image?: string
+  servings?: number
+  calories?: number
+  totalWeight?: number
+  healthLabels?: healthLabelCreateManyInput | null
+  dietLabels?: dietLabelCreateManyInput | null
 }
 export type RecipeCreateInputInputObject =
   | Extract<keyof RecipeCreateInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'name', alias?: string  } 
+  | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'servings', alias?: string  } 
+  | { name: 'calories', alias?: string  } 
+  | { name: 'totalWeight', alias?: string  } 
+  | { name: 'healthLabels', alias?: string  } 
+  | { name: 'dietLabels', alias?: string  } 
+  
+export interface healthLabelCreateManyInput {
+  create?: healthLabelCreateInput[]
+  connect?: healthLabelWhereUniqueInput[]
+}
+export type healthLabelCreateManyInputInputObject =
+  | Extract<keyof healthLabelCreateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface healthLabelCreateInput {
+  id?: string | null
+  label?: string
+}
+export type healthLabelCreateInputInputObject =
+  | Extract<keyof healthLabelCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'label', alias?: string  } 
+  
+export interface dietLabelCreateManyInput {
+  create?: dietLabelCreateInput[]
+  connect?: dietLabelWhereUniqueInput[]
+}
+export type dietLabelCreateManyInputInputObject =
+  | Extract<keyof dietLabelCreateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface dietLabelCreateInput {
+  id?: string | null
+  label?: string
+}
+export type dietLabelCreateInputInputObject =
+  | Extract<keyof dietLabelCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'label', alias?: string  } 
   
 export interface UserUpdateInput {
   password?: string | null
   name?: string | null
   email?: string | null
-  recipeLists?: RecipeListUpdateManyInput | null
+  recipeLists?: RecipeListUpdateManyWithoutOwnerInput | null
 }
 export type UserUpdateInputInputObject =
   | Extract<keyof UserUpdateInput, string>
@@ -2344,44 +3688,44 @@ export type UserUpdateInputInputObject =
   | { name: 'email', alias?: string  } 
   | { name: 'recipeLists', alias?: string  } 
   
-export interface RecipeListUpdateManyInput {
-  create?: RecipeListCreateInput[]
-  update?: RecipeListUpdateWithWhereUniqueNestedInput[]
-  upsert?: RecipeListUpsertWithWhereUniqueNestedInput[]
+export interface RecipeListUpdateManyWithoutOwnerInput {
+  create?: RecipeListCreateWithoutOwnerInput[]
   delete?: RecipeListWhereUniqueInput[]
   connect?: RecipeListWhereUniqueInput[]
   set?: RecipeListWhereUniqueInput[]
   disconnect?: RecipeListWhereUniqueInput[]
+  update?: RecipeListUpdateWithWhereUniqueWithoutOwnerInput[]
+  upsert?: RecipeListUpsertWithWhereUniqueWithoutOwnerInput[]
   deleteMany?: RecipeListScalarWhereInput[]
   updateMany?: RecipeListUpdateManyWithWhereNestedInput[]
 }
-export type RecipeListUpdateManyInputInputObject =
-  | Extract<keyof RecipeListUpdateManyInput, string>
+export type RecipeListUpdateManyWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListUpdateManyWithoutOwnerInput, string>
   | { name: 'create', alias?: string  } 
-  | { name: 'update', alias?: string  } 
-  | { name: 'upsert', alias?: string  } 
   | { name: 'delete', alias?: string  } 
   | { name: 'connect', alias?: string  } 
   | { name: 'set', alias?: string  } 
   | { name: 'disconnect', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
   | { name: 'deleteMany', alias?: string  } 
   | { name: 'updateMany', alias?: string  } 
   
-export interface RecipeListUpdateWithWhereUniqueNestedInput {
+export interface RecipeListUpdateWithWhereUniqueWithoutOwnerInput {
   where?: RecipeListWhereUniqueInput
-  data?: RecipeListUpdateDataInput
+  data?: RecipeListUpdateWithoutOwnerDataInput
 }
-export type RecipeListUpdateWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof RecipeListUpdateWithWhereUniqueNestedInput, string>
+export type RecipeListUpdateWithWhereUniqueWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListUpdateWithWhereUniqueWithoutOwnerInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'data', alias?: string  } 
   
-export interface RecipeListUpdateDataInput {
+export interface RecipeListUpdateWithoutOwnerDataInput {
   name?: string | null
   recipes?: RecipeUpdateManyInput | null
 }
-export type RecipeListUpdateDataInputInputObject =
-  | Extract<keyof RecipeListUpdateDataInput, string>
+export type RecipeListUpdateWithoutOwnerDataInputInputObject =
+  | Extract<keyof RecipeListUpdateWithoutOwnerDataInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'recipes', alias?: string  } 
   
@@ -2418,15 +3762,291 @@ export type RecipeUpdateWithWhereUniqueNestedInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface RecipeUpdateDataInput {
-  name?: string | null
+  label?: string | null
   uri?: string | null
   image?: string | null
+  servings?: number | null
+  calories?: number | null
+  totalWeight?: number | null
+  healthLabels?: healthLabelUpdateManyInput | null
+  dietLabels?: dietLabelUpdateManyInput | null
 }
 export type RecipeUpdateDataInputInputObject =
   | Extract<keyof RecipeUpdateDataInput, string>
-  | { name: 'name', alias?: string  } 
+  | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'servings', alias?: string  } 
+  | { name: 'calories', alias?: string  } 
+  | { name: 'totalWeight', alias?: string  } 
+  | { name: 'healthLabels', alias?: string  } 
+  | { name: 'dietLabels', alias?: string  } 
+  
+export interface healthLabelUpdateManyInput {
+  create?: healthLabelCreateInput[]
+  update?: healthLabelUpdateWithWhereUniqueNestedInput[]
+  upsert?: healthLabelUpsertWithWhereUniqueNestedInput[]
+  delete?: healthLabelWhereUniqueInput[]
+  connect?: healthLabelWhereUniqueInput[]
+  set?: healthLabelWhereUniqueInput[]
+  disconnect?: healthLabelWhereUniqueInput[]
+  deleteMany?: healthLabelScalarWhereInput[]
+  updateMany?: healthLabelUpdateManyWithWhereNestedInput[]
+}
+export type healthLabelUpdateManyInputInputObject =
+  | Extract<keyof healthLabelUpdateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface healthLabelUpdateWithWhereUniqueNestedInput {
+  where?: healthLabelWhereUniqueInput
+  data?: healthLabelUpdateDataInput
+}
+export type healthLabelUpdateWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof healthLabelUpdateWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface healthLabelUpdateDataInput {
+  label?: string | null
+}
+export type healthLabelUpdateDataInputInputObject =
+  | Extract<keyof healthLabelUpdateDataInput, string>
+  | { name: 'label', alias?: string  } 
+  
+export interface healthLabelUpsertWithWhereUniqueNestedInput {
+  where?: healthLabelWhereUniqueInput
+  update?: healthLabelUpdateDataInput
+  create?: healthLabelCreateInput
+}
+export type healthLabelUpsertWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof healthLabelUpsertWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface healthLabelScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  label?: string | null
+  label_not?: string | null
+  label_in?: string[]
+  label_not_in?: string[]
+  label_lt?: string | null
+  label_lte?: string | null
+  label_gt?: string | null
+  label_gte?: string | null
+  label_contains?: string | null
+  label_not_contains?: string | null
+  label_starts_with?: string | null
+  label_not_starts_with?: string | null
+  label_ends_with?: string | null
+  label_not_ends_with?: string | null
+  AND?: healthLabelScalarWhereInput[]
+  OR?: healthLabelScalarWhereInput[]
+  NOT?: healthLabelScalarWhereInput[]
+}
+export type healthLabelScalarWhereInputInputObject =
+  | Extract<keyof healthLabelScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'label', alias?: string  } 
+  | { name: 'label_not', alias?: string  } 
+  | { name: 'label_in', alias?: string  } 
+  | { name: 'label_not_in', alias?: string  } 
+  | { name: 'label_lt', alias?: string  } 
+  | { name: 'label_lte', alias?: string  } 
+  | { name: 'label_gt', alias?: string  } 
+  | { name: 'label_gte', alias?: string  } 
+  | { name: 'label_contains', alias?: string  } 
+  | { name: 'label_not_contains', alias?: string  } 
+  | { name: 'label_starts_with', alias?: string  } 
+  | { name: 'label_not_starts_with', alias?: string  } 
+  | { name: 'label_ends_with', alias?: string  } 
+  | { name: 'label_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface healthLabelUpdateManyWithWhereNestedInput {
+  where?: healthLabelScalarWhereInput
+  data?: healthLabelUpdateManyDataInput
+}
+export type healthLabelUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof healthLabelUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface healthLabelUpdateManyDataInput {
+  label?: string | null
+}
+export type healthLabelUpdateManyDataInputInputObject =
+  | Extract<keyof healthLabelUpdateManyDataInput, string>
+  | { name: 'label', alias?: string  } 
+  
+export interface dietLabelUpdateManyInput {
+  create?: dietLabelCreateInput[]
+  update?: dietLabelUpdateWithWhereUniqueNestedInput[]
+  upsert?: dietLabelUpsertWithWhereUniqueNestedInput[]
+  delete?: dietLabelWhereUniqueInput[]
+  connect?: dietLabelWhereUniqueInput[]
+  set?: dietLabelWhereUniqueInput[]
+  disconnect?: dietLabelWhereUniqueInput[]
+  deleteMany?: dietLabelScalarWhereInput[]
+  updateMany?: dietLabelUpdateManyWithWhereNestedInput[]
+}
+export type dietLabelUpdateManyInputInputObject =
+  | Extract<keyof dietLabelUpdateManyInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'delete', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  | { name: 'set', alias?: string  } 
+  | { name: 'disconnect', alias?: string  } 
+  | { name: 'deleteMany', alias?: string  } 
+  | { name: 'updateMany', alias?: string  } 
+  
+export interface dietLabelUpdateWithWhereUniqueNestedInput {
+  where?: dietLabelWhereUniqueInput
+  data?: dietLabelUpdateDataInput
+}
+export type dietLabelUpdateWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof dietLabelUpdateWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface dietLabelUpdateDataInput {
+  label?: string | null
+}
+export type dietLabelUpdateDataInputInputObject =
+  | Extract<keyof dietLabelUpdateDataInput, string>
+  | { name: 'label', alias?: string  } 
+  
+export interface dietLabelUpsertWithWhereUniqueNestedInput {
+  where?: dietLabelWhereUniqueInput
+  update?: dietLabelUpdateDataInput
+  create?: dietLabelCreateInput
+}
+export type dietLabelUpsertWithWhereUniqueNestedInputInputObject =
+  | Extract<keyof dietLabelUpsertWithWhereUniqueNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
+  
+export interface dietLabelScalarWhereInput {
+  id?: string | null
+  id_not?: string | null
+  id_in?: string[]
+  id_not_in?: string[]
+  id_lt?: string | null
+  id_lte?: string | null
+  id_gt?: string | null
+  id_gte?: string | null
+  id_contains?: string | null
+  id_not_contains?: string | null
+  id_starts_with?: string | null
+  id_not_starts_with?: string | null
+  id_ends_with?: string | null
+  id_not_ends_with?: string | null
+  label?: string | null
+  label_not?: string | null
+  label_in?: string[]
+  label_not_in?: string[]
+  label_lt?: string | null
+  label_lte?: string | null
+  label_gt?: string | null
+  label_gte?: string | null
+  label_contains?: string | null
+  label_not_contains?: string | null
+  label_starts_with?: string | null
+  label_not_starts_with?: string | null
+  label_ends_with?: string | null
+  label_not_ends_with?: string | null
+  AND?: dietLabelScalarWhereInput[]
+  OR?: dietLabelScalarWhereInput[]
+  NOT?: dietLabelScalarWhereInput[]
+}
+export type dietLabelScalarWhereInputInputObject =
+  | Extract<keyof dietLabelScalarWhereInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'id_not', alias?: string  } 
+  | { name: 'id_in', alias?: string  } 
+  | { name: 'id_not_in', alias?: string  } 
+  | { name: 'id_lt', alias?: string  } 
+  | { name: 'id_lte', alias?: string  } 
+  | { name: 'id_gt', alias?: string  } 
+  | { name: 'id_gte', alias?: string  } 
+  | { name: 'id_contains', alias?: string  } 
+  | { name: 'id_not_contains', alias?: string  } 
+  | { name: 'id_starts_with', alias?: string  } 
+  | { name: 'id_not_starts_with', alias?: string  } 
+  | { name: 'id_ends_with', alias?: string  } 
+  | { name: 'id_not_ends_with', alias?: string  } 
+  | { name: 'label', alias?: string  } 
+  | { name: 'label_not', alias?: string  } 
+  | { name: 'label_in', alias?: string  } 
+  | { name: 'label_not_in', alias?: string  } 
+  | { name: 'label_lt', alias?: string  } 
+  | { name: 'label_lte', alias?: string  } 
+  | { name: 'label_gt', alias?: string  } 
+  | { name: 'label_gte', alias?: string  } 
+  | { name: 'label_contains', alias?: string  } 
+  | { name: 'label_not_contains', alias?: string  } 
+  | { name: 'label_starts_with', alias?: string  } 
+  | { name: 'label_not_starts_with', alias?: string  } 
+  | { name: 'label_ends_with', alias?: string  } 
+  | { name: 'label_not_ends_with', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface dietLabelUpdateManyWithWhereNestedInput {
+  where?: dietLabelScalarWhereInput
+  data?: dietLabelUpdateManyDataInput
+}
+export type dietLabelUpdateManyWithWhereNestedInputInputObject =
+  | Extract<keyof dietLabelUpdateManyWithWhereNestedInput, string>
+  | { name: 'where', alias?: string  } 
+  | { name: 'data', alias?: string  } 
+  
+export interface dietLabelUpdateManyDataInput {
+  label?: string | null
+}
+export type dietLabelUpdateManyDataInputInputObject =
+  | Extract<keyof dietLabelUpdateManyDataInput, string>
+  | { name: 'label', alias?: string  } 
   
 export interface RecipeUpsertWithWhereUniqueNestedInput {
   where?: RecipeWhereUniqueInput
@@ -2454,20 +4074,20 @@ export interface RecipeScalarWhereInput {
   id_not_starts_with?: string | null
   id_ends_with?: string | null
   id_not_ends_with?: string | null
-  name?: string | null
-  name_not?: string | null
-  name_in?: string[]
-  name_not_in?: string[]
-  name_lt?: string | null
-  name_lte?: string | null
-  name_gt?: string | null
-  name_gte?: string | null
-  name_contains?: string | null
-  name_not_contains?: string | null
-  name_starts_with?: string | null
-  name_not_starts_with?: string | null
-  name_ends_with?: string | null
-  name_not_ends_with?: string | null
+  label?: string | null
+  label_not?: string | null
+  label_in?: string[]
+  label_not_in?: string[]
+  label_lt?: string | null
+  label_lte?: string | null
+  label_gt?: string | null
+  label_gte?: string | null
+  label_contains?: string | null
+  label_not_contains?: string | null
+  label_starts_with?: string | null
+  label_not_starts_with?: string | null
+  label_ends_with?: string | null
+  label_not_ends_with?: string | null
   uri?: string | null
   uri_not?: string | null
   uri_in?: string[]
@@ -2496,6 +4116,30 @@ export interface RecipeScalarWhereInput {
   image_not_starts_with?: string | null
   image_ends_with?: string | null
   image_not_ends_with?: string | null
+  servings?: number | null
+  servings_not?: number | null
+  servings_in?: number[]
+  servings_not_in?: number[]
+  servings_lt?: number | null
+  servings_lte?: number | null
+  servings_gt?: number | null
+  servings_gte?: number | null
+  calories?: number | null
+  calories_not?: number | null
+  calories_in?: number[]
+  calories_not_in?: number[]
+  calories_lt?: number | null
+  calories_lte?: number | null
+  calories_gt?: number | null
+  calories_gte?: number | null
+  totalWeight?: number | null
+  totalWeight_not?: number | null
+  totalWeight_in?: number[]
+  totalWeight_not_in?: number[]
+  totalWeight_lt?: number | null
+  totalWeight_lte?: number | null
+  totalWeight_gt?: number | null
+  totalWeight_gte?: number | null
   createdAt?: string | null
   createdAt_not?: string | null
   createdAt_in?: string[]
@@ -2532,20 +4176,20 @@ export type RecipeScalarWhereInputInputObject =
   | { name: 'id_not_starts_with', alias?: string  } 
   | { name: 'id_ends_with', alias?: string  } 
   | { name: 'id_not_ends_with', alias?: string  } 
-  | { name: 'name', alias?: string  } 
-  | { name: 'name_not', alias?: string  } 
-  | { name: 'name_in', alias?: string  } 
-  | { name: 'name_not_in', alias?: string  } 
-  | { name: 'name_lt', alias?: string  } 
-  | { name: 'name_lte', alias?: string  } 
-  | { name: 'name_gt', alias?: string  } 
-  | { name: 'name_gte', alias?: string  } 
-  | { name: 'name_contains', alias?: string  } 
-  | { name: 'name_not_contains', alias?: string  } 
-  | { name: 'name_starts_with', alias?: string  } 
-  | { name: 'name_not_starts_with', alias?: string  } 
-  | { name: 'name_ends_with', alias?: string  } 
-  | { name: 'name_not_ends_with', alias?: string  } 
+  | { name: 'label', alias?: string  } 
+  | { name: 'label_not', alias?: string  } 
+  | { name: 'label_in', alias?: string  } 
+  | { name: 'label_not_in', alias?: string  } 
+  | { name: 'label_lt', alias?: string  } 
+  | { name: 'label_lte', alias?: string  } 
+  | { name: 'label_gt', alias?: string  } 
+  | { name: 'label_gte', alias?: string  } 
+  | { name: 'label_contains', alias?: string  } 
+  | { name: 'label_not_contains', alias?: string  } 
+  | { name: 'label_starts_with', alias?: string  } 
+  | { name: 'label_not_starts_with', alias?: string  } 
+  | { name: 'label_ends_with', alias?: string  } 
+  | { name: 'label_not_ends_with', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'uri_not', alias?: string  } 
   | { name: 'uri_in', alias?: string  } 
@@ -2574,6 +4218,30 @@ export type RecipeScalarWhereInputInputObject =
   | { name: 'image_not_starts_with', alias?: string  } 
   | { name: 'image_ends_with', alias?: string  } 
   | { name: 'image_not_ends_with', alias?: string  } 
+  | { name: 'servings', alias?: string  } 
+  | { name: 'servings_not', alias?: string  } 
+  | { name: 'servings_in', alias?: string  } 
+  | { name: 'servings_not_in', alias?: string  } 
+  | { name: 'servings_lt', alias?: string  } 
+  | { name: 'servings_lte', alias?: string  } 
+  | { name: 'servings_gt', alias?: string  } 
+  | { name: 'servings_gte', alias?: string  } 
+  | { name: 'calories', alias?: string  } 
+  | { name: 'calories_not', alias?: string  } 
+  | { name: 'calories_in', alias?: string  } 
+  | { name: 'calories_not_in', alias?: string  } 
+  | { name: 'calories_lt', alias?: string  } 
+  | { name: 'calories_lte', alias?: string  } 
+  | { name: 'calories_gt', alias?: string  } 
+  | { name: 'calories_gte', alias?: string  } 
+  | { name: 'totalWeight', alias?: string  } 
+  | { name: 'totalWeight_not', alias?: string  } 
+  | { name: 'totalWeight_in', alias?: string  } 
+  | { name: 'totalWeight_not_in', alias?: string  } 
+  | { name: 'totalWeight_lt', alias?: string  } 
+  | { name: 'totalWeight_lte', alias?: string  } 
+  | { name: 'totalWeight_gt', alias?: string  } 
+  | { name: 'totalWeight_gte', alias?: string  } 
   | { name: 'createdAt', alias?: string  } 
   | { name: 'createdAt_not', alias?: string  } 
   | { name: 'createdAt_in', alias?: string  } 
@@ -2604,23 +4272,29 @@ export type RecipeUpdateManyWithWhereNestedInputInputObject =
   | { name: 'data', alias?: string  } 
   
 export interface RecipeUpdateManyDataInput {
-  name?: string | null
+  label?: string | null
   uri?: string | null
   image?: string | null
+  servings?: number | null
+  calories?: number | null
+  totalWeight?: number | null
 }
 export type RecipeUpdateManyDataInputInputObject =
   | Extract<keyof RecipeUpdateManyDataInput, string>
-  | { name: 'name', alias?: string  } 
+  | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'servings', alias?: string  } 
+  | { name: 'calories', alias?: string  } 
+  | { name: 'totalWeight', alias?: string  } 
   
-export interface RecipeListUpsertWithWhereUniqueNestedInput {
+export interface RecipeListUpsertWithWhereUniqueWithoutOwnerInput {
   where?: RecipeListWhereUniqueInput
-  update?: RecipeListUpdateDataInput
-  create?: RecipeListCreateInput
+  update?: RecipeListUpdateWithoutOwnerDataInput
+  create?: RecipeListCreateWithoutOwnerInput
 }
-export type RecipeListUpsertWithWhereUniqueNestedInputInputObject =
-  | Extract<keyof RecipeListUpsertWithWhereUniqueNestedInput, string>
+export type RecipeListUpsertWithWhereUniqueWithoutOwnerInputInputObject =
+  | Extract<keyof RecipeListUpsertWithWhereUniqueWithoutOwnerInput, string>
   | { name: 'where', alias?: string  } 
   | { name: 'update', alias?: string  } 
   | { name: 'create', alias?: string  } 
@@ -2752,35 +4426,121 @@ export type UserUpdateManyMutationInputInputObject =
   | { name: 'email', alias?: string  } 
   
 export interface RecipeUpdateInput {
-  name?: string | null
+  label?: string | null
   uri?: string | null
   image?: string | null
+  servings?: number | null
+  calories?: number | null
+  totalWeight?: number | null
+  healthLabels?: healthLabelUpdateManyInput | null
+  dietLabels?: dietLabelUpdateManyInput | null
 }
 export type RecipeUpdateInputInputObject =
   | Extract<keyof RecipeUpdateInput, string>
-  | { name: 'name', alias?: string  } 
+  | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'servings', alias?: string  } 
+  | { name: 'calories', alias?: string  } 
+  | { name: 'totalWeight', alias?: string  } 
+  | { name: 'healthLabels', alias?: string  } 
+  | { name: 'dietLabels', alias?: string  } 
   
 export interface RecipeUpdateManyMutationInput {
-  name?: string | null
+  label?: string | null
   uri?: string | null
   image?: string | null
+  servings?: number | null
+  calories?: number | null
+  totalWeight?: number | null
 }
 export type RecipeUpdateManyMutationInputInputObject =
   | Extract<keyof RecipeUpdateManyMutationInput, string>
-  | { name: 'name', alias?: string  } 
+  | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'servings', alias?: string  } 
+  | { name: 'calories', alias?: string  } 
+  | { name: 'totalWeight', alias?: string  } 
+  
+export interface RecipeListCreateInput {
+  id?: string | null
+  name?: string
+  recipes?: RecipeCreateManyInput | null
+  owner?: UserCreateOneWithoutRecipeListsInput
+}
+export type RecipeListCreateInputInputObject =
+  | Extract<keyof RecipeListCreateInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'recipes', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  
+export interface UserCreateOneWithoutRecipeListsInput {
+  create?: UserCreateWithoutRecipeListsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserCreateOneWithoutRecipeListsInputInputObject =
+  | Extract<keyof UserCreateOneWithoutRecipeListsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserCreateWithoutRecipeListsInput {
+  id?: string | null
+  password?: string
+  name?: string
+  email?: string
+}
+export type UserCreateWithoutRecipeListsInputInputObject =
+  | Extract<keyof UserCreateWithoutRecipeListsInput, string>
+  | { name: 'id', alias?: string  } 
+  | { name: 'password', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
   
 export interface RecipeListUpdateInput {
   name?: string | null
   recipes?: RecipeUpdateManyInput | null
+  owner?: UserUpdateOneRequiredWithoutRecipeListsInput | null
 }
 export type RecipeListUpdateInputInputObject =
   | Extract<keyof RecipeListUpdateInput, string>
   | { name: 'name', alias?: string  } 
   | { name: 'recipes', alias?: string  } 
+  | { name: 'owner', alias?: string  } 
+  
+export interface UserUpdateOneRequiredWithoutRecipeListsInput {
+  create?: UserCreateWithoutRecipeListsInput | null
+  update?: UserUpdateWithoutRecipeListsDataInput | null
+  upsert?: UserUpsertWithoutRecipeListsInput | null
+  connect?: UserWhereUniqueInput | null
+}
+export type UserUpdateOneRequiredWithoutRecipeListsInputInputObject =
+  | Extract<keyof UserUpdateOneRequiredWithoutRecipeListsInput, string>
+  | { name: 'create', alias?: string  } 
+  | { name: 'update', alias?: string  } 
+  | { name: 'upsert', alias?: string  } 
+  | { name: 'connect', alias?: string  } 
+  
+export interface UserUpdateWithoutRecipeListsDataInput {
+  password?: string | null
+  name?: string | null
+  email?: string | null
+}
+export type UserUpdateWithoutRecipeListsDataInputInputObject =
+  | Extract<keyof UserUpdateWithoutRecipeListsDataInput, string>
+  | { name: 'password', alias?: string  } 
+  | { name: 'name', alias?: string  } 
+  | { name: 'email', alias?: string  } 
+  
+export interface UserUpsertWithoutRecipeListsInput {
+  update?: UserUpdateWithoutRecipeListsDataInput
+  create?: UserCreateWithoutRecipeListsInput
+}
+export type UserUpsertWithoutRecipeListsInputInputObject =
+  | Extract<keyof UserUpsertWithoutRecipeListsInput, string>
+  | { name: 'update', alias?: string  } 
+  | { name: 'create', alias?: string  } 
   
 export interface RecipeListUpdateManyMutationInput {
   name?: string | null
@@ -2788,6 +4548,34 @@ export interface RecipeListUpdateManyMutationInput {
 export type RecipeListUpdateManyMutationInputInputObject =
   | Extract<keyof RecipeListUpdateManyMutationInput, string>
   | { name: 'name', alias?: string  } 
+  
+export interface healthLabelUpdateInput {
+  label?: string | null
+}
+export type healthLabelUpdateInputInputObject =
+  | Extract<keyof healthLabelUpdateInput, string>
+  | { name: 'label', alias?: string  } 
+  
+export interface healthLabelUpdateManyMutationInput {
+  label?: string | null
+}
+export type healthLabelUpdateManyMutationInputInputObject =
+  | Extract<keyof healthLabelUpdateManyMutationInput, string>
+  | { name: 'label', alias?: string  } 
+  
+export interface dietLabelUpdateInput {
+  label?: string | null
+}
+export type dietLabelUpdateInputInputObject =
+  | Extract<keyof dietLabelUpdateInput, string>
+  | { name: 'label', alias?: string  } 
+  
+export interface dietLabelUpdateManyMutationInput {
+  label?: string | null
+}
+export type dietLabelUpdateManyMutationInputInputObject =
+  | Extract<keyof dietLabelUpdateManyMutationInput, string>
+  | { name: 'label', alias?: string  } 
   
 export interface UserSubscriptionWhereInput {
   mutation_in?: prisma.MutationType[]
@@ -2852,6 +4640,48 @@ export type RecipeListSubscriptionWhereInputInputObject =
   | { name: 'OR', alias?: string  } 
   | { name: 'NOT', alias?: string  } 
   
+export interface healthLabelSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: healthLabelWhereInput | null
+  AND?: healthLabelSubscriptionWhereInput[]
+  OR?: healthLabelSubscriptionWhereInput[]
+  NOT?: healthLabelSubscriptionWhereInput[]
+}
+export type healthLabelSubscriptionWhereInputInputObject =
+  | Extract<keyof healthLabelSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
+export interface dietLabelSubscriptionWhereInput {
+  mutation_in?: prisma.MutationType[]
+  updatedFields_contains?: string | null
+  updatedFields_contains_every?: string[]
+  updatedFields_contains_some?: string[]
+  node?: dietLabelWhereInput | null
+  AND?: dietLabelSubscriptionWhereInput[]
+  OR?: dietLabelSubscriptionWhereInput[]
+  NOT?: dietLabelSubscriptionWhereInput[]
+}
+export type dietLabelSubscriptionWhereInputInputObject =
+  | Extract<keyof dietLabelSubscriptionWhereInput, string>
+  | { name: 'mutation_in', alias?: string  } 
+  | { name: 'updatedFields_contains', alias?: string  } 
+  | { name: 'updatedFields_contains_every', alias?: string  } 
+  | { name: 'updatedFields_contains_some', alias?: string  } 
+  | { name: 'node', alias?: string  } 
+  | { name: 'AND', alias?: string  } 
+  | { name: 'OR', alias?: string  } 
+  | { name: 'NOT', alias?: string  } 
+  
 
 export type RecipeListOrderByInputValues =
   | 'id_ASC'
@@ -2866,12 +4696,38 @@ export type RecipeListOrderByInputValues =
 export type RecipeOrderByInputValues =
   | 'id_ASC'
   | 'id_DESC'
-  | 'name_ASC'
-  | 'name_DESC'
+  | 'label_ASC'
+  | 'label_DESC'
   | 'uri_ASC'
   | 'uri_DESC'
   | 'image_ASC'
   | 'image_DESC'
+  | 'servings_ASC'
+  | 'servings_DESC'
+  | 'calories_ASC'
+  | 'calories_DESC'
+  | 'totalWeight_ASC'
+  | 'totalWeight_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type healthLabelOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'label_ASC'
+  | 'label_DESC'
+  | 'createdAt_ASC'
+  | 'createdAt_DESC'
+  | 'updatedAt_ASC'
+  | 'updatedAt_DESC'
+  
+export type dietLabelOrderByInputValues =
+  | 'id_ASC'
+  | 'id_DESC'
+  | 'label_ASC'
+  | 'label_DESC'
   | 'createdAt_ASC'
   | 'createdAt_DESC'
   | 'updatedAt_ASC'

@@ -10,9 +10,14 @@ type User {
 
 type Recipe {
   id: ID! @id
-  name: String!
-  uri: String!
+  label: String!
+  uri: String! @unique
   image: String!
+  servings: Int!
+  calories: Float!
+  totalWeight: Float!
+  healthLabels: [healthLabel!]
+  dietLabels: [dietLabel!]
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
@@ -21,6 +26,17 @@ type RecipeList {
   id: ID! @id
   name: String!
   recipes: [Recipe!]
+  owner: User!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
+}
+
+type healthLabel {
+    id: ID! @id
+    label: String! @unique
+}
+
+type dietLabel {
+    id: ID! @id
+    label: String! @unique
 }
