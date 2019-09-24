@@ -699,6 +699,8 @@ export interface NexusGenRootTypes {
     image: string; // String!
     label: string; // String!
     servings?: number | null; // Int
+    source: string; // String!
+    sourceUrl: string; // String!
     totalWeight?: number | null; // Float
     uri: string; // String!
   }
@@ -810,6 +812,8 @@ export interface NexusGenFieldTypes {
     image: string; // String!
     label: string; // String!
     servings: number | null; // Int
+    source: string; // String!
+    sourceUrl: string; // String!
     totalWeight: number | null; // Float
     uri: string; // String!
   }

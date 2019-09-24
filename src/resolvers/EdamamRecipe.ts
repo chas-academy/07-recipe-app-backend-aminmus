@@ -7,6 +7,8 @@ const EdamamRecipe = objectType({
     t.string('uri');
     t.string('label');
     t.string('image');
+    t.string('source');
+    t.string('sourceUrl');
     t.int('servings', { nullable: true });
     t.float('calories', { nullable: true });
     t.float('totalWeight', { nullable: true });

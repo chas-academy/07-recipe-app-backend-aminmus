@@ -5,6 +5,8 @@ export interface Recipe {
   uri: string;
   label: string;
   image?: string;
+  source?: string;
+  sourceUrl?: string;
   servings?: number;
   calories?: number;
   totalWeight?: number;
@@ -15,8 +17,8 @@ export interface Recipe {
 }
 
 export interface SearchFilter {
-  healthLabels: Array<string>;
   dietLabels: Array<string>;
+  healthLabels: Array<string>;
 }
 
 export interface Context {

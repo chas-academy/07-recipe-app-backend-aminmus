@@ -13,6 +13,8 @@ type Recipe {
   label: String!
   uri: String! @unique
   image: String!
+  source: String!
+  sourceUrl: String!
   servings: Int!
   calories: Float!
   totalWeight: Float!

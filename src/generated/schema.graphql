@@ -159,6 +159,8 @@ type EdamamRecipe {
   image: String!
   label: String!
   servings: Int
+  source: String!
+  sourceUrl: String!
   totalWeight: Float
   uri: String!
 }
