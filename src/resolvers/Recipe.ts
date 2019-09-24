@@ -1,8 +1,8 @@
 import { objectType } from 'nexus';
 
-const EdamamRecipe = objectType({
-  name: 'EdamamRecipe',
-  description: 'Recipe directly fetched from the Edamam Recipe API',
+const Recipe = objectType({
+  name: 'Recipe',
+  description: 'Recipe fetched from internal database',
   definition(t) {
     t.string('uri');
     t.string('label');
@@ -18,4 +18,4 @@ const EdamamRecipe = objectType({
   },
 });
 
-export default EdamamRecipe;
+export default Recipe;

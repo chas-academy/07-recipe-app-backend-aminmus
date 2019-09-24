@@ -282,6 +282,10 @@ export type RecipeOrderByInput =
   | "uri_DESC"
   | "image_ASC"
   | "image_DESC"
+  | "source_ASC"
+  | "source_DESC"
+  | "sourceUrl_ASC"
+  | "sourceUrl_DESC"
   | "servings_ASC"
   | "servings_DESC"
   | "calories_ASC"
@@ -449,6 +453,34 @@ export interface RecipeWhereInput {
   image_not_starts_with?: Maybe<String>;
   image_ends_with?: Maybe<String>;
   image_not_ends_with?: Maybe<String>;
+  source?: Maybe<String>;
+  source_not?: Maybe<String>;
+  source_in?: Maybe<String[] | String>;
+  source_not_in?: Maybe<String[] | String>;
+  source_lt?: Maybe<String>;
+  source_lte?: Maybe<String>;
+  source_gt?: Maybe<String>;
+  source_gte?: Maybe<String>;
+  source_contains?: Maybe<String>;
+  source_not_contains?: Maybe<String>;
+  source_starts_with?: Maybe<String>;
+  source_not_starts_with?: Maybe<String>;
+  source_ends_with?: Maybe<String>;
+  source_not_ends_with?: Maybe<String>;
+  sourceUrl?: Maybe<String>;
+  sourceUrl_not?: Maybe<String>;
+  sourceUrl_in?: Maybe<String[] | String>;
+  sourceUrl_not_in?: Maybe<String[] | String>;
+  sourceUrl_lt?: Maybe<String>;
+  sourceUrl_lte?: Maybe<String>;
+  sourceUrl_gt?: Maybe<String>;
+  sourceUrl_gte?: Maybe<String>;
+  sourceUrl_contains?: Maybe<String>;
+  sourceUrl_not_contains?: Maybe<String>;
+  sourceUrl_starts_with?: Maybe<String>;
+  sourceUrl_not_starts_with?: Maybe<String>;
+  sourceUrl_ends_with?: Maybe<String>;
+  sourceUrl_not_ends_with?: Maybe<String>;
   servings?: Maybe<Int>;
   servings_not?: Maybe<Int>;
   servings_in?: Maybe<Int[] | Int>;
@@ -659,6 +691,8 @@ export interface RecipeCreateInput {
   label: String;
   uri: String;
   image: String;
+  source: String;
+  sourceUrl: String;
   servings: Int;
   calories: Float;
   totalWeight: Float;
@@ -690,6 +724,8 @@ export interface RecipeUpdateInput {
   label?: Maybe<String>;
   uri?: Maybe<String>;
   image?: Maybe<String>;
+  source?: Maybe<String>;
+  sourceUrl?: Maybe<String>;
   servings?: Maybe<Int>;
   calories?: Maybe<Float>;
   totalWeight?: Maybe<Float>;
@@ -863,6 +899,8 @@ export interface RecipeUpdateManyMutationInput {
   label?: Maybe<String>;
   uri?: Maybe<String>;
   image?: Maybe<String>;
+  source?: Maybe<String>;
+  sourceUrl?: Maybe<String>;
   servings?: Maybe<Int>;
   calories?: Maybe<Float>;
   totalWeight?: Maybe<Float>;
@@ -928,6 +966,8 @@ export interface RecipeUpdateDataInput {
   label?: Maybe<String>;
   uri?: Maybe<String>;
   image?: Maybe<String>;
+  source?: Maybe<String>;
+  sourceUrl?: Maybe<String>;
   servings?: Maybe<Int>;
   calories?: Maybe<Float>;
   totalWeight?: Maybe<Float>;
@@ -998,6 +1038,34 @@ export interface RecipeScalarWhereInput {
   image_not_starts_with?: Maybe<String>;
   image_ends_with?: Maybe<String>;
   image_not_ends_with?: Maybe<String>;
+  source?: Maybe<String>;
+  source_not?: Maybe<String>;
+  source_in?: Maybe<String[] | String>;
+  source_not_in?: Maybe<String[] | String>;
+  source_lt?: Maybe<String>;
+  source_lte?: Maybe<String>;
+  source_gt?: Maybe<String>;
+  source_gte?: Maybe<String>;
+  source_contains?: Maybe<String>;
+  source_not_contains?: Maybe<String>;
+  source_starts_with?: Maybe<String>;
+  source_not_starts_with?: Maybe<String>;
+  source_ends_with?: Maybe<String>;
+  source_not_ends_with?: Maybe<String>;
+  sourceUrl?: Maybe<String>;
+  sourceUrl_not?: Maybe<String>;
+  sourceUrl_in?: Maybe<String[] | String>;
+  sourceUrl_not_in?: Maybe<String[] | String>;
+  sourceUrl_lt?: Maybe<String>;
+  sourceUrl_lte?: Maybe<String>;
+  sourceUrl_gt?: Maybe<String>;
+  sourceUrl_gte?: Maybe<String>;
+  sourceUrl_contains?: Maybe<String>;
+  sourceUrl_not_contains?: Maybe<String>;
+  sourceUrl_starts_with?: Maybe<String>;
+  sourceUrl_not_starts_with?: Maybe<String>;
+  sourceUrl_ends_with?: Maybe<String>;
+  sourceUrl_not_ends_with?: Maybe<String>;
   servings?: Maybe<Int>;
   servings_not?: Maybe<Int>;
   servings_in?: Maybe<Int[] | Int>;
@@ -1052,6 +1120,8 @@ export interface RecipeUpdateManyDataInput {
   label?: Maybe<String>;
   uri?: Maybe<String>;
   image?: Maybe<String>;
+  source?: Maybe<String>;
+  sourceUrl?: Maybe<String>;
   servings?: Maybe<Int>;
   calories?: Maybe<Float>;
   totalWeight?: Maybe<Float>;
@@ -1309,6 +1379,8 @@ export interface Recipe {
   label: String;
   uri: String;
   image: String;
+  source: String;
+  sourceUrl: String;
   servings: Int;
   calories: Float;
   totalWeight: Float;
@@ -1321,6 +1393,8 @@ export interface RecipePromise extends Promise<Recipe>, Fragmentable {
   label: () => Promise<String>;
   uri: () => Promise<String>;
   image: () => Promise<String>;
+  source: () => Promise<String>;
+  sourceUrl: () => Promise<String>;
   servings: () => Promise<Int>;
   calories: () => Promise<Float>;
   totalWeight: () => Promise<Float>;
@@ -1353,6 +1427,8 @@ export interface RecipeSubscription
   label: () => Promise<AsyncIterator<String>>;
   uri: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
+  source: () => Promise<AsyncIterator<String>>;
+  sourceUrl: () => Promise<AsyncIterator<String>>;
   servings: () => Promise<AsyncIterator<Int>>;
   calories: () => Promise<AsyncIterator<Float>>;
   totalWeight: () => Promise<AsyncIterator<Float>>;
@@ -1385,6 +1461,8 @@ export interface RecipeNullablePromise
   label: () => Promise<String>;
   uri: () => Promise<String>;
   image: () => Promise<String>;
+  source: () => Promise<String>;
+  sourceUrl: () => Promise<String>;
   servings: () => Promise<Int>;
   calories: () => Promise<Float>;
   totalWeight: () => Promise<Float>;
@@ -1932,6 +2010,8 @@ export interface RecipePreviousValues {
   label: String;
   uri: String;
   image: String;
+  source: String;
+  sourceUrl: String;
   servings: Int;
   calories: Float;
   totalWeight: Float;
@@ -1946,6 +2026,8 @@ export interface RecipePreviousValuesPromise
   label: () => Promise<String>;
   uri: () => Promise<String>;
   image: () => Promise<String>;
+  source: () => Promise<String>;
+  sourceUrl: () => Promise<String>;
   servings: () => Promise<Int>;
   calories: () => Promise<Float>;
   totalWeight: () => Promise<Float>;
@@ -1960,6 +2042,8 @@ export interface RecipePreviousValuesSubscription
   label: () => Promise<AsyncIterator<String>>;
   uri: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
+  source: () => Promise<AsyncIterator<String>>;
+  sourceUrl: () => Promise<AsyncIterator<String>>;
   servings: () => Promise<AsyncIterator<Int>>;
   calories: () => Promise<AsyncIterator<Float>>;
   totalWeight: () => Promise<AsyncIterator<Float>>;

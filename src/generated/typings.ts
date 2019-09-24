@@ -683,8 +683,6 @@ export interface NexusGenEnums {
   HealthEnum: "alcohol-free" | "peanut-free" | "sugar-conscious" | "tree-nut-free" | "vegan" | "vegetarian"
   RecipeListOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
   RecipeOrderByInput: "calories_ASC" | "calories_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "label_ASC" | "label_DESC" | "servings_ASC" | "servings_DESC" | "totalWeight_ASC" | "totalWeight_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "uri_ASC" | "uri_DESC"
-  dietLabelOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "label_ASC" | "label_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  healthLabelOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "label_ASC" | "label_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -707,14 +705,15 @@ export interface NexusGenRootTypes {
   Mutation: {};
   Query: {};
   Recipe: { // root type
-    calories: number; // Float!
-    createdAt: any; // DateTime!
-    id: string; // ID!
+    calories?: number | null; // Float
+    dietLabels?: string[] | null; // [String!]
+    healthLabels?: string[] | null; // [String!]
     image: string; // String!
     label: string; // String!
-    servings: number; // Int!
-    totalWeight: number; // Float!
-    updatedAt: any; // DateTime!
+    servings?: number | null; // Int
+    source: string; // String!
+    sourceUrl: string; // String!
+    totalWeight?: number | null; // Float
     uri: string; // String!
   }
   RecipeList: { // root type
@@ -729,14 +728,6 @@ export interface NexusGenRootTypes {
     id: string; // ID!
     name: string; // String!
     updatedAt: any; // DateTime!
-  }
-  dietLabel: { // root type
-    id: string; // ID!
-    label: string; // String!
-  }
-  healthLabel: { // root type
-    id: string; // ID!
-    label: string; // String!
   }
   String: string;
   Int: number;
@@ -796,8 +787,6 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   HealthEnum: NexusGenEnums['HealthEnum'];
   RecipeListOrderByInput: NexusGenEnums['RecipeListOrderByInput'];
   RecipeOrderByInput: NexusGenEnums['RecipeOrderByInput'];
-  dietLabelOrderByInput: NexusGenEnums['dietLabelOrderByInput'];
-  healthLabelOrderByInput: NexusGenEnums['healthLabelOrderByInput'];
 }
 
 export interface NexusGenFieldTypes {
@@ -835,16 +824,15 @@ export interface NexusGenFieldTypes {
     testProtected: string; // String!
   }
   Recipe: { // field return type
-    calories: number; // Float!
-    createdAt: any; // DateTime!
-    dietLabels: NexusGenRootTypes['dietLabel'][] | null; // [dietLabel!]
-    healthLabels: NexusGenRootTypes['healthLabel'][] | null; // [healthLabel!]
-    id: string; // ID!
+    calories: number | null; // Float
+    dietLabels: string[] | null; // [String!]
+    healthLabels: string[] | null; // [String!]
     image: string; // String!
     label: string; // String!
-    servings: number; // Int!
-    totalWeight: number; // Float!
-    updatedAt: any; // DateTime!
+    servings: number | null; // Int
+    source: string; // String!
+    sourceUrl: string; // String!
+    totalWeight: number | null; // Float
     uri: string; // String!
   }
   RecipeList: { // field return type
@@ -862,14 +850,6 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     recipeLists: NexusGenRootTypes['RecipeList'][] | null; // [RecipeList!]
     updatedAt: any; // DateTime!
-  }
-  dietLabel: { // field return type
-    id: string; // ID!
-    label: string; // String!
-  }
-  healthLabel: { // field return type
-    id: string; // ID!
-    label: string; // String!
   }
 }
 
@@ -923,26 +903,6 @@ export interface NexusGenArgTypes {
       searchQuery: string; // String!
     }
   }
-  Recipe: {
-    dietLabels: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['dietLabelOrderByInput'] | null; // dietLabelOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['dietLabelWhereInput'] | null; // dietLabelWhereInput
-    }
-    healthLabels: { // args
-      after?: string | null; // String
-      before?: string | null; // String
-      first?: number | null; // Int
-      last?: number | null; // Int
-      orderBy?: NexusGenEnums['healthLabelOrderByInput'] | null; // healthLabelOrderByInput
-      skip?: number | null; // Int
-      where?: NexusGenInputs['healthLabelWhereInput'] | null; // healthLabelWhereInput
-    }
-  }
   RecipeList: {
     recipes: { // args
       after?: string | null; // String
@@ -972,11 +932,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "EdamamRecipe" | "Mutation" | "Query" | "Recipe" | "RecipeList" | "User" | "dietLabel" | "healthLabel";
+export type NexusGenObjectNames = "AuthPayload" | "EdamamRecipe" | "Mutation" | "Query" | "Recipe" | "RecipeList" | "User";
 
 export type NexusGenInputNames = "Filters" | "RecipeCreateInput" | "RecipeCreateManyInput" | "RecipeListCreateInput" | "RecipeListUpdateInput" | "RecipeListWhereInput" | "RecipeListWhereUniqueInput" | "RecipeScalarWhereInput" | "RecipeUpdateDataInput" | "RecipeUpdateManyDataInput" | "RecipeUpdateManyInput" | "RecipeUpdateManyWithWhereNestedInput" | "RecipeUpdateWithWhereUniqueNestedInput" | "RecipeUpsertWithWhereUniqueNestedInput" | "RecipeWhereInput" | "RecipeWhereUniqueInput" | "UserCreateOneWithoutRecipeListsInput" | "UserCreateWithoutRecipeListsInput" | "UserUpdateOneRequiredWithoutRecipeListsInput" | "UserUpdateWithoutRecipeListsDataInput" | "UserUpsertWithoutRecipeListsInput" | "UserWhereInput" | "UserWhereUniqueInput" | "dietLabelCreateInput" | "dietLabelCreateManyInput" | "dietLabelScalarWhereInput" | "dietLabelUpdateDataInput" | "dietLabelUpdateManyDataInput" | "dietLabelUpdateManyInput" | "dietLabelUpdateManyWithWhereNestedInput" | "dietLabelUpdateWithWhereUniqueNestedInput" | "dietLabelUpsertWithWhereUniqueNestedInput" | "dietLabelWhereInput" | "dietLabelWhereUniqueInput" | "healthLabelCreateInput" | "healthLabelCreateManyInput" | "healthLabelScalarWhereInput" | "healthLabelUpdateDataInput" | "healthLabelUpdateManyDataInput" | "healthLabelUpdateManyInput" | "healthLabelUpdateManyWithWhereNestedInput" | "healthLabelUpdateWithWhereUniqueNestedInput" | "healthLabelUpsertWithWhereUniqueNestedInput" | "healthLabelWhereInput" | "healthLabelWhereUniqueInput";
 
-export type NexusGenEnumNames = "DietEnum" | "HealthEnum" | "RecipeListOrderByInput" | "RecipeOrderByInput" | "dietLabelOrderByInput" | "healthLabelOrderByInput";
+export type NexusGenEnumNames = "DietEnum" | "HealthEnum" | "RecipeListOrderByInput" | "RecipeOrderByInput";
 
 export type NexusGenInterfaceNames = never;
 

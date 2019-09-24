@@ -450,6 +450,8 @@ type Recipe {
   label: String!
   uri: String!
   image: String!
+  source: String!
+  sourceUrl: String!
   servings: Int!
   calories: Float!
   totalWeight: Float!
@@ -470,6 +472,8 @@ input RecipeCreateInput {
   label: String!
   uri: String!
   image: String!
+  source: String!
+  sourceUrl: String!
   servings: Int!
   calories: Float!
   totalWeight: Float!
@@ -725,6 +729,10 @@ enum RecipeOrderByInput {
   uri_DESC
   image_ASC
   image_DESC
+  source_ASC
+  source_DESC
+  sourceUrl_ASC
+  sourceUrl_DESC
   servings_ASC
   servings_DESC
   calories_ASC
@@ -742,6 +750,8 @@ type RecipePreviousValues {
   label: String!
   uri: String!
   image: String!
+  source: String!
+  sourceUrl: String!
   servings: Int!
   calories: Float!
   totalWeight: Float!
@@ -806,6 +816,34 @@ input RecipeScalarWhereInput {
   image_not_starts_with: String
   image_ends_with: String
   image_not_ends_with: String
+  source: String
+  source_not: String
+  source_in: [String!]
+  source_not_in: [String!]
+  source_lt: String
+  source_lte: String
+  source_gt: String
+  source_gte: String
+  source_contains: String
+  source_not_contains: String
+  source_starts_with: String
+  source_not_starts_with: String
+  source_ends_with: String
+  source_not_ends_with: String
+  sourceUrl: String
+  sourceUrl_not: String
+  sourceUrl_in: [String!]
+  sourceUrl_not_in: [String!]
+  sourceUrl_lt: String
+  sourceUrl_lte: String
+  sourceUrl_gt: String
+  sourceUrl_gte: String
+  sourceUrl_contains: String
+  sourceUrl_not_contains: String
+  sourceUrl_starts_with: String
+  sourceUrl_not_starts_with: String
+  sourceUrl_ends_with: String
+  sourceUrl_not_ends_with: String
   servings: Int
   servings_not: Int
   servings_in: [Int!]
@@ -873,6 +911,8 @@ input RecipeUpdateDataInput {
   label: String
   uri: String
   image: String
+  source: String
+  sourceUrl: String
   servings: Int
   calories: Float
   totalWeight: Float
@@ -884,6 +924,8 @@ input RecipeUpdateInput {
   label: String
   uri: String
   image: String
+  source: String
+  sourceUrl: String
   servings: Int
   calories: Float
   totalWeight: Float
@@ -895,6 +937,8 @@ input RecipeUpdateManyDataInput {
   label: String
   uri: String
   image: String
+  source: String
+  sourceUrl: String
   servings: Int
   calories: Float
   totalWeight: Float
@@ -916,6 +960,8 @@ input RecipeUpdateManyMutationInput {
   label: String
   uri: String
   image: String
+  source: String
+  sourceUrl: String
   servings: Int
   calories: Float
   totalWeight: Float
@@ -994,6 +1040,34 @@ input RecipeWhereInput {
   image_not_starts_with: String
   image_ends_with: String
   image_not_ends_with: String
+  source: String
+  source_not: String
+  source_in: [String!]
+  source_not_in: [String!]
+  source_lt: String
+  source_lte: String
+  source_gt: String
+  source_gte: String
+  source_contains: String
+  source_not_contains: String
+  source_starts_with: String
+  source_not_starts_with: String
+  source_ends_with: String
+  source_not_ends_with: String
+  sourceUrl: String
+  sourceUrl_not: String
+  sourceUrl_in: [String!]
+  sourceUrl_not_in: [String!]
+  sourceUrl_lt: String
+  sourceUrl_lte: String
+  sourceUrl_gt: String
+  sourceUrl_gte: String
+  sourceUrl_contains: String
+  sourceUrl_not_contains: String
+  sourceUrl_starts_with: String
+  sourceUrl_not_starts_with: String
+  sourceUrl_ends_with: String
+  sourceUrl_not_ends_with: String
   servings: Int
   servings_not: Int
   servings_in: [Int!]

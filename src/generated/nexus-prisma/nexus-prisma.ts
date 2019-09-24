@@ -696,6 +696,8 @@ type RecipeObject =
   | { name: 'label', args?: [] | false, alias?: string  } 
   | { name: 'uri', args?: [] | false, alias?: string  } 
   | { name: 'image', args?: [] | false, alias?: string  } 
+  | { name: 'source', args?: [] | false, alias?: string  } 
+  | { name: 'sourceUrl', args?: [] | false, alias?: string  } 
   | { name: 'servings', args?: [] | false, alias?: string  } 
   | { name: 'calories', args?: [] | false, alias?: string  } 
   | { name: 'totalWeight', args?: [] | false, alias?: string  } 
@@ -709,6 +711,8 @@ type RecipeFields =
   | 'label'
   | 'uri'
   | 'image'
+  | 'source'
+  | 'sourceUrl'
   | 'servings'
   | 'calories'
   | 'totalWeight'
@@ -762,6 +766,22 @@ export interface RecipeFieldDetails {
     resolve: undefined
   }
   image: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  source: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  sourceUrl: {
     type: 'String'
     args: {}
     description: string
@@ -2479,6 +2499,8 @@ type RecipePreviousValuesObject =
   | { name: 'label', args?: [] | false, alias?: string  } 
   | { name: 'uri', args?: [] | false, alias?: string  } 
   | { name: 'image', args?: [] | false, alias?: string  } 
+  | { name: 'source', args?: [] | false, alias?: string  } 
+  | { name: 'sourceUrl', args?: [] | false, alias?: string  } 
   | { name: 'servings', args?: [] | false, alias?: string  } 
   | { name: 'calories', args?: [] | false, alias?: string  } 
   | { name: 'totalWeight', args?: [] | false, alias?: string  } 
@@ -2490,6 +2512,8 @@ type RecipePreviousValuesFields =
   | 'label'
   | 'uri'
   | 'image'
+  | 'source'
+  | 'sourceUrl'
   | 'servings'
   | 'calories'
   | 'totalWeight'
@@ -2526,6 +2550,22 @@ export interface RecipePreviousValuesFieldDetails {
     resolve: undefined
   }
   image: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  source: {
+    type: 'String'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  sourceUrl: {
     type: 'String'
     args: {}
     description: string
@@ -3085,6 +3125,34 @@ export interface RecipeWhereInput {
   image_not_starts_with?: string | null
   image_ends_with?: string | null
   image_not_ends_with?: string | null
+  source?: string | null
+  source_not?: string | null
+  source_in?: string[]
+  source_not_in?: string[]
+  source_lt?: string | null
+  source_lte?: string | null
+  source_gt?: string | null
+  source_gte?: string | null
+  source_contains?: string | null
+  source_not_contains?: string | null
+  source_starts_with?: string | null
+  source_not_starts_with?: string | null
+  source_ends_with?: string | null
+  source_not_ends_with?: string | null
+  sourceUrl?: string | null
+  sourceUrl_not?: string | null
+  sourceUrl_in?: string[]
+  sourceUrl_not_in?: string[]
+  sourceUrl_lt?: string | null
+  sourceUrl_lte?: string | null
+  sourceUrl_gt?: string | null
+  sourceUrl_gte?: string | null
+  sourceUrl_contains?: string | null
+  sourceUrl_not_contains?: string | null
+  sourceUrl_starts_with?: string | null
+  sourceUrl_not_starts_with?: string | null
+  sourceUrl_ends_with?: string | null
+  sourceUrl_not_ends_with?: string | null
   servings?: number | null
   servings_not?: number | null
   servings_in?: number[]
@@ -3193,6 +3261,34 @@ export type RecipeWhereInputInputObject =
   | { name: 'image_not_starts_with', alias?: string  } 
   | { name: 'image_ends_with', alias?: string  } 
   | { name: 'image_not_ends_with', alias?: string  } 
+  | { name: 'source', alias?: string  } 
+  | { name: 'source_not', alias?: string  } 
+  | { name: 'source_in', alias?: string  } 
+  | { name: 'source_not_in', alias?: string  } 
+  | { name: 'source_lt', alias?: string  } 
+  | { name: 'source_lte', alias?: string  } 
+  | { name: 'source_gt', alias?: string  } 
+  | { name: 'source_gte', alias?: string  } 
+  | { name: 'source_contains', alias?: string  } 
+  | { name: 'source_not_contains', alias?: string  } 
+  | { name: 'source_starts_with', alias?: string  } 
+  | { name: 'source_not_starts_with', alias?: string  } 
+  | { name: 'source_ends_with', alias?: string  } 
+  | { name: 'source_not_ends_with', alias?: string  } 
+  | { name: 'sourceUrl', alias?: string  } 
+  | { name: 'sourceUrl_not', alias?: string  } 
+  | { name: 'sourceUrl_in', alias?: string  } 
+  | { name: 'sourceUrl_not_in', alias?: string  } 
+  | { name: 'sourceUrl_lt', alias?: string  } 
+  | { name: 'sourceUrl_lte', alias?: string  } 
+  | { name: 'sourceUrl_gt', alias?: string  } 
+  | { name: 'sourceUrl_gte', alias?: string  } 
+  | { name: 'sourceUrl_contains', alias?: string  } 
+  | { name: 'sourceUrl_not_contains', alias?: string  } 
+  | { name: 'sourceUrl_starts_with', alias?: string  } 
+  | { name: 'sourceUrl_not_starts_with', alias?: string  } 
+  | { name: 'sourceUrl_ends_with', alias?: string  } 
+  | { name: 'sourceUrl_not_ends_with', alias?: string  } 
   | { name: 'servings', alias?: string  } 
   | { name: 'servings_not', alias?: string  } 
   | { name: 'servings_in', alias?: string  } 
@@ -3621,6 +3717,8 @@ export interface RecipeCreateInput {
   label?: string
   uri?: string
   image?: string
+  source?: string
+  sourceUrl?: string
   servings?: number
   calories?: number
   totalWeight?: number
@@ -3633,6 +3731,8 @@ export type RecipeCreateInputInputObject =
   | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'source', alias?: string  } 
+  | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
@@ -3765,6 +3865,8 @@ export interface RecipeUpdateDataInput {
   label?: string | null
   uri?: string | null
   image?: string | null
+  source?: string | null
+  sourceUrl?: string | null
   servings?: number | null
   calories?: number | null
   totalWeight?: number | null
@@ -3776,6 +3878,8 @@ export type RecipeUpdateDataInputInputObject =
   | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'source', alias?: string  } 
+  | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
@@ -4116,6 +4220,34 @@ export interface RecipeScalarWhereInput {
   image_not_starts_with?: string | null
   image_ends_with?: string | null
   image_not_ends_with?: string | null
+  source?: string | null
+  source_not?: string | null
+  source_in?: string[]
+  source_not_in?: string[]
+  source_lt?: string | null
+  source_lte?: string | null
+  source_gt?: string | null
+  source_gte?: string | null
+  source_contains?: string | null
+  source_not_contains?: string | null
+  source_starts_with?: string | null
+  source_not_starts_with?: string | null
+  source_ends_with?: string | null
+  source_not_ends_with?: string | null
+  sourceUrl?: string | null
+  sourceUrl_not?: string | null
+  sourceUrl_in?: string[]
+  sourceUrl_not_in?: string[]
+  sourceUrl_lt?: string | null
+  sourceUrl_lte?: string | null
+  sourceUrl_gt?: string | null
+  sourceUrl_gte?: string | null
+  sourceUrl_contains?: string | null
+  sourceUrl_not_contains?: string | null
+  sourceUrl_starts_with?: string | null
+  sourceUrl_not_starts_with?: string | null
+  sourceUrl_ends_with?: string | null
+  sourceUrl_not_ends_with?: string | null
   servings?: number | null
   servings_not?: number | null
   servings_in?: number[]
@@ -4218,6 +4350,34 @@ export type RecipeScalarWhereInputInputObject =
   | { name: 'image_not_starts_with', alias?: string  } 
   | { name: 'image_ends_with', alias?: string  } 
   | { name: 'image_not_ends_with', alias?: string  } 
+  | { name: 'source', alias?: string  } 
+  | { name: 'source_not', alias?: string  } 
+  | { name: 'source_in', alias?: string  } 
+  | { name: 'source_not_in', alias?: string  } 
+  | { name: 'source_lt', alias?: string  } 
+  | { name: 'source_lte', alias?: string  } 
+  | { name: 'source_gt', alias?: string  } 
+  | { name: 'source_gte', alias?: string  } 
+  | { name: 'source_contains', alias?: string  } 
+  | { name: 'source_not_contains', alias?: string  } 
+  | { name: 'source_starts_with', alias?: string  } 
+  | { name: 'source_not_starts_with', alias?: string  } 
+  | { name: 'source_ends_with', alias?: string  } 
+  | { name: 'source_not_ends_with', alias?: string  } 
+  | { name: 'sourceUrl', alias?: string  } 
+  | { name: 'sourceUrl_not', alias?: string  } 
+  | { name: 'sourceUrl_in', alias?: string  } 
+  | { name: 'sourceUrl_not_in', alias?: string  } 
+  | { name: 'sourceUrl_lt', alias?: string  } 
+  | { name: 'sourceUrl_lte', alias?: string  } 
+  | { name: 'sourceUrl_gt', alias?: string  } 
+  | { name: 'sourceUrl_gte', alias?: string  } 
+  | { name: 'sourceUrl_contains', alias?: string  } 
+  | { name: 'sourceUrl_not_contains', alias?: string  } 
+  | { name: 'sourceUrl_starts_with', alias?: string  } 
+  | { name: 'sourceUrl_not_starts_with', alias?: string  } 
+  | { name: 'sourceUrl_ends_with', alias?: string  } 
+  | { name: 'sourceUrl_not_ends_with', alias?: string  } 
   | { name: 'servings', alias?: string  } 
   | { name: 'servings_not', alias?: string  } 
   | { name: 'servings_in', alias?: string  } 
@@ -4275,6 +4435,8 @@ export interface RecipeUpdateManyDataInput {
   label?: string | null
   uri?: string | null
   image?: string | null
+  source?: string | null
+  sourceUrl?: string | null
   servings?: number | null
   calories?: number | null
   totalWeight?: number | null
@@ -4284,6 +4446,8 @@ export type RecipeUpdateManyDataInputInputObject =
   | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'source', alias?: string  } 
+  | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
@@ -4429,6 +4593,8 @@ export interface RecipeUpdateInput {
   label?: string | null
   uri?: string | null
   image?: string | null
+  source?: string | null
+  sourceUrl?: string | null
   servings?: number | null
   calories?: number | null
   totalWeight?: number | null
@@ -4440,6 +4606,8 @@ export type RecipeUpdateInputInputObject =
   | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'source', alias?: string  } 
+  | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
@@ -4450,6 +4618,8 @@ export interface RecipeUpdateManyMutationInput {
   label?: string | null
   uri?: string | null
   image?: string | null
+  source?: string | null
+  sourceUrl?: string | null
   servings?: number | null
   calories?: number | null
   totalWeight?: number | null
@@ -4459,6 +4629,8 @@ export type RecipeUpdateManyMutationInputInputObject =
   | { name: 'label', alias?: string  } 
   | { name: 'uri', alias?: string  } 
   | { name: 'image', alias?: string  } 
+  | { name: 'source', alias?: string  } 
+  | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
@@ -4702,6 +4874,10 @@ export type RecipeOrderByInputValues =
   | 'uri_DESC'
   | 'image_ASC'
   | 'image_DESC'
+  | 'source_ASC'
+  | 'source_DESC'
+  | 'sourceUrl_ASC'
+  | 'sourceUrl_DESC'
   | 'servings_ASC'
   | 'servings_DESC'
   | 'calories_ASC'

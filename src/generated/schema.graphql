@@ -16,11 +16,6 @@ enum DietEnum {
   lowFat
 }
 
-type dietLabel {
-  id: ID!
-  label: String!
-}
-
 input dietLabelCreateInput {
   id: ID
   label: String!
@@ -29,17 +24,6 @@ input dietLabelCreateInput {
 input dietLabelCreateManyInput {
   connect: [dietLabelWhereUniqueInput!]
   create: [dietLabelCreateInput!]
-}
-
-enum dietLabelOrderByInput {
-  createdAt_ASC
-  createdAt_DESC
-  id_ASC
-  id_DESC
-  label_ASC
-  label_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 input dietLabelScalarWhereInput {
@@ -153,14 +137,31 @@ input dietLabelWhereUniqueInput {
 
 """Recipe directly fetched from the Edamam Recipe API"""
 type EdamamRecipe {
+  """Total energy measured in kcal"""
   calories: Float
+
+  """
+  For example: "high-protein" and/or "low-carb"
+  """
   dietLabels: [String!]
+
+  """
+  For example: "vegan" and/or "peanut-free"
+  """
   healthLabels: [String!]
   image: String!
   label: String!
+
+  """Number of servings"""
   servings: Int
+
+  """Original source site name"""
   source: String!
+
+  """URL to the original recipe from the source"""
   sourceUrl: String!
+
+  """Total weight measured in grams"""
   totalWeight: Float
   uri: String!
 }
@@ -179,11 +180,6 @@ enum HealthEnum {
   vegetarian
 }
 
-type healthLabel {
-  id: ID!
-  label: String!
-}
-
 input healthLabelCreateInput {
   id: ID
   label: String!
@@ -192,17 +188,6 @@ input healthLabelCreateInput {
 input healthLabelCreateManyInput {
   connect: [healthLabelWhereUniqueInput!]
   create: [healthLabelCreateInput!]
-}
-
-enum healthLabelOrderByInput {
-  createdAt_ASC
-  createdAt_DESC
-  id_ASC
-  id_DESC
-  label_ASC
-  label_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 input healthLabelScalarWhereInput {
@@ -340,17 +325,34 @@ type Query {
   testProtected: String!
 }
 
+"""Recipe fetched from internal database"""
 type Recipe {
-  calories: Float!
-  createdAt: DateTime!
-  dietLabels(after: String, before: String, first: Int, last: Int, orderBy: dietLabelOrderByInput, skip: Int, where: dietLabelWhereInput): [dietLabel!]
-  healthLabels(after: String, before: String, first: Int, last: Int, orderBy: healthLabelOrderByInput, skip: Int, where: healthLabelWhereInput): [healthLabel!]
-  id: ID!
+  """Total energy measured in kcal"""
+  calories: Float
+
+  """
+  For example: "high-protein" and/or "low-carb"
+  """
+  dietLabels: [String!]
+
+  """
+  For example: "vegan" and/or "peanut-free"
+  """
+  healthLabels: [String!]
   image: String!
   label: String!
-  servings: Int!
-  totalWeight: Float!
-  updatedAt: DateTime!
+
+  """Number of servings"""
+  servings: Int
+
+  """Original source site name"""
+  source: String!
+
+  """URL to the original recipe from the source"""
+  sourceUrl: String!
+
+  """Total weight measured in grams"""
+  totalWeight: Float
   uri: String!
 }
 
