@@ -882,6 +882,7 @@ export interface NexusGenFieldTypes {
     me: NexusGenRootTypes['User']; // User!
     myRecipeLists: NexusGenRootTypes['RecipeList'][]; // [RecipeList!]!
     recipeList: NexusGenRootTypes['RecipeList'] | null; // RecipeList
+    searchRecipes: NexusGenRootTypes['EdamamRecipe'][] | null; // [EdamamRecipe!]
     testProtected: string; // String!
   }
   Recipe: { // field return type
@@ -949,6 +950,10 @@ export interface NexusGenArgTypes {
     }
     recipeList: { // args
       where: NexusGenInputs['RecipeListWhereUniqueInput']; // RecipeListWhereUniqueInput!
+    }
+    searchRecipes: { // args
+      filters?: NexusGenInputs['Filters'] | null; // Filters
+      searchQuery: string; // String!
     }
   }
   RecipeList: {

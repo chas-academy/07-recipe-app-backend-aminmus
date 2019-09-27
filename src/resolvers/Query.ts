@@ -1,13 +1,12 @@
-import { queryType, stringArg, arg } from 'nexus';
+import { stringArg, arg } from 'nexus';
 import { prismaObjectType } from 'nexus-prisma';
 
-// import Recipe from './Recipe';
-import getUserId from '../utils/getUserId';
 import { Filters } from './Filters';
+import { Context, Recipe } from '../types';
 import { searchRecipes, findRecipeByURI } from '../services/getRecipes';
 import EdamamRecipe from './EdamamRecipe';
+import getUserId from '../utils/getUserId';
 import User from './User';
-import { Context } from '../types';
 
 const Query = prismaObjectType({
   name: 'Query',
@@ -37,6 +36,18 @@ const Query = prismaObjectType({
         const id = getUserId(context);
         return context.prisma.user({ id }).recipeLists();
       },
+    });
+
+
+    t.list.field('searchRecipes', {
+      type: EdamamRecipe,
+      description: 'Search for recipes',
+      nullable: true,
+      args: {
+        searchQuery: stringArg({ nullable: false }),
+        filters: arg({ type: Filters }),
+      },
+      resolve: (_root, { searchQuery, filters }): Promise<Recipe[]> => searchRecipes(searchQuery, filters),
     });
 
     t.field('findRecipeByURI', {

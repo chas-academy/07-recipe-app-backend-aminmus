@@ -319,6 +319,9 @@ type Query {
   me: User!
   myRecipeLists: [RecipeList!]!
   recipeList(where: RecipeListWhereUniqueInput!): RecipeList
+
+  """Search for recipes"""
+  searchRecipes(filters: Filters, searchQuery: String!): [EdamamRecipe!]
   testProtected: String!
 }
 
