@@ -150,6 +150,7 @@ type EdamamRecipe {
   """
   healthLabels: [String!]
   image: String!
+  ingredients: [String!]!
   label: String!
 
   """Number of servings"""
@@ -299,6 +300,8 @@ input healthLabelWhereUniqueInput {
   label: String
 }
 
+scalar Json
+
 type Mutation {
   addRecipeToList(
     """ID of RecipeList to add recipe to"""
@@ -340,6 +343,7 @@ type Recipe {
   """
   healthLabels: [String!]
   image: String!
+  ingredients: [String!]!
   label: String!
 
   """Number of servings"""
@@ -362,6 +366,7 @@ input RecipeCreateInput {
   healthLabels: healthLabelCreateManyInput
   id: ID
   image: String!
+  ingredients: Json!
   label: String!
   servings: Int!
   source: String!
@@ -475,6 +480,8 @@ enum RecipeOrderByInput {
   id_DESC
   image_ASC
   image_DESC
+  ingredients_ASC
+  ingredients_DESC
   label_ASC
   label_DESC
   servings_ASC
@@ -626,6 +633,7 @@ input RecipeUpdateDataInput {
   dietLabels: dietLabelUpdateManyInput
   healthLabels: healthLabelUpdateManyInput
   image: String
+  ingredients: Json
   label: String
   servings: Int
   source: String
@@ -637,6 +645,7 @@ input RecipeUpdateDataInput {
 input RecipeUpdateManyDataInput {
   calories: Float
   image: String
+  ingredients: Json
   label: String
   servings: Int
   source: String

@@ -16,6 +16,7 @@ type Recipe {
   source: String!
   sourceUrl: String!
   servings: Int!
+  ingredients: Json!
   calories: Float!
   totalWeight: Float!
   healthLabels: [healthLabel!]

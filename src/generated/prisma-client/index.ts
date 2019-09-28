@@ -288,6 +288,8 @@ export type RecipeOrderByInput =
   | "sourceUrl_DESC"
   | "servings_ASC"
   | "servings_DESC"
+  | "ingredients_ASC"
+  | "ingredients_DESC"
   | "calories_ASC"
   | "calories_DESC"
   | "totalWeight_ASC"
@@ -694,6 +696,7 @@ export interface RecipeCreateInput {
   source: String;
   sourceUrl: String;
   servings: Int;
+  ingredients: Json;
   calories: Float;
   totalWeight: Float;
   healthLabels?: Maybe<healthLabelCreateManyInput>;
@@ -727,6 +730,7 @@ export interface RecipeUpdateInput {
   source?: Maybe<String>;
   sourceUrl?: Maybe<String>;
   servings?: Maybe<Int>;
+  ingredients?: Maybe<Json>;
   calories?: Maybe<Float>;
   totalWeight?: Maybe<Float>;
   healthLabels?: Maybe<healthLabelUpdateManyInput>;
@@ -902,6 +906,7 @@ export interface RecipeUpdateManyMutationInput {
   source?: Maybe<String>;
   sourceUrl?: Maybe<String>;
   servings?: Maybe<Int>;
+  ingredients?: Maybe<Json>;
   calories?: Maybe<Float>;
   totalWeight?: Maybe<Float>;
 }
@@ -969,6 +974,7 @@ export interface RecipeUpdateDataInput {
   source?: Maybe<String>;
   sourceUrl?: Maybe<String>;
   servings?: Maybe<Int>;
+  ingredients?: Maybe<Json>;
   calories?: Maybe<Float>;
   totalWeight?: Maybe<Float>;
   healthLabels?: Maybe<healthLabelUpdateManyInput>;
@@ -1123,6 +1129,7 @@ export interface RecipeUpdateManyDataInput {
   source?: Maybe<String>;
   sourceUrl?: Maybe<String>;
   servings?: Maybe<Int>;
+  ingredients?: Maybe<Json>;
   calories?: Maybe<Float>;
   totalWeight?: Maybe<Float>;
 }
@@ -1382,6 +1389,7 @@ export interface Recipe {
   source: String;
   sourceUrl: String;
   servings: Int;
+  ingredients: Json;
   calories: Float;
   totalWeight: Float;
   createdAt: DateTimeOutput;
@@ -1396,6 +1404,7 @@ export interface RecipePromise extends Promise<Recipe>, Fragmentable {
   source: () => Promise<String>;
   sourceUrl: () => Promise<String>;
   servings: () => Promise<Int>;
+  ingredients: () => Promise<Json>;
   calories: () => Promise<Float>;
   totalWeight: () => Promise<Float>;
   healthLabels: <T = FragmentableArray<healthLabel>>(args?: {
@@ -1430,6 +1439,7 @@ export interface RecipeSubscription
   source: () => Promise<AsyncIterator<String>>;
   sourceUrl: () => Promise<AsyncIterator<String>>;
   servings: () => Promise<AsyncIterator<Int>>;
+  ingredients: () => Promise<AsyncIterator<Json>>;
   calories: () => Promise<AsyncIterator<Float>>;
   totalWeight: () => Promise<AsyncIterator<Float>>;
   healthLabels: <T = Promise<AsyncIterator<healthLabelSubscription>>>(args?: {
@@ -1464,6 +1474,7 @@ export interface RecipeNullablePromise
   source: () => Promise<String>;
   sourceUrl: () => Promise<String>;
   servings: () => Promise<Int>;
+  ingredients: () => Promise<Json>;
   calories: () => Promise<Float>;
   totalWeight: () => Promise<Float>;
   healthLabels: <T = FragmentableArray<healthLabel>>(args?: {
@@ -2013,6 +2024,7 @@ export interface RecipePreviousValues {
   source: String;
   sourceUrl: String;
   servings: Int;
+  ingredients: Json;
   calories: Float;
   totalWeight: Float;
   createdAt: DateTimeOutput;
@@ -2029,6 +2041,7 @@ export interface RecipePreviousValuesPromise
   source: () => Promise<String>;
   sourceUrl: () => Promise<String>;
   servings: () => Promise<Int>;
+  ingredients: () => Promise<Json>;
   calories: () => Promise<Float>;
   totalWeight: () => Promise<Float>;
   createdAt: () => Promise<DateTimeOutput>;
@@ -2045,6 +2058,7 @@ export interface RecipePreviousValuesSubscription
   source: () => Promise<AsyncIterator<String>>;
   sourceUrl: () => Promise<AsyncIterator<String>>;
   servings: () => Promise<AsyncIterator<Int>>;
+  ingredients: () => Promise<AsyncIterator<Json>>;
   calories: () => Promise<AsyncIterator<Float>>;
   totalWeight: () => Promise<AsyncIterator<Float>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
@@ -2260,6 +2274,8 @@ export type String = string;
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
 */
 export type Int = number;
+
+export type Json = any;
 
 /*
 The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).

@@ -699,6 +699,7 @@ type RecipeObject =
   | { name: 'source', args?: [] | false, alias?: string  } 
   | { name: 'sourceUrl', args?: [] | false, alias?: string  } 
   | { name: 'servings', args?: [] | false, alias?: string  } 
+  | { name: 'ingredients', args?: [] | false, alias?: string  } 
   | { name: 'calories', args?: [] | false, alias?: string  } 
   | { name: 'totalWeight', args?: [] | false, alias?: string  } 
   | { name: 'healthLabels', args?: RecipeHealthLabelsArgs[] | false, alias?: string  } 
@@ -714,6 +715,7 @@ type RecipeFields =
   | 'source'
   | 'sourceUrl'
   | 'servings'
+  | 'ingredients'
   | 'calories'
   | 'totalWeight'
   | 'healthLabels'
@@ -791,6 +793,14 @@ export interface RecipeFieldDetails {
   }
   servings: {
     type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  ingredients: {
+    type: 'Json'
     args: {}
     description: string
     list: undefined
@@ -2502,6 +2512,7 @@ type RecipePreviousValuesObject =
   | { name: 'source', args?: [] | false, alias?: string  } 
   | { name: 'sourceUrl', args?: [] | false, alias?: string  } 
   | { name: 'servings', args?: [] | false, alias?: string  } 
+  | { name: 'ingredients', args?: [] | false, alias?: string  } 
   | { name: 'calories', args?: [] | false, alias?: string  } 
   | { name: 'totalWeight', args?: [] | false, alias?: string  } 
   | { name: 'createdAt', args?: [] | false, alias?: string  } 
@@ -2515,6 +2526,7 @@ type RecipePreviousValuesFields =
   | 'source'
   | 'sourceUrl'
   | 'servings'
+  | 'ingredients'
   | 'calories'
   | 'totalWeight'
   | 'createdAt'
@@ -2575,6 +2587,14 @@ export interface RecipePreviousValuesFieldDetails {
   }
   servings: {
     type: 'Int'
+    args: {}
+    description: string
+    list: undefined
+    nullable: false
+    resolve: undefined
+  }
+  ingredients: {
+    type: 'Json'
     args: {}
     description: string
     list: undefined
@@ -3720,6 +3740,7 @@ export interface RecipeCreateInput {
   source?: string
   sourceUrl?: string
   servings?: number
+  ingredients?: undefined
   calories?: number
   totalWeight?: number
   healthLabels?: healthLabelCreateManyInput | null
@@ -3734,6 +3755,7 @@ export type RecipeCreateInputInputObject =
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
+  | { name: 'ingredients', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
   | { name: 'healthLabels', alias?: string  } 
@@ -3868,6 +3890,7 @@ export interface RecipeUpdateDataInput {
   source?: string | null
   sourceUrl?: string | null
   servings?: number | null
+  ingredients?: undefined | null
   calories?: number | null
   totalWeight?: number | null
   healthLabels?: healthLabelUpdateManyInput | null
@@ -3881,6 +3904,7 @@ export type RecipeUpdateDataInputInputObject =
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
+  | { name: 'ingredients', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
   | { name: 'healthLabels', alias?: string  } 
@@ -4438,6 +4462,7 @@ export interface RecipeUpdateManyDataInput {
   source?: string | null
   sourceUrl?: string | null
   servings?: number | null
+  ingredients?: undefined | null
   calories?: number | null
   totalWeight?: number | null
 }
@@ -4449,6 +4474,7 @@ export type RecipeUpdateManyDataInputInputObject =
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
+  | { name: 'ingredients', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
   
@@ -4596,6 +4622,7 @@ export interface RecipeUpdateInput {
   source?: string | null
   sourceUrl?: string | null
   servings?: number | null
+  ingredients?: undefined | null
   calories?: number | null
   totalWeight?: number | null
   healthLabels?: healthLabelUpdateManyInput | null
@@ -4609,6 +4636,7 @@ export type RecipeUpdateInputInputObject =
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
+  | { name: 'ingredients', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
   | { name: 'healthLabels', alias?: string  } 
@@ -4621,6 +4649,7 @@ export interface RecipeUpdateManyMutationInput {
   source?: string | null
   sourceUrl?: string | null
   servings?: number | null
+  ingredients?: undefined | null
   calories?: number | null
   totalWeight?: number | null
 }
@@ -4632,6 +4661,7 @@ export type RecipeUpdateManyMutationInputInputObject =
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
   | { name: 'servings', alias?: string  } 
+  | { name: 'ingredients', alias?: string  } 
   | { name: 'calories', alias?: string  } 
   | { name: 'totalWeight', alias?: string  } 
   
@@ -4880,6 +4910,8 @@ export type RecipeOrderByInputValues =
   | 'sourceUrl_DESC'
   | 'servings_ASC'
   | 'servings_DESC'
+  | 'ingredients_ASC'
+  | 'ingredients_DESC'
   | 'calories_ASC'
   | 'calories_DESC'
   | 'totalWeight_ASC'

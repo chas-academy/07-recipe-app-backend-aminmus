@@ -374,6 +374,8 @@ input healthLabelWhereUniqueInput {
   label: String
 }
 
+scalar Json
+
 scalar Long
 
 type Mutation {
@@ -453,6 +455,7 @@ type Recipe {
   source: String!
   sourceUrl: String!
   servings: Int!
+  ingredients: Json!
   calories: Float!
   totalWeight: Float!
   healthLabels(where: healthLabelWhereInput, orderBy: healthLabelOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [healthLabel!]
@@ -475,6 +478,7 @@ input RecipeCreateInput {
   source: String!
   sourceUrl: String!
   servings: Int!
+  ingredients: Json!
   calories: Float!
   totalWeight: Float!
   healthLabels: healthLabelCreateManyInput
@@ -735,6 +739,8 @@ enum RecipeOrderByInput {
   sourceUrl_DESC
   servings_ASC
   servings_DESC
+  ingredients_ASC
+  ingredients_DESC
   calories_ASC
   calories_DESC
   totalWeight_ASC
@@ -753,6 +759,7 @@ type RecipePreviousValues {
   source: String!
   sourceUrl: String!
   servings: Int!
+  ingredients: Json!
   calories: Float!
   totalWeight: Float!
   createdAt: DateTime!
@@ -914,6 +921,7 @@ input RecipeUpdateDataInput {
   source: String
   sourceUrl: String
   servings: Int
+  ingredients: Json
   calories: Float
   totalWeight: Float
   healthLabels: healthLabelUpdateManyInput
@@ -927,6 +935,7 @@ input RecipeUpdateInput {
   source: String
   sourceUrl: String
   servings: Int
+  ingredients: Json
   calories: Float
   totalWeight: Float
   healthLabels: healthLabelUpdateManyInput
@@ -940,6 +949,7 @@ input RecipeUpdateManyDataInput {
   source: String
   sourceUrl: String
   servings: Int
+  ingredients: Json
   calories: Float
   totalWeight: Float
 }
@@ -963,6 +973,7 @@ input RecipeUpdateManyMutationInput {
   source: String
   sourceUrl: String
   servings: Int
+  ingredients: Json
   calories: Float
   totalWeight: Float
 }

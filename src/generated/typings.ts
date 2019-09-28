@@ -21,6 +21,7 @@ export interface NexusGenInputs {
     healthLabels?: NexusGenInputs['healthLabelCreateManyInput'] | null; // healthLabelCreateManyInput
     id?: string | null; // ID
     image: string; // String!
+    ingredients: any; // Json!
     label: string; // String!
     servings: number; // Int!
     source: string; // String!
@@ -233,6 +234,7 @@ export interface NexusGenInputs {
     dietLabels?: NexusGenInputs['dietLabelUpdateManyInput'] | null; // dietLabelUpdateManyInput
     healthLabels?: NexusGenInputs['healthLabelUpdateManyInput'] | null; // healthLabelUpdateManyInput
     image?: string | null; // String
+    ingredients?: any | null; // Json
     label?: string | null; // String
     servings?: number | null; // Int
     source?: string | null; // String
@@ -243,6 +245,7 @@ export interface NexusGenInputs {
   RecipeUpdateManyDataInput: { // input type
     calories?: number | null; // Float
     image?: string | null; // String
+    ingredients?: any | null; // Json
     label?: string | null; // String
     servings?: number | null; // Int
     source?: string | null; // String
@@ -744,7 +747,7 @@ export interface NexusGenEnums {
   DietEnum: "balanced" | "high-protein" | "low-carb" | "low-fat"
   HealthEnum: "alcohol-free" | "peanut-free" | "sugar-conscious" | "tree-nut-free" | "vegan" | "vegetarian"
   RecipeListOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  RecipeOrderByInput: "calories_ASC" | "calories_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "label_ASC" | "label_DESC" | "servings_ASC" | "servings_DESC" | "source_ASC" | "source_DESC" | "sourceUrl_ASC" | "sourceUrl_DESC" | "totalWeight_ASC" | "totalWeight_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "uri_ASC" | "uri_DESC"
+  RecipeOrderByInput: "calories_ASC" | "calories_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "ingredients_ASC" | "ingredients_DESC" | "label_ASC" | "label_DESC" | "servings_ASC" | "servings_DESC" | "source_ASC" | "source_DESC" | "sourceUrl_ASC" | "sourceUrl_DESC" | "totalWeight_ASC" | "totalWeight_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "uri_ASC" | "uri_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -757,6 +760,7 @@ export interface NexusGenRootTypes {
     dietLabels?: string[] | null; // [String!]
     healthLabels?: string[] | null; // [String!]
     image: string; // String!
+    ingredients: string[]; // [String!]!
     label: string; // String!
     servings?: number | null; // Int
     source: string; // String!
@@ -771,6 +775,7 @@ export interface NexusGenRootTypes {
     dietLabels?: string[] | null; // [String!]
     healthLabels?: string[] | null; // [String!]
     image: string; // String!
+    ingredients: string[]; // [String!]!
     label: string; // String!
     servings?: number | null; // Int
     source: string; // String!
@@ -797,6 +802,7 @@ export interface NexusGenRootTypes {
   Boolean: boolean;
   ID: string;
   DateTime: any;
+  Json: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
@@ -861,6 +867,7 @@ export interface NexusGenFieldTypes {
     dietLabels: string[] | null; // [String!]
     healthLabels: string[] | null; // [String!]
     image: string; // String!
+    ingredients: string[]; // [String!]!
     label: string; // String!
     servings: number | null; // Int
     source: string; // String!
@@ -890,6 +897,7 @@ export interface NexusGenFieldTypes {
     dietLabels: string[] | null; // [String!]
     healthLabels: string[] | null; // [String!]
     image: string; // String!
+    ingredients: string[]; // [String!]!
     label: string; // String!
     servings: number | null; // Int
     source: string; // String!
@@ -993,7 +1001,7 @@ export type NexusGenEnumNames = "DietEnum" | "HealthEnum" | "RecipeListOrderByIn
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "Json" | "String";
 
 export type NexusGenUnionNames = never;
 

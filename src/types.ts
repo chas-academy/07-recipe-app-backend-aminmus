@@ -4,14 +4,14 @@ import { Prisma } from './generated/prisma-client';
 export interface Recipe {
   uri: string;
   label: string;
-  image?: string;
-  source?: string;
+  image: string;
+  source: string;
+  ingredients: Array<string>;
   sourceUrl?: string;
   servings?: number;
   calories?: number;
   totalWeight?: number;
   totalNutrients?: object;
-  ingredients?: Array<object>;
   dietLabels?: Array<string>;
   healthLabels?: Array<string>;
 }
