@@ -18,6 +18,7 @@ export interface NexusGenInputs {
   RecipeCreateInput: { // input type
     calories: number; // Float!
     dietLabels?: NexusGenInputs['dietLabelCreateManyInput'] | null; // dietLabelCreateManyInput
+    encodedUri: string; // String!
     healthLabels?: NexusGenInputs['healthLabelCreateManyInput'] | null; // healthLabelCreateManyInput
     id?: string | null; // ID
     image: string; // String!
@@ -27,7 +28,6 @@ export interface NexusGenInputs {
     source: string; // String!
     sourceUrl: string; // String!
     totalWeight: number; // Float!
-    uri: string; // String!
   }
   RecipeCreateManyInput: { // input type
     connect?: NexusGenInputs['RecipeWhereUniqueInput'][] | null; // [RecipeWhereUniqueInput!]
@@ -118,6 +118,20 @@ export interface NexusGenInputs {
     createdAt_lte?: any | null; // DateTime
     createdAt_not?: any | null; // DateTime
     createdAt_not_in?: any[] | null; // [DateTime!]
+    encodedUri?: string | null; // String
+    encodedUri_contains?: string | null; // String
+    encodedUri_ends_with?: string | null; // String
+    encodedUri_gt?: string | null; // String
+    encodedUri_gte?: string | null; // String
+    encodedUri_in?: string[] | null; // [String!]
+    encodedUri_lt?: string | null; // String
+    encodedUri_lte?: string | null; // String
+    encodedUri_not?: string | null; // String
+    encodedUri_not_contains?: string | null; // String
+    encodedUri_not_ends_with?: string | null; // String
+    encodedUri_not_in?: string[] | null; // [String!]
+    encodedUri_not_starts_with?: string | null; // String
+    encodedUri_starts_with?: string | null; // String
     id?: string | null; // ID
     id_contains?: string | null; // ID
     id_ends_with?: string | null; // ID
@@ -214,24 +228,11 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
-    uri?: string | null; // String
-    uri_contains?: string | null; // String
-    uri_ends_with?: string | null; // String
-    uri_gt?: string | null; // String
-    uri_gte?: string | null; // String
-    uri_in?: string[] | null; // [String!]
-    uri_lt?: string | null; // String
-    uri_lte?: string | null; // String
-    uri_not?: string | null; // String
-    uri_not_contains?: string | null; // String
-    uri_not_ends_with?: string | null; // String
-    uri_not_in?: string[] | null; // [String!]
-    uri_not_starts_with?: string | null; // String
-    uri_starts_with?: string | null; // String
   }
   RecipeUpdateDataInput: { // input type
     calories?: number | null; // Float
     dietLabels?: NexusGenInputs['dietLabelUpdateManyInput'] | null; // dietLabelUpdateManyInput
+    encodedUri?: string | null; // String
     healthLabels?: NexusGenInputs['healthLabelUpdateManyInput'] | null; // healthLabelUpdateManyInput
     image?: string | null; // String
     ingredients?: any | null; // Json
@@ -240,10 +241,10 @@ export interface NexusGenInputs {
     source?: string | null; // String
     sourceUrl?: string | null; // String
     totalWeight?: number | null; // Float
-    uri?: string | null; // String
   }
   RecipeUpdateManyDataInput: { // input type
     calories?: number | null; // Float
+    encodedUri?: string | null; // String
     image?: string | null; // String
     ingredients?: any | null; // Json
     label?: string | null; // String
@@ -251,7 +252,6 @@ export interface NexusGenInputs {
     source?: string | null; // String
     sourceUrl?: string | null; // String
     totalWeight?: number | null; // Float
-    uri?: string | null; // String
   }
   RecipeUpdateManyInput: { // input type
     connect?: NexusGenInputs['RecipeWhereUniqueInput'][] | null; // [RecipeWhereUniqueInput!]
@@ -298,6 +298,20 @@ export interface NexusGenInputs {
     dietLabels_every?: NexusGenInputs['dietLabelWhereInput'] | null; // dietLabelWhereInput
     dietLabels_none?: NexusGenInputs['dietLabelWhereInput'] | null; // dietLabelWhereInput
     dietLabels_some?: NexusGenInputs['dietLabelWhereInput'] | null; // dietLabelWhereInput
+    encodedUri?: string | null; // String
+    encodedUri_contains?: string | null; // String
+    encodedUri_ends_with?: string | null; // String
+    encodedUri_gt?: string | null; // String
+    encodedUri_gte?: string | null; // String
+    encodedUri_in?: string[] | null; // [String!]
+    encodedUri_lt?: string | null; // String
+    encodedUri_lte?: string | null; // String
+    encodedUri_not?: string | null; // String
+    encodedUri_not_contains?: string | null; // String
+    encodedUri_not_ends_with?: string | null; // String
+    encodedUri_not_in?: string[] | null; // [String!]
+    encodedUri_not_starts_with?: string | null; // String
+    encodedUri_starts_with?: string | null; // String
     healthLabels_every?: NexusGenInputs['healthLabelWhereInput'] | null; // healthLabelWhereInput
     healthLabels_none?: NexusGenInputs['healthLabelWhereInput'] | null; // healthLabelWhereInput
     healthLabels_some?: NexusGenInputs['healthLabelWhereInput'] | null; // healthLabelWhereInput
@@ -397,24 +411,10 @@ export interface NexusGenInputs {
     updatedAt_lte?: any | null; // DateTime
     updatedAt_not?: any | null; // DateTime
     updatedAt_not_in?: any[] | null; // [DateTime!]
-    uri?: string | null; // String
-    uri_contains?: string | null; // String
-    uri_ends_with?: string | null; // String
-    uri_gt?: string | null; // String
-    uri_gte?: string | null; // String
-    uri_in?: string[] | null; // [String!]
-    uri_lt?: string | null; // String
-    uri_lte?: string | null; // String
-    uri_not?: string | null; // String
-    uri_not_contains?: string | null; // String
-    uri_not_ends_with?: string | null; // String
-    uri_not_in?: string[] | null; // [String!]
-    uri_not_starts_with?: string | null; // String
-    uri_starts_with?: string | null; // String
   }
   RecipeWhereUniqueInput: { // input type
+    encodedUri?: string | null; // String
     id?: string | null; // ID
-    uri?: string | null; // String
   }
   UserCreateOneWithoutRecipeListsInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -747,7 +747,7 @@ export interface NexusGenEnums {
   DietEnum: "balanced" | "high-protein" | "low-carb" | "low-fat"
   HealthEnum: "alcohol-free" | "peanut-free" | "sugar-conscious" | "tree-nut-free" | "vegan" | "vegetarian"
   RecipeListOrderByInput: "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "name_ASC" | "name_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
-  RecipeOrderByInput: "calories_ASC" | "calories_DESC" | "createdAt_ASC" | "createdAt_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "ingredients_ASC" | "ingredients_DESC" | "label_ASC" | "label_DESC" | "servings_ASC" | "servings_DESC" | "source_ASC" | "source_DESC" | "sourceUrl_ASC" | "sourceUrl_DESC" | "totalWeight_ASC" | "totalWeight_DESC" | "updatedAt_ASC" | "updatedAt_DESC" | "uri_ASC" | "uri_DESC"
+  RecipeOrderByInput: "calories_ASC" | "calories_DESC" | "createdAt_ASC" | "createdAt_DESC" | "encodedUri_ASC" | "encodedUri_DESC" | "id_ASC" | "id_DESC" | "image_ASC" | "image_DESC" | "ingredients_ASC" | "ingredients_DESC" | "label_ASC" | "label_DESC" | "servings_ASC" | "servings_DESC" | "source_ASC" | "source_DESC" | "sourceUrl_ASC" | "sourceUrl_DESC" | "totalWeight_ASC" | "totalWeight_DESC" | "updatedAt_ASC" | "updatedAt_DESC"
 }
 
 export interface NexusGenRootTypes {
@@ -758,6 +758,7 @@ export interface NexusGenRootTypes {
   EdamamRecipe: { // root type
     calories?: number | null; // Float
     dietLabels?: string[] | null; // [String!]
+    encodedUri: string; // String!
     healthLabels?: string[] | null; // [String!]
     image: string; // String!
     ingredients?: string[] | null; // [String!]
@@ -766,13 +767,13 @@ export interface NexusGenRootTypes {
     source: string; // String!
     sourceUrl: string; // String!
     totalWeight?: number | null; // Float
-    uri: string; // String!
   }
   Mutation: {};
   Query: {};
   Recipe: { // root type
     calories?: number | null; // Float
     dietLabels?: string[] | null; // [String!]
+    encodedUri: string; // String!
     healthLabels?: string[] | null; // [String!]
     image: string; // String!
     ingredients?: string[] | null; // [String!]
@@ -781,7 +782,6 @@ export interface NexusGenRootTypes {
     source: string; // String!
     sourceUrl: string; // String!
     totalWeight?: number | null; // Float
-    uri: string; // String!
   }
   RecipeList: { // root type
     createdAt: any; // DateTime!
@@ -865,6 +865,7 @@ export interface NexusGenFieldTypes {
   EdamamRecipe: { // field return type
     calories: number | null; // Float
     dietLabels: string[] | null; // [String!]
+    encodedUri: string; // String!
     healthLabels: string[] | null; // [String!]
     image: string; // String!
     ingredients: string[] | null; // [String!]
@@ -873,7 +874,6 @@ export interface NexusGenFieldTypes {
     source: string; // String!
     sourceUrl: string; // String!
     totalWeight: number | null; // Float
-    uri: string; // String!
   }
   Mutation: { // field return type
     addRecipeToList: NexusGenRootTypes['RecipeList']; // RecipeList!
@@ -895,6 +895,7 @@ export interface NexusGenFieldTypes {
   Recipe: { // field return type
     calories: number | null; // Float
     dietLabels: string[] | null; // [String!]
+    encodedUri: string; // String!
     healthLabels: string[] | null; // [String!]
     image: string; // String!
     ingredients: string[] | null; // [String!]
@@ -903,7 +904,6 @@ export interface NexusGenFieldTypes {
     source: string; // String!
     sourceUrl: string; // String!
     totalWeight: number | null; // Float
-    uri: string; // String!
   }
   RecipeList: { // field return type
     createdAt: any; // DateTime!
@@ -951,7 +951,7 @@ export interface NexusGenArgTypes {
   }
   Query: {
     findRecipeByURI: { // args
-      uri: string; // String!
+      encodedUri: string; // String!
     }
     hello: { // args
       name?: string | null; // String

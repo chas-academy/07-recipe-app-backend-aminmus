@@ -694,7 +694,7 @@ type RecipeObject =
   | RecipeFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'label', args?: [] | false, alias?: string  } 
-  | { name: 'uri', args?: [] | false, alias?: string  } 
+  | { name: 'encodedUri', args?: [] | false, alias?: string  } 
   | { name: 'image', args?: [] | false, alias?: string  } 
   | { name: 'source', args?: [] | false, alias?: string  } 
   | { name: 'sourceUrl', args?: [] | false, alias?: string  } 
@@ -710,7 +710,7 @@ type RecipeObject =
 type RecipeFields =
   | 'id'
   | 'label'
-  | 'uri'
+  | 'encodedUri'
   | 'image'
   | 'source'
   | 'sourceUrl'
@@ -759,7 +759,7 @@ export interface RecipeFieldDetails {
     nullable: false
     resolve: undefined
   }
-  uri: {
+  encodedUri: {
     type: 'String'
     args: {}
     description: string
@@ -2507,7 +2507,7 @@ type RecipePreviousValuesObject =
   | RecipePreviousValuesFields
   | { name: 'id', args?: [] | false, alias?: string  } 
   | { name: 'label', args?: [] | false, alias?: string  } 
-  | { name: 'uri', args?: [] | false, alias?: string  } 
+  | { name: 'encodedUri', args?: [] | false, alias?: string  } 
   | { name: 'image', args?: [] | false, alias?: string  } 
   | { name: 'source', args?: [] | false, alias?: string  } 
   | { name: 'sourceUrl', args?: [] | false, alias?: string  } 
@@ -2521,7 +2521,7 @@ type RecipePreviousValuesObject =
 type RecipePreviousValuesFields =
   | 'id'
   | 'label'
-  | 'uri'
+  | 'encodedUri'
   | 'image'
   | 'source'
   | 'sourceUrl'
@@ -2553,7 +2553,7 @@ export interface RecipePreviousValuesFieldDetails {
     nullable: false
     resolve: undefined
   }
-  uri: {
+  encodedUri: {
     type: 'String'
     args: {}
     description: string
@@ -3117,20 +3117,20 @@ export interface RecipeWhereInput {
   label_not_starts_with?: string | null
   label_ends_with?: string | null
   label_not_ends_with?: string | null
-  uri?: string | null
-  uri_not?: string | null
-  uri_in?: string[]
-  uri_not_in?: string[]
-  uri_lt?: string | null
-  uri_lte?: string | null
-  uri_gt?: string | null
-  uri_gte?: string | null
-  uri_contains?: string | null
-  uri_not_contains?: string | null
-  uri_starts_with?: string | null
-  uri_not_starts_with?: string | null
-  uri_ends_with?: string | null
-  uri_not_ends_with?: string | null
+  encodedUri?: string | null
+  encodedUri_not?: string | null
+  encodedUri_in?: string[]
+  encodedUri_not_in?: string[]
+  encodedUri_lt?: string | null
+  encodedUri_lte?: string | null
+  encodedUri_gt?: string | null
+  encodedUri_gte?: string | null
+  encodedUri_contains?: string | null
+  encodedUri_not_contains?: string | null
+  encodedUri_starts_with?: string | null
+  encodedUri_not_starts_with?: string | null
+  encodedUri_ends_with?: string | null
+  encodedUri_not_ends_with?: string | null
   image?: string | null
   image_not?: string | null
   image_in?: string[]
@@ -3253,20 +3253,20 @@ export type RecipeWhereInputInputObject =
   | { name: 'label_not_starts_with', alias?: string  } 
   | { name: 'label_ends_with', alias?: string  } 
   | { name: 'label_not_ends_with', alias?: string  } 
-  | { name: 'uri', alias?: string  } 
-  | { name: 'uri_not', alias?: string  } 
-  | { name: 'uri_in', alias?: string  } 
-  | { name: 'uri_not_in', alias?: string  } 
-  | { name: 'uri_lt', alias?: string  } 
-  | { name: 'uri_lte', alias?: string  } 
-  | { name: 'uri_gt', alias?: string  } 
-  | { name: 'uri_gte', alias?: string  } 
-  | { name: 'uri_contains', alias?: string  } 
-  | { name: 'uri_not_contains', alias?: string  } 
-  | { name: 'uri_starts_with', alias?: string  } 
-  | { name: 'uri_not_starts_with', alias?: string  } 
-  | { name: 'uri_ends_with', alias?: string  } 
-  | { name: 'uri_not_ends_with', alias?: string  } 
+  | { name: 'encodedUri', alias?: string  } 
+  | { name: 'encodedUri_not', alias?: string  } 
+  | { name: 'encodedUri_in', alias?: string  } 
+  | { name: 'encodedUri_not_in', alias?: string  } 
+  | { name: 'encodedUri_lt', alias?: string  } 
+  | { name: 'encodedUri_lte', alias?: string  } 
+  | { name: 'encodedUri_gt', alias?: string  } 
+  | { name: 'encodedUri_gte', alias?: string  } 
+  | { name: 'encodedUri_contains', alias?: string  } 
+  | { name: 'encodedUri_not_contains', alias?: string  } 
+  | { name: 'encodedUri_starts_with', alias?: string  } 
+  | { name: 'encodedUri_not_starts_with', alias?: string  } 
+  | { name: 'encodedUri_ends_with', alias?: string  } 
+  | { name: 'encodedUri_not_ends_with', alias?: string  } 
   | { name: 'image', alias?: string  } 
   | { name: 'image_not', alias?: string  } 
   | { name: 'image_in', alias?: string  } 
@@ -3656,12 +3656,12 @@ export type UserWhereInputInputObject =
   
 export interface RecipeWhereUniqueInput {
   id?: string | null
-  uri?: string | null
+  encodedUri?: string | null
 }
 export type RecipeWhereUniqueInputInputObject =
   | Extract<keyof RecipeWhereUniqueInput, string>
   | { name: 'id', alias?: string  } 
-  | { name: 'uri', alias?: string  } 
+  | { name: 'encodedUri', alias?: string  } 
   
 export interface RecipeListWhereUniqueInput {
   id?: string | null
@@ -3735,7 +3735,7 @@ export type RecipeCreateManyInputInputObject =
 export interface RecipeCreateInput {
   id?: string | null
   label?: string
-  uri?: string
+  encodedUri?: string
   image?: string
   source?: string
   sourceUrl?: string
@@ -3750,7 +3750,7 @@ export type RecipeCreateInputInputObject =
   | Extract<keyof RecipeCreateInput, string>
   | { name: 'id', alias?: string  } 
   | { name: 'label', alias?: string  } 
-  | { name: 'uri', alias?: string  } 
+  | { name: 'encodedUri', alias?: string  } 
   | { name: 'image', alias?: string  } 
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
@@ -3885,7 +3885,7 @@ export type RecipeUpdateWithWhereUniqueNestedInputInputObject =
   
 export interface RecipeUpdateDataInput {
   label?: string | null
-  uri?: string | null
+  encodedUri?: string | null
   image?: string | null
   source?: string | null
   sourceUrl?: string | null
@@ -3899,7 +3899,7 @@ export interface RecipeUpdateDataInput {
 export type RecipeUpdateDataInputInputObject =
   | Extract<keyof RecipeUpdateDataInput, string>
   | { name: 'label', alias?: string  } 
-  | { name: 'uri', alias?: string  } 
+  | { name: 'encodedUri', alias?: string  } 
   | { name: 'image', alias?: string  } 
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
@@ -4216,20 +4216,20 @@ export interface RecipeScalarWhereInput {
   label_not_starts_with?: string | null
   label_ends_with?: string | null
   label_not_ends_with?: string | null
-  uri?: string | null
-  uri_not?: string | null
-  uri_in?: string[]
-  uri_not_in?: string[]
-  uri_lt?: string | null
-  uri_lte?: string | null
-  uri_gt?: string | null
-  uri_gte?: string | null
-  uri_contains?: string | null
-  uri_not_contains?: string | null
-  uri_starts_with?: string | null
-  uri_not_starts_with?: string | null
-  uri_ends_with?: string | null
-  uri_not_ends_with?: string | null
+  encodedUri?: string | null
+  encodedUri_not?: string | null
+  encodedUri_in?: string[]
+  encodedUri_not_in?: string[]
+  encodedUri_lt?: string | null
+  encodedUri_lte?: string | null
+  encodedUri_gt?: string | null
+  encodedUri_gte?: string | null
+  encodedUri_contains?: string | null
+  encodedUri_not_contains?: string | null
+  encodedUri_starts_with?: string | null
+  encodedUri_not_starts_with?: string | null
+  encodedUri_ends_with?: string | null
+  encodedUri_not_ends_with?: string | null
   image?: string | null
   image_not?: string | null
   image_in?: string[]
@@ -4346,20 +4346,20 @@ export type RecipeScalarWhereInputInputObject =
   | { name: 'label_not_starts_with', alias?: string  } 
   | { name: 'label_ends_with', alias?: string  } 
   | { name: 'label_not_ends_with', alias?: string  } 
-  | { name: 'uri', alias?: string  } 
-  | { name: 'uri_not', alias?: string  } 
-  | { name: 'uri_in', alias?: string  } 
-  | { name: 'uri_not_in', alias?: string  } 
-  | { name: 'uri_lt', alias?: string  } 
-  | { name: 'uri_lte', alias?: string  } 
-  | { name: 'uri_gt', alias?: string  } 
-  | { name: 'uri_gte', alias?: string  } 
-  | { name: 'uri_contains', alias?: string  } 
-  | { name: 'uri_not_contains', alias?: string  } 
-  | { name: 'uri_starts_with', alias?: string  } 
-  | { name: 'uri_not_starts_with', alias?: string  } 
-  | { name: 'uri_ends_with', alias?: string  } 
-  | { name: 'uri_not_ends_with', alias?: string  } 
+  | { name: 'encodedUri', alias?: string  } 
+  | { name: 'encodedUri_not', alias?: string  } 
+  | { name: 'encodedUri_in', alias?: string  } 
+  | { name: 'encodedUri_not_in', alias?: string  } 
+  | { name: 'encodedUri_lt', alias?: string  } 
+  | { name: 'encodedUri_lte', alias?: string  } 
+  | { name: 'encodedUri_gt', alias?: string  } 
+  | { name: 'encodedUri_gte', alias?: string  } 
+  | { name: 'encodedUri_contains', alias?: string  } 
+  | { name: 'encodedUri_not_contains', alias?: string  } 
+  | { name: 'encodedUri_starts_with', alias?: string  } 
+  | { name: 'encodedUri_not_starts_with', alias?: string  } 
+  | { name: 'encodedUri_ends_with', alias?: string  } 
+  | { name: 'encodedUri_not_ends_with', alias?: string  } 
   | { name: 'image', alias?: string  } 
   | { name: 'image_not', alias?: string  } 
   | { name: 'image_in', alias?: string  } 
@@ -4457,7 +4457,7 @@ export type RecipeUpdateManyWithWhereNestedInputInputObject =
   
 export interface RecipeUpdateManyDataInput {
   label?: string | null
-  uri?: string | null
+  encodedUri?: string | null
   image?: string | null
   source?: string | null
   sourceUrl?: string | null
@@ -4469,7 +4469,7 @@ export interface RecipeUpdateManyDataInput {
 export type RecipeUpdateManyDataInputInputObject =
   | Extract<keyof RecipeUpdateManyDataInput, string>
   | { name: 'label', alias?: string  } 
-  | { name: 'uri', alias?: string  } 
+  | { name: 'encodedUri', alias?: string  } 
   | { name: 'image', alias?: string  } 
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
@@ -4617,7 +4617,7 @@ export type UserUpdateManyMutationInputInputObject =
   
 export interface RecipeUpdateInput {
   label?: string | null
-  uri?: string | null
+  encodedUri?: string | null
   image?: string | null
   source?: string | null
   sourceUrl?: string | null
@@ -4631,7 +4631,7 @@ export interface RecipeUpdateInput {
 export type RecipeUpdateInputInputObject =
   | Extract<keyof RecipeUpdateInput, string>
   | { name: 'label', alias?: string  } 
-  | { name: 'uri', alias?: string  } 
+  | { name: 'encodedUri', alias?: string  } 
   | { name: 'image', alias?: string  } 
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
@@ -4644,7 +4644,7 @@ export type RecipeUpdateInputInputObject =
   
 export interface RecipeUpdateManyMutationInput {
   label?: string | null
-  uri?: string | null
+  encodedUri?: string | null
   image?: string | null
   source?: string | null
   sourceUrl?: string | null
@@ -4656,7 +4656,7 @@ export interface RecipeUpdateManyMutationInput {
 export type RecipeUpdateManyMutationInputInputObject =
   | Extract<keyof RecipeUpdateManyMutationInput, string>
   | { name: 'label', alias?: string  } 
-  | { name: 'uri', alias?: string  } 
+  | { name: 'encodedUri', alias?: string  } 
   | { name: 'image', alias?: string  } 
   | { name: 'source', alias?: string  } 
   | { name: 'sourceUrl', alias?: string  } 
@@ -4900,8 +4900,8 @@ export type RecipeOrderByInputValues =
   | 'id_DESC'
   | 'label_ASC'
   | 'label_DESC'
-  | 'uri_ASC'
-  | 'uri_DESC'
+  | 'encodedUri_ASC'
+  | 'encodedUri_DESC'
   | 'image_ASC'
   | 'image_DESC'
   | 'source_ASC'

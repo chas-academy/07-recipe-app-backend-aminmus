@@ -41,10 +41,14 @@ export async function searchRecipes(query: string, filters?: SearchFilter): Prom
 
   const recipes = await recipeHits.map((current: any) => {
     const { recipe: curRecipe } = current;
-    const { yield: servings, url: sourceUrl, ingredientLines: ingredients } = curRecipe;
+    const {
+      yield: servings, url: sourceUrl, ingredientLines: ingredients, uri,
+    } = curRecipe;
+
+    const encodedUri = encodeURIComponent(uri);
 
     const recipe: Recipe = {
-      ...curRecipe, servings, sourceUrl, ingredients,
+      ...curRecipe, servings, sourceUrl, ingredients, encodedUri,
     };
     return recipe;
   });
@@ -57,12 +61,13 @@ export async function searchRecipes(query: string, filters?: SearchFilter): Prom
  * Find a specific recipe from Edamam Recipe API
  *
  */
-export async function findRecipeByURI(recipeUri: string): Promise<Recipe> {
+export async function findRecipeByURI(encodedRecipeUri: string): Promise<Recipe> {
   const baseUrl = `https://api.edamam.com/search?app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_API_KEY}`;
 
   // Encode URI, this is required to work with Edamams API
-  const encodedUri = encodeURIComponent(recipeUri);
-  const requestUrl = `${baseUrl}&r=${encodedUri}`;
+  // const encodedRequestUri = encodeURIComponent(recipeUri);
+  // const requestUrl = `${baseUrl}&r=${encodedRequestUri}`;
+  const requestUrl = `${baseUrl}&r=${encodedRecipeUri}`;
 
   // Request recipe from Edamam and await result
   const jsonResult = await fetch(requestUrl);
@@ -74,7 +79,6 @@ export async function findRecipeByURI(recipeUri: string): Promise<Recipe> {
     url: sourceUrl,
     source,
     label,
-    uri,
     image,
     ingredientLines: ingredients,
     calories,
@@ -85,7 +89,7 @@ export async function findRecipeByURI(recipeUri: string): Promise<Recipe> {
 
   const recipe: Recipe = {
     label,
-    uri,
+    encodedUri: encodedRecipeUri,
     image,
     ingredients,
     calories,

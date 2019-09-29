@@ -16,14 +16,14 @@ const Mutation = prismaObjectType({
     t.field('addRecipeToList', {
       type: 'RecipeList',
       args: {
-        recipeURI: stringArg(),
+        recipeURI: stringArg({ description: 'The URL-encoded URI of the recipe' }),
         id: idArg({ description: 'ID of RecipeList to add recipe to' }),
       },
       resolve: async (_root, { recipeURI, id }, context: Context) => {
         let recipe: Recipe | null;
 
         const recipeExists = await context.prisma.$exists.recipe({
-          uri: recipeURI,
+          encodedUri: recipeURI,
         });
 
         if (!recipeExists) {
@@ -45,7 +45,7 @@ const Mutation = prismaObjectType({
           });
         } else {
           // Use the existing recipe in the DB
-          recipe = await context.prisma.recipe({ uri: recipeURI });
+          recipe = await context.prisma.recipe({ encodedUri: recipeURI });
         }
 
         // Insert (aka connect) the recipe into the chosen Recipe List

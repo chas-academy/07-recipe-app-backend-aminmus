@@ -52,10 +52,10 @@ const Query = prismaObjectType({
 
     t.field('findRecipeByURI', {
       type: EdamamRecipe,
-      description: 'Find a recipe by uri',
+      description: 'Find a recipe by URI. The URI needs to be url-encoded',
       nullable: true,
-      args: { uri: stringArg({ nullable: false }) },
-      resolve: (_root, { uri }) => findRecipeByURI(uri),
+      args: { encodedUri: stringArg({ nullable: false }) },
+      resolve: (_root, { encodedUri }) => findRecipeByURI(encodedUri),
     });
   },
 });

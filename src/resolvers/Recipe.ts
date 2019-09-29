@@ -4,7 +4,7 @@ const Recipe = objectType({
   name: 'Recipe',
   description: 'Recipe fetched from internal database',
   definition(t) {
-    t.string('uri');
+    t.string('encodedUri');
     t.string('label');
     t.string('image');
     t.string('source', { description: 'Original source site name' });

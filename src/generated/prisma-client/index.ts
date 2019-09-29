@@ -278,8 +278,8 @@ export type RecipeOrderByInput =
   | "id_DESC"
   | "label_ASC"
   | "label_DESC"
-  | "uri_ASC"
-  | "uri_DESC"
+  | "encodedUri_ASC"
+  | "encodedUri_DESC"
   | "image_ASC"
   | "image_DESC"
   | "source_ASC"
@@ -327,7 +327,7 @@ export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export type RecipeWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
-  uri?: Maybe<String>;
+  encodedUri?: Maybe<String>;
 }>;
 
 export interface healthLabelWhereInput {
@@ -427,20 +427,20 @@ export interface RecipeWhereInput {
   label_not_starts_with?: Maybe<String>;
   label_ends_with?: Maybe<String>;
   label_not_ends_with?: Maybe<String>;
-  uri?: Maybe<String>;
-  uri_not?: Maybe<String>;
-  uri_in?: Maybe<String[] | String>;
-  uri_not_in?: Maybe<String[] | String>;
-  uri_lt?: Maybe<String>;
-  uri_lte?: Maybe<String>;
-  uri_gt?: Maybe<String>;
-  uri_gte?: Maybe<String>;
-  uri_contains?: Maybe<String>;
-  uri_not_contains?: Maybe<String>;
-  uri_starts_with?: Maybe<String>;
-  uri_not_starts_with?: Maybe<String>;
-  uri_ends_with?: Maybe<String>;
-  uri_not_ends_with?: Maybe<String>;
+  encodedUri?: Maybe<String>;
+  encodedUri_not?: Maybe<String>;
+  encodedUri_in?: Maybe<String[] | String>;
+  encodedUri_not_in?: Maybe<String[] | String>;
+  encodedUri_lt?: Maybe<String>;
+  encodedUri_lte?: Maybe<String>;
+  encodedUri_gt?: Maybe<String>;
+  encodedUri_gte?: Maybe<String>;
+  encodedUri_contains?: Maybe<String>;
+  encodedUri_not_contains?: Maybe<String>;
+  encodedUri_starts_with?: Maybe<String>;
+  encodedUri_not_starts_with?: Maybe<String>;
+  encodedUri_ends_with?: Maybe<String>;
+  encodedUri_not_ends_with?: Maybe<String>;
   image?: Maybe<String>;
   image_not?: Maybe<String>;
   image_in?: Maybe<String[] | String>;
@@ -691,7 +691,7 @@ export type healthLabelWhereUniqueInput = AtLeastOne<{
 export interface RecipeCreateInput {
   id?: Maybe<ID_Input>;
   label: String;
-  uri: String;
+  encodedUri: String;
   image: String;
   source: String;
   sourceUrl: String;
@@ -725,7 +725,7 @@ export interface dietLabelCreateInput {
 
 export interface RecipeUpdateInput {
   label?: Maybe<String>;
-  uri?: Maybe<String>;
+  encodedUri?: Maybe<String>;
   image?: Maybe<String>;
   source?: Maybe<String>;
   sourceUrl?: Maybe<String>;
@@ -901,7 +901,7 @@ export interface dietLabelUpdateManyDataInput {
 
 export interface RecipeUpdateManyMutationInput {
   label?: Maybe<String>;
-  uri?: Maybe<String>;
+  encodedUri?: Maybe<String>;
   image?: Maybe<String>;
   source?: Maybe<String>;
   sourceUrl?: Maybe<String>;
@@ -969,7 +969,7 @@ export interface RecipeUpdateWithWhereUniqueNestedInput {
 
 export interface RecipeUpdateDataInput {
   label?: Maybe<String>;
-  uri?: Maybe<String>;
+  encodedUri?: Maybe<String>;
   image?: Maybe<String>;
   source?: Maybe<String>;
   sourceUrl?: Maybe<String>;
@@ -1016,20 +1016,20 @@ export interface RecipeScalarWhereInput {
   label_not_starts_with?: Maybe<String>;
   label_ends_with?: Maybe<String>;
   label_not_ends_with?: Maybe<String>;
-  uri?: Maybe<String>;
-  uri_not?: Maybe<String>;
-  uri_in?: Maybe<String[] | String>;
-  uri_not_in?: Maybe<String[] | String>;
-  uri_lt?: Maybe<String>;
-  uri_lte?: Maybe<String>;
-  uri_gt?: Maybe<String>;
-  uri_gte?: Maybe<String>;
-  uri_contains?: Maybe<String>;
-  uri_not_contains?: Maybe<String>;
-  uri_starts_with?: Maybe<String>;
-  uri_not_starts_with?: Maybe<String>;
-  uri_ends_with?: Maybe<String>;
-  uri_not_ends_with?: Maybe<String>;
+  encodedUri?: Maybe<String>;
+  encodedUri_not?: Maybe<String>;
+  encodedUri_in?: Maybe<String[] | String>;
+  encodedUri_not_in?: Maybe<String[] | String>;
+  encodedUri_lt?: Maybe<String>;
+  encodedUri_lte?: Maybe<String>;
+  encodedUri_gt?: Maybe<String>;
+  encodedUri_gte?: Maybe<String>;
+  encodedUri_contains?: Maybe<String>;
+  encodedUri_not_contains?: Maybe<String>;
+  encodedUri_starts_with?: Maybe<String>;
+  encodedUri_not_starts_with?: Maybe<String>;
+  encodedUri_ends_with?: Maybe<String>;
+  encodedUri_not_ends_with?: Maybe<String>;
   image?: Maybe<String>;
   image_not?: Maybe<String>;
   image_in?: Maybe<String[] | String>;
@@ -1124,7 +1124,7 @@ export interface RecipeUpdateManyWithWhereNestedInput {
 
 export interface RecipeUpdateManyDataInput {
   label?: Maybe<String>;
-  uri?: Maybe<String>;
+  encodedUri?: Maybe<String>;
   image?: Maybe<String>;
   source?: Maybe<String>;
   sourceUrl?: Maybe<String>;
@@ -1384,7 +1384,7 @@ export interface NodeNode {
 export interface Recipe {
   id: ID_Output;
   label: String;
-  uri: String;
+  encodedUri: String;
   image: String;
   source: String;
   sourceUrl: String;
@@ -1399,7 +1399,7 @@ export interface Recipe {
 export interface RecipePromise extends Promise<Recipe>, Fragmentable {
   id: () => Promise<ID_Output>;
   label: () => Promise<String>;
-  uri: () => Promise<String>;
+  encodedUri: () => Promise<String>;
   image: () => Promise<String>;
   source: () => Promise<String>;
   sourceUrl: () => Promise<String>;
@@ -1434,7 +1434,7 @@ export interface RecipeSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   label: () => Promise<AsyncIterator<String>>;
-  uri: () => Promise<AsyncIterator<String>>;
+  encodedUri: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
   source: () => Promise<AsyncIterator<String>>;
   sourceUrl: () => Promise<AsyncIterator<String>>;
@@ -1469,7 +1469,7 @@ export interface RecipeNullablePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   label: () => Promise<String>;
-  uri: () => Promise<String>;
+  encodedUri: () => Promise<String>;
   image: () => Promise<String>;
   source: () => Promise<String>;
   sourceUrl: () => Promise<String>;
@@ -2019,7 +2019,7 @@ export interface RecipeSubscriptionPayloadSubscription
 export interface RecipePreviousValues {
   id: ID_Output;
   label: String;
-  uri: String;
+  encodedUri: String;
   image: String;
   source: String;
   sourceUrl: String;
@@ -2036,7 +2036,7 @@ export interface RecipePreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   label: () => Promise<String>;
-  uri: () => Promise<String>;
+  encodedUri: () => Promise<String>;
   image: () => Promise<String>;
   source: () => Promise<String>;
   sourceUrl: () => Promise<String>;
@@ -2053,7 +2053,7 @@ export interface RecipePreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   label: () => Promise<AsyncIterator<String>>;
-  uri: () => Promise<AsyncIterator<String>>;
+  encodedUri: () => Promise<AsyncIterator<String>>;
   image: () => Promise<AsyncIterator<String>>;
   source: () => Promise<AsyncIterator<String>>;
   sourceUrl: () => Promise<AsyncIterator<String>>;

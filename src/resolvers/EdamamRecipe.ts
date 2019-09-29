@@ -4,7 +4,7 @@ const EdamamRecipe = objectType({
   name: 'EdamamRecipe',
   description: 'Recipe directly fetched from the Edamam Recipe API',
   definition(t) {
-    t.string('uri');
+    t.string('encodedUri');
     t.string('label');
     t.string('image');
     t.string('source', { description: 'Original source site name' });

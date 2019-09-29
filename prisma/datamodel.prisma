@@ -11,7 +11,7 @@ type User {
 type Recipe {
   id: ID! @id
   label: String!
-  uri: String! @unique
+  encodedUri: String! @unique
   image: String!
   source: String!
   sourceUrl: String!

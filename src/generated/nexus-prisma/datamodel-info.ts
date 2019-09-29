@@ -6,7 +6,7 @@
 export default {
   uniqueFieldsByModel: {
     User: ['id', 'email'],
-    Recipe: ['id', 'uri'],
+    Recipe: ['id', 'encodedUri'],
     RecipeList: ['id'],
     healthLabel: ['id', 'label'],
     dietLabel: ['id', 'label']
@@ -2265,7 +2265,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2275,7 +2275,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not",
+            "name": "encodedUri_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2285,7 +2285,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_in",
+            "name": "encodedUri_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -2303,7 +2303,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not_in",
+            "name": "encodedUri_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -2321,7 +2321,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_lt",
+            "name": "encodedUri_lt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2331,7 +2331,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_lte",
+            "name": "encodedUri_lte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2341,7 +2341,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_gt",
+            "name": "encodedUri_gt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2351,7 +2351,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_gte",
+            "name": "encodedUri_gte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2361,7 +2361,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_contains",
+            "name": "encodedUri_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2371,7 +2371,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not_contains",
+            "name": "encodedUri_not_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2381,7 +2381,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_starts_with",
+            "name": "encodedUri_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2391,7 +2391,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not_starts_with",
+            "name": "encodedUri_not_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2401,7 +2401,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_ends_with",
+            "name": "encodedUri_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -2411,7 +2411,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not_ends_with",
+            "name": "encodedUri_not_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -5456,13 +5456,13 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "uri_ASC",
+            "name": "encodedUri_ASC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "uri_DESC",
+            "name": "encodedUri_DESC",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
@@ -5616,7 +5616,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "args": [],
             "type": {
@@ -6487,7 +6487,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -8527,7 +8527,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "type": {
               "kind": "NON_NULL",
@@ -9350,7 +9350,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11272,7 +11272,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11282,7 +11282,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not",
+            "name": "encodedUri_not",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11292,7 +11292,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_in",
+            "name": "encodedUri_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -11310,7 +11310,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not_in",
+            "name": "encodedUri_not_in",
             "description": null,
             "type": {
               "kind": "LIST",
@@ -11328,7 +11328,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_lt",
+            "name": "encodedUri_lt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11338,7 +11338,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_lte",
+            "name": "encodedUri_lte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11348,7 +11348,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_gt",
+            "name": "encodedUri_gt",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11358,7 +11358,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_gte",
+            "name": "encodedUri_gte",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11368,7 +11368,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_contains",
+            "name": "encodedUri_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11378,7 +11378,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not_contains",
+            "name": "encodedUri_not_contains",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11388,7 +11388,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_starts_with",
+            "name": "encodedUri_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11398,7 +11398,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not_starts_with",
+            "name": "encodedUri_not_starts_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11408,7 +11408,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_ends_with",
+            "name": "encodedUri_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -11418,7 +11418,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri_not_ends_with",
+            "name": "encodedUri_not_ends_with",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -12490,7 +12490,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -13351,7 +13351,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -13472,7 +13472,7 @@ export default {
             "defaultValue": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "type": {
               "kind": "SCALAR",
@@ -14706,7 +14706,7 @@ export default {
             "deprecationReason": null
           },
           {
-            "name": "uri",
+            "name": "encodedUri",
             "description": null,
             "args": [],
             "type": {

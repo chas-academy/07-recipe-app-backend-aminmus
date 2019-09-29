@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { Prisma } from './generated/prisma-client';
 
 export interface Recipe {
-  uri: string;
+  encodedUri: string;
   label: string;
   image: string;
   source: string;

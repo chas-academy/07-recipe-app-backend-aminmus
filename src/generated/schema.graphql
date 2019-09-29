@@ -144,6 +144,7 @@ type EdamamRecipe {
   For example: "high-protein" and/or "low-carb"
   """
   dietLabels: [String!]
+  encodedUri: String!
 
   """
   For example: "vegan" and/or "peanut-free"
@@ -164,7 +165,6 @@ type EdamamRecipe {
 
   """Total weight measured in grams"""
   totalWeight: Float
-  uri: String!
 }
 
 input Filters {
@@ -306,6 +306,8 @@ type Mutation {
   addRecipeToList(
     """ID of RecipeList to add recipe to"""
     id: ID
+
+    """The URL-encoded URI of the recipe"""
     recipeURI: String
   ): RecipeList!
   createRecipeList(data: RecipeListCreateInput!): RecipeList!
@@ -316,8 +318,8 @@ type Mutation {
 }
 
 type Query {
-  """Find a recipe by uri"""
-  findRecipeByURI(uri: String!): EdamamRecipe
+  """Find a recipe by URI. The URI needs to be url-encoded"""
+  findRecipeByURI(encodedUri: String!): EdamamRecipe
   hello(name: String): String!
   me: User!
   myRecipeLists: [RecipeList!]!
@@ -337,6 +339,7 @@ type Recipe {
   For example: "high-protein" and/or "low-carb"
   """
   dietLabels: [String!]
+  encodedUri: String!
 
   """
   For example: "vegan" and/or "peanut-free"
@@ -357,12 +360,12 @@ type Recipe {
 
   """Total weight measured in grams"""
   totalWeight: Float
-  uri: String!
 }
 
 input RecipeCreateInput {
   calories: Float!
   dietLabels: dietLabelCreateManyInput
+  encodedUri: String!
   healthLabels: healthLabelCreateManyInput
   id: ID
   image: String!
@@ -372,7 +375,6 @@ input RecipeCreateInput {
   source: String!
   sourceUrl: String!
   totalWeight: Float!
-  uri: String!
 }
 
 input RecipeCreateManyInput {
@@ -476,6 +478,8 @@ enum RecipeOrderByInput {
   calories_DESC
   createdAt_ASC
   createdAt_DESC
+  encodedUri_ASC
+  encodedUri_DESC
   id_ASC
   id_DESC
   image_ASC
@@ -494,8 +498,6 @@ enum RecipeOrderByInput {
   totalWeight_DESC
   updatedAt_ASC
   updatedAt_DESC
-  uri_ASC
-  uri_DESC
 }
 
 input RecipeScalarWhereInput {
@@ -516,6 +518,20 @@ input RecipeScalarWhereInput {
   createdAt_lte: DateTime
   createdAt_not: DateTime
   createdAt_not_in: [DateTime!]
+  encodedUri: String
+  encodedUri_contains: String
+  encodedUri_ends_with: String
+  encodedUri_gt: String
+  encodedUri_gte: String
+  encodedUri_in: [String!]
+  encodedUri_lt: String
+  encodedUri_lte: String
+  encodedUri_not: String
+  encodedUri_not_contains: String
+  encodedUri_not_ends_with: String
+  encodedUri_not_in: [String!]
+  encodedUri_not_starts_with: String
+  encodedUri_starts_with: String
   id: ID
   id_contains: ID
   id_ends_with: ID
@@ -612,25 +628,12 @@ input RecipeScalarWhereInput {
   updatedAt_lte: DateTime
   updatedAt_not: DateTime
   updatedAt_not_in: [DateTime!]
-  uri: String
-  uri_contains: String
-  uri_ends_with: String
-  uri_gt: String
-  uri_gte: String
-  uri_in: [String!]
-  uri_lt: String
-  uri_lte: String
-  uri_not: String
-  uri_not_contains: String
-  uri_not_ends_with: String
-  uri_not_in: [String!]
-  uri_not_starts_with: String
-  uri_starts_with: String
 }
 
 input RecipeUpdateDataInput {
   calories: Float
   dietLabels: dietLabelUpdateManyInput
+  encodedUri: String
   healthLabels: healthLabelUpdateManyInput
   image: String
   ingredients: Json
@@ -639,11 +642,11 @@ input RecipeUpdateDataInput {
   source: String
   sourceUrl: String
   totalWeight: Float
-  uri: String
 }
 
 input RecipeUpdateManyDataInput {
   calories: Float
+  encodedUri: String
   image: String
   ingredients: Json
   label: String
@@ -651,7 +654,6 @@ input RecipeUpdateManyDataInput {
   source: String
   sourceUrl: String
   totalWeight: Float
-  uri: String
 }
 
 input RecipeUpdateManyInput {
@@ -703,6 +705,20 @@ input RecipeWhereInput {
   dietLabels_every: dietLabelWhereInput
   dietLabels_none: dietLabelWhereInput
   dietLabels_some: dietLabelWhereInput
+  encodedUri: String
+  encodedUri_contains: String
+  encodedUri_ends_with: String
+  encodedUri_gt: String
+  encodedUri_gte: String
+  encodedUri_in: [String!]
+  encodedUri_lt: String
+  encodedUri_lte: String
+  encodedUri_not: String
+  encodedUri_not_contains: String
+  encodedUri_not_ends_with: String
+  encodedUri_not_in: [String!]
+  encodedUri_not_starts_with: String
+  encodedUri_starts_with: String
   healthLabels_every: healthLabelWhereInput
   healthLabels_none: healthLabelWhereInput
   healthLabels_some: healthLabelWhereInput
@@ -802,25 +818,11 @@ input RecipeWhereInput {
   updatedAt_lte: DateTime
   updatedAt_not: DateTime
   updatedAt_not_in: [DateTime!]
-  uri: String
-  uri_contains: String
-  uri_ends_with: String
-  uri_gt: String
-  uri_gte: String
-  uri_in: [String!]
-  uri_lt: String
-  uri_lte: String
-  uri_not: String
-  uri_not_contains: String
-  uri_not_ends_with: String
-  uri_not_in: [String!]
-  uri_not_starts_with: String
-  uri_starts_with: String
 }
 
 input RecipeWhereUniqueInput {
+  encodedUri: String
   id: ID
-  uri: String
 }
 
 type User {

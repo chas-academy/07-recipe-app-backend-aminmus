@@ -450,7 +450,7 @@ type Query {
 type Recipe {
   id: ID!
   label: String!
-  uri: String!
+  encodedUri: String!
   image: String!
   source: String!
   sourceUrl: String!
@@ -473,7 +473,7 @@ type RecipeConnection {
 input RecipeCreateInput {
   id: ID
   label: String!
-  uri: String!
+  encodedUri: String!
   image: String!
   source: String!
   sourceUrl: String!
@@ -729,8 +729,8 @@ enum RecipeOrderByInput {
   id_DESC
   label_ASC
   label_DESC
-  uri_ASC
-  uri_DESC
+  encodedUri_ASC
+  encodedUri_DESC
   image_ASC
   image_DESC
   source_ASC
@@ -754,7 +754,7 @@ enum RecipeOrderByInput {
 type RecipePreviousValues {
   id: ID!
   label: String!
-  uri: String!
+  encodedUri: String!
   image: String!
   source: String!
   sourceUrl: String!
@@ -795,20 +795,20 @@ input RecipeScalarWhereInput {
   label_not_starts_with: String
   label_ends_with: String
   label_not_ends_with: String
-  uri: String
-  uri_not: String
-  uri_in: [String!]
-  uri_not_in: [String!]
-  uri_lt: String
-  uri_lte: String
-  uri_gt: String
-  uri_gte: String
-  uri_contains: String
-  uri_not_contains: String
-  uri_starts_with: String
-  uri_not_starts_with: String
-  uri_ends_with: String
-  uri_not_ends_with: String
+  encodedUri: String
+  encodedUri_not: String
+  encodedUri_in: [String!]
+  encodedUri_not_in: [String!]
+  encodedUri_lt: String
+  encodedUri_lte: String
+  encodedUri_gt: String
+  encodedUri_gte: String
+  encodedUri_contains: String
+  encodedUri_not_contains: String
+  encodedUri_starts_with: String
+  encodedUri_not_starts_with: String
+  encodedUri_ends_with: String
+  encodedUri_not_ends_with: String
   image: String
   image_not: String
   image_in: [String!]
@@ -916,7 +916,7 @@ input RecipeSubscriptionWhereInput {
 
 input RecipeUpdateDataInput {
   label: String
-  uri: String
+  encodedUri: String
   image: String
   source: String
   sourceUrl: String
@@ -930,7 +930,7 @@ input RecipeUpdateDataInput {
 
 input RecipeUpdateInput {
   label: String
-  uri: String
+  encodedUri: String
   image: String
   source: String
   sourceUrl: String
@@ -944,7 +944,7 @@ input RecipeUpdateInput {
 
 input RecipeUpdateManyDataInput {
   label: String
-  uri: String
+  encodedUri: String
   image: String
   source: String
   sourceUrl: String
@@ -968,7 +968,7 @@ input RecipeUpdateManyInput {
 
 input RecipeUpdateManyMutationInput {
   label: String
-  uri: String
+  encodedUri: String
   image: String
   source: String
   sourceUrl: String
@@ -1023,20 +1023,20 @@ input RecipeWhereInput {
   label_not_starts_with: String
   label_ends_with: String
   label_not_ends_with: String
-  uri: String
-  uri_not: String
-  uri_in: [String!]
-  uri_not_in: [String!]
-  uri_lt: String
-  uri_lte: String
-  uri_gt: String
-  uri_gte: String
-  uri_contains: String
-  uri_not_contains: String
-  uri_starts_with: String
-  uri_not_starts_with: String
-  uri_ends_with: String
-  uri_not_ends_with: String
+  encodedUri: String
+  encodedUri_not: String
+  encodedUri_in: [String!]
+  encodedUri_not_in: [String!]
+  encodedUri_lt: String
+  encodedUri_lte: String
+  encodedUri_gt: String
+  encodedUri_gte: String
+  encodedUri_contains: String
+  encodedUri_not_contains: String
+  encodedUri_starts_with: String
+  encodedUri_not_starts_with: String
+  encodedUri_ends_with: String
+  encodedUri_not_ends_with: String
   image: String
   image_not: String
   image_in: [String!]
@@ -1132,7 +1132,7 @@ input RecipeWhereInput {
 
 input RecipeWhereUniqueInput {
   id: ID
-  uri: String
+  encodedUri: String
 }
 
 type Subscription {
