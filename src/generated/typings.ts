@@ -760,7 +760,7 @@ export interface NexusGenRootTypes {
     dietLabels?: string[] | null; // [String!]
     healthLabels?: string[] | null; // [String!]
     image: string; // String!
-    ingredients: string[]; // [String!]!
+    ingredients?: string[] | null; // [String!]
     label: string; // String!
     servings?: number | null; // Int
     source: string; // String!
@@ -775,7 +775,7 @@ export interface NexusGenRootTypes {
     dietLabels?: string[] | null; // [String!]
     healthLabels?: string[] | null; // [String!]
     image: string; // String!
-    ingredients: string[]; // [String!]!
+    ingredients?: string[] | null; // [String!]
     label: string; // String!
     servings?: number | null; // Int
     source: string; // String!
@@ -867,7 +867,7 @@ export interface NexusGenFieldTypes {
     dietLabels: string[] | null; // [String!]
     healthLabels: string[] | null; // [String!]
     image: string; // String!
-    ingredients: string[]; // [String!]!
+    ingredients: string[] | null; // [String!]
     label: string; // String!
     servings: number | null; // Int
     source: string; // String!
@@ -897,7 +897,7 @@ export interface NexusGenFieldTypes {
     dietLabels: string[] | null; // [String!]
     healthLabels: string[] | null; // [String!]
     image: string; // String!
-    ingredients: string[]; // [String!]!
+    ingredients: string[] | null; // [String!]
     label: string; // String!
     servings: number | null; // Int
     source: string; // String!

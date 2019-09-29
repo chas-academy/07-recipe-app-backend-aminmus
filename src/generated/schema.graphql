@@ -150,7 +150,7 @@ type EdamamRecipe {
   """
   healthLabels: [String!]
   image: String!
-  ingredients: [String!]!
+  ingredients: [String!]
   label: String!
 
   """Number of servings"""
@@ -343,7 +343,7 @@ type Recipe {
   """
   healthLabels: [String!]
   image: String!
-  ingredients: [String!]!
+  ingredients: [String!]
   label: String!
 
   """Number of servings"""

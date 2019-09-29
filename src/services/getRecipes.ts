@@ -76,7 +76,7 @@ export async function findRecipeByURI(recipeUri: string): Promise<Recipe> {
     label,
     uri,
     image,
-    ingredientsLines: ingredients,
+    ingredientLines: ingredients,
     calories,
     totalWeight,
     healthLabels,
