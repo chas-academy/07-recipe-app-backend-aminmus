@@ -56,7 +56,6 @@ export async function searchRecipes(query: string, filters?: SearchFilter): Prom
   return recipes;
 }
 
-
 /**
  * Find a specific recipe from Edamam Recipe API
  *
@@ -73,7 +72,9 @@ export async function findRecipeByURI(encodedRecipeUri: string): Promise<Recipe>
   const jsonResult = await fetch(requestUrl);
   const result = await jsonResult.json();
 
-  // Add 'yield' as 'servings' instead because 'yield' is a specific keyword in JS
+  // Throw error before trying to desctructure empty result, to give a clearer error message
+  if (!result || result.length === 0) throw new Error('No results found');
+
   const {
     yield: servings,
     url: sourceUrl,
