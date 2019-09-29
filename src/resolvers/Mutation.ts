@@ -22,11 +22,11 @@ const Mutation = prismaObjectType({
       resolve: async (_root, { recipeURI, id }, context: Context) => {
         let recipe: Recipe | null;
 
-        const recipeExists = await context.prisma.$exists.recipe({
+        const recipeExistsInDB = await context.prisma.$exists.recipe({
           encodedUri: recipeURI,
         });
 
-        if (!recipeExists) {
+        if (!recipeExistsInDB) {
           // Get recipe from edamam and create a copy in DB
           const edamamRecipe = await findRecipeByURI(recipeURI);
           const { healthLabels: healthLabelsPre, dietLabels: dietLabelsPre } = edamamRecipe;
