@@ -2,21 +2,23 @@ import { Request } from 'express';
 import { Prisma } from './generated/prisma-client';
 
 export interface Recipe {
-  uri: string;
+  encodedUri: string;
   label: string;
-  image?: string;
+  image: string;
+  source: string;
+  ingredients: Array<string>;
+  sourceUrl?: string;
   servings?: number;
   calories?: number;
   totalWeight?: number;
   totalNutrients?: object;
-  ingredients?: Array<object>;
   dietLabels?: Array<string>;
   healthLabels?: Array<string>;
 }
 
 export interface SearchFilter {
-  healthLabels: Array<string>;
   dietLabels: Array<string>;
+  healthLabels: Array<string>;
 }
 
 export interface Context {

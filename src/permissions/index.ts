@@ -25,8 +25,8 @@ const permissions = shield({
   Query: {
     me: rules.isAuthenticated,
     testProtected: rules.isAuthenticated,
+    myRecipeLists: rules.isAuthenticated,
     recipeList: chain(rules.isAuthenticated, rules.isListOwner),
-    recipeLists: chain(rules.isAuthenticated, rules.isListOwner),
   },
   Mutation: {
     createRecipeList: rules.isAuthenticated,

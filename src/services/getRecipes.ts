@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import { Recipe, SearchFilter } from '../types';
 import createParamString from '../utils/urlHelpers';
 
-// Not handling errors in searchRecipes and findRecipeByURI functions
+// We are not handling errors in searchRecipes and findRecipeByURI functions
 // Because we want thrown errors to be automatically handled by GraphQL Client
 
 /**
@@ -41,37 +41,43 @@ export async function searchRecipes(query: string, filters?: SearchFilter): Prom
 
   const recipes = await recipeHits.map((current: any) => {
     const { recipe: curRecipe } = current;
-    const { yield: servings } = curRecipe;
+    const {
+      yield: servings, url: sourceUrl, ingredientLines: ingredients, uri,
+    } = curRecipe;
 
-    const recipe: Recipe = { ...curRecipe, servings };
+    const encodedUri = encodeURIComponent(uri);
+
+    const recipe: Recipe = {
+      ...curRecipe, servings, sourceUrl, ingredients, encodedUri,
+    };
     return recipe;
   });
 
   return recipes;
 }
 
-
 /**
  * Find a specific recipe from Edamam Recipe API
  *
  */
-export async function findRecipeByURI(recipeUri: string): Promise<Recipe> {
+export async function findRecipeByURI(encodedRecipeUri: string): Promise<Recipe> {
   const baseUrl = `https://api.edamam.com/search?app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_API_KEY}`;
-
-  // Encode URI, this is required to work with Edamams API
-  const encodedUri = encodeURIComponent(recipeUri);
-  const requestUrl = `${baseUrl}&r=${encodedUri}`;
+  const requestUrl = `${baseUrl}&r=${encodedRecipeUri}`;
 
   // Request recipe from Edamam and await result
   const jsonResult = await fetch(requestUrl);
   const result = await jsonResult.json();
 
-  // Add 'yield' as 'servings' instead because 'yield' is a specific keyword in JS
+  // Throw error before trying to desctructure empty result, to give a clearer error message
+  if (!result || result.length === 0) throw new Error('No results found');
+
   const {
     yield: servings,
+    url: sourceUrl,
+    source,
     label,
-    uri,
     image,
+    ingredientLines: ingredients,
     calories,
     totalWeight,
     healthLabels,
@@ -80,13 +86,16 @@ export async function findRecipeByURI(recipeUri: string): Promise<Recipe> {
 
   const recipe: Recipe = {
     label,
-    uri,
+    encodedUri: encodedRecipeUri,
     image,
+    ingredients,
     calories,
     totalWeight,
     healthLabels,
     dietLabels,
     servings,
+    source,
+    sourceUrl,
   };
 
   return recipe;
