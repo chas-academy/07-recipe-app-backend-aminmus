@@ -4,7 +4,7 @@ import fetch from 'node-fetch';
 import { Recipe, SearchFilter } from '../types';
 import createParamString from '../utils/urlHelpers';
 
-// Not handling errors in searchRecipes and findRecipeByURI functions
+// We are not handling errors in searchRecipes and findRecipeByURI functions
 // Because we want thrown errors to be automatically handled by GraphQL Client
 
 /**
@@ -62,10 +62,6 @@ export async function searchRecipes(query: string, filters?: SearchFilter): Prom
  */
 export async function findRecipeByURI(encodedRecipeUri: string): Promise<Recipe> {
   const baseUrl = `https://api.edamam.com/search?app_id=${process.env.EDAMAM_APP_ID}&app_key=${process.env.EDAMAM_API_KEY}`;
-
-  // Encode URI, this is required to work with Edamams API
-  // const encodedRequestUri = encodeURIComponent(recipeUri);
-  // const requestUrl = `${baseUrl}&r=${encodedRequestUri}`;
   const requestUrl = `${baseUrl}&r=${encodedRecipeUri}`;
 
   // Request recipe from Edamam and await result
