@@ -2,6 +2,7 @@ import { stringArg, idArg } from 'nexus';
 import { prismaObjectType } from 'nexus-prisma';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import isEmail from 'validator/lib/isEmail';
 
 import { Recipe } from '../generated/prisma-client';
 import { findRecipeByURI } from '../services/getRecipes';
@@ -72,6 +73,10 @@ const Mutation = prismaObjectType({
       },
       resolve: async (_root, { name, email, password }, context) => {
         const encryptedPassword = await bcrypt.hash(password, 10);
+        if (!isEmail(email)) {
+          throw new Error('Invalid email');
+        }
+
         const user = await context.prisma.createUser({
           name,
           email,
