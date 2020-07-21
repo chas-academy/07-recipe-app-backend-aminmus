@@ -1,5 +1,16 @@
 version: '3'
 services:
+  node-app: 
+    build: .
+    volumes: 
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules # anonymous volume for node_modules only
+    restart: always
+    depends_on: 
+      - prisma
+      - postgres
+    ports: 
+      - "${PORT}:${PORT}"
   prisma:
     image: prismagraphql/prisma:1.34
     restart: always
