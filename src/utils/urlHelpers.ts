@@ -1,4 +1,3 @@
-
 /**
  * Generates a query string of URL query parameters
  * for when you have several values for the same kind of parameter.

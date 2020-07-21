@@ -2,12 +2,15 @@ import { stringArg, idArg } from 'nexus';
 import { prismaObjectType } from 'nexus-prisma';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import isEmail from 'validator/lib/isEmail';
 
 import { Recipe } from '../generated/prisma-client';
 import { findRecipeByURI } from '../services/getRecipes';
 import AuthPayload from './AuthPayload';
 import { Context } from '../types';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
 const Mutation = prismaObjectType({
   name: 'Mutation',
   definition(t) {
@@ -16,7 +19,7 @@ const Mutation = prismaObjectType({
     t.field('addRecipeToList', {
       type: 'RecipeList',
       args: {
-        recipeURI: stringArg({ description: 'The URL-encoded URI of the recipe' }),
+        recipeURI: stringArg({ description: 'The URL-encoded URI of the recipe', required: true }),
         id: idArg({ description: 'ID of RecipeList to add recipe to' }),
       },
       resolve: async (_root, { recipeURI, id }, context: Context) => {
@@ -31,13 +34,15 @@ const Mutation = prismaObjectType({
           const edamamRecipe = await findRecipeByURI(recipeURI);
           const { healthLabels: healthLabelsPre, dietLabels: dietLabelsPre } = edamamRecipe;
 
-          const healthLabels = await healthLabelsPre.map(((healthLabelPre: string) => (
+          const healthLabels = healthLabelsPre.map(((healthLabelPre: string) => (
             { label: healthLabelPre }
           )));
 
-          const dietLabels = await dietLabelsPre.map(((dietLabelPre: string) => (
+          const dietLabels = dietLabelsPre.map(((dietLabelPre: string) => (
             { label: dietLabelPre }
           )));
+          // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+          // @ts-ignore
           recipe = await context.prisma.createRecipe({
             ...edamamRecipe,
             healthLabels: { connect: healthLabels },
@@ -72,6 +77,10 @@ const Mutation = prismaObjectType({
       },
       resolve: async (_root, { name, email, password }, context) => {
         const encryptedPassword = await bcrypt.hash(password, 10);
+        if (!isEmail(email)) {
+          throw new Error('Invalid email');
+        }
+
         const user = await context.prisma.createUser({
           name,
           email,
