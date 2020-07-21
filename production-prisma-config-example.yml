@@ -1,0 +1,10 @@
+port: 4466
+managementApiSecret: secret_here
+databases:
+  default:
+    connector: postgres
+    host: ip/host-here
+    port: 5432
+    user: example-user
+    password: example-password
+    migrations: true
