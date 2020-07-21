@@ -8,6 +8,8 @@ import EdamamRecipe from './EdamamRecipe';
 import getUserId from '../utils/getUserId';
 import User from './User';
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+// @ts-ignore
 const Query = prismaObjectType({
   name: 'Query',
   definition(t) {
@@ -26,6 +28,7 @@ const Query = prismaObjectType({
       type: User,
       resolve: async (_root, _args, context: Context) => {
         const id = getUserId(context);
+        if (id === false) throw new Error('No user found');
         return context.prisma.user({ id });
       },
     });
@@ -34,10 +37,10 @@ const Query = prismaObjectType({
       type: 'RecipeList',
       resolve: async (_root, _args, context: Context) => {
         const id = getUserId(context);
+        if (id === false) throw new Error('No user found');
         return context.prisma.user({ id }).recipeLists();
       },
     });
-
 
     t.list.field('searchRecipes', {
       type: EdamamRecipe,
@@ -47,7 +50,12 @@ const Query = prismaObjectType({
         searchQuery: stringArg({ nullable: false }),
         filters: arg({ type: Filters }),
       },
-      resolve: (_root, { searchQuery, filters }): Promise<Recipe[]> => searchRecipes(searchQuery, filters),
+      resolve: (
+        _root,
+        { searchQuery, filters },
+        // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+        // @ts-ignore
+      ): Promise<Recipe[]> => searchRecipes(searchQuery, filters),
     });
 
     t.field('findRecipeByURI', {
@@ -55,6 +63,8 @@ const Query = prismaObjectType({
       description: 'Find a recipe by URI. The URI needs to be url-encoded',
       nullable: true,
       args: { encodedUri: stringArg({ nullable: false }) },
+      // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+      // @ts-ignore
       resolve: (_root, { encodedUri }) => findRecipeByURI(encodedUri),
     });
   },

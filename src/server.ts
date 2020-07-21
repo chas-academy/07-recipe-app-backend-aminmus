@@ -26,6 +26,7 @@ const schema = makePrismaSchema({
 const server = new GraphQLServer({
   schema,
   middlewares: [permissions],
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   context: (request) => ({
     ...request,
     prisma,

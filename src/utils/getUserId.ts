@@ -10,6 +10,8 @@ function getUserId(context: Context): string | false {
   if (Authorization) {
     const token = Authorization.replace('Bearer ', '');
     const verifiedToken = verify(token, process.env.SECRET_JWT_KEY);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+    // @ts-ignore
     return verifiedToken.userId;
   }
   return false;

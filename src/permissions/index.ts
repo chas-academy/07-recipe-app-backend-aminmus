@@ -2,7 +2,6 @@ import { rule, shield, chain } from 'graphql-shield';
 import getUserId from '../utils/getUserId';
 import { Context } from '../types';
 
-
 const rules = {
   isAuthenticated: rule()(async (_root, _args, context) => {
     const userId = getUserId(context);
