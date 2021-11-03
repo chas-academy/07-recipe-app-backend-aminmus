@@ -51,6 +51,6 @@
     "node-fetch": "^2.6.0",
     "prisma-client-lib": "^1.34.10",
     "subscriptions-transport-ws": "^0.9.16",
-    "validator": "^13.1.1"
+    "validator": "^13.7.0"
   }
 }
